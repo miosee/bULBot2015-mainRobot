@@ -1,0 +1,26 @@
+build/default/production/main.o:  \
+main.c  \
+../CanLib/CanProp.h  \
+ ../CanLib/CanTypes.h  \
+../CanLib/CanTraj.h  \
+../CanLib/CanNetwork.h  \
+ ../CanLib/CanProp.h  \
+../CanLib/CanTypes.h  \
+../CanLib/CanDspic.h  \
+ ../CanLib/../CanLib/CanNetwork.h  \
+../CanLib/CanAction.h  \
+configware.h  \
+ dataTypes.h  \
+../CanLib/CanTypes.h  \
+gestionActions.h  \
+../CanLib/canProp.h  \
+ ../CanLib/canAction.h  \
+../CanLib/canTraj.h  \
+globales.h  \
+macros.h  \
+timer.h  \
+ interruption.h  \
+spio.h  \
+p33FJ128MC804.h  \
+strategie.h  \
+../CanLib/CanDspic.h 

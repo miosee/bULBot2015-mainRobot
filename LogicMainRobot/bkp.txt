@@ -1,0 +1,29 @@
+//! Mouvements de base contrôlables (actions simples). 
+typedef enum {
+	ACTION_PINCES,		/*! Mouvement des pinces. */
+	ACTION_MOUVEMENT, 	/*! Mouvement du robot. */
+	ACTION_COFFRE		/*! Mouvement dans le système de stockage. */
+}mvtType; 
+
+
+//! Mouvements avec paramètres (mouvements complexes).
+typedef struct {
+	mvtType mvtSimple;	 		/*! Mouvement de base à réaliser. */
+	int *par;					/*! Tableau Paramètres pour le mouvement. */
+	int sizePar;				/*! Taille du tableau @p par. */
+}mvt;
+
+//! Actions stratégiques de base. 
+typedef enum {
+	VIDER_COFFRE,				/*! Le robot va vider son coffre à la base. */
+	VIDER_TOTEM,				/*! Le robot va vider un des totems. */
+	AVALER_SOL,					/*! Le robot avale des pièces au sol. */
+	DEFENSE, 					/*! Le robot défend ses prises. */
+	ATTAQUE						/*! Le robot attaque le bateau adverse. */
+}actionType; 
+
+// Actions stratégiques complexes avec paramètres. 
+typedef struct {
+	actionType actionSimple;	/*! Action à réaliser. */
+	int cout; 					/*! Cout de l'action considérée. C'est la somme de toutes */
+}action; 
