@@ -1,5 +1,5 @@
 # 1 "main.c"
-# 1 "D:\\Robotique\\codes\\mainRobot\\PropBoard2014-DC//"
+# 1 "D:\\dev\\GitHub\\bULBot2015-mainRobot\\PropBoard2014-DC//"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "main.c"
@@ -36,8 +36,7 @@ typedef struct {
  DISABLED = 0,
  STANDING = 1,
  MOVING = 2,
- TEST_STANDING = 3,
- TEST_MOVING = 4,
+ TEST = 3,
  TRAJ_START_OUT = -1,
  TRAJ_END_OUT = -2,
  TRAJ_START_OBS = -3,
@@ -7161,15 +7160,21 @@ union INTEG {
 positionInteger odoPhysPos;
 propStateType state;
 obsType obstacle;
-
+relativeCoordInteger odoRelPos, csgRelPos;
 
 volatile int isrRegFlag, isrCsgFlag;
 
 void propInterrupt(void) {
  (LATBbits.LATB5) = 1;
  calculeOdometrie();
+
  odoPhysPos = positionFloatToInteger(odoGetAbsPos());
  CanEnvoiProduction(&odoPhysPos);
+ odoRelPos = relativeCoordFloatToInteger(odoGetRelPos());
+ CanEnvoiProduction(&odoRelPos);
+ csgRelPos = relativeCoordFloatToInteger(csgGetPos());
+ CanEnvoiProduction(&csgRelPos);
+
  if (isrCsgFlag) {
   csgCompute();
  }
@@ -7225,8 +7230,6 @@ int main(void) {
  canPinAssign();
  TRISCbits.TRISC5 = 0;
  TRISBbits.TRISB5 = 0;
- state = DISABLED;
- oldState = state;
  nomVel.l = 1;
  nomVel.r = 80;
  nomAcc.l = 1;
@@ -7238,24 +7241,29 @@ int main(void) {
  regInit();
  odoInit();
  motorsInit();
+ isrRegFlag = 0;
 
  CanInitialisation(0x02);
  IEC2bits.C1IE = 1;
 
- CanDeclarationProduction(0x02*0x10+2, &odoPhysPos, sizeof(odoPhysPos));
  CanDeclarationProduction(0x02*0x10+0, &state, sizeof(state));
+ CanDeclarationProduction(0x02*0x10+2, &odoPhysPos, sizeof(odoPhysPos));
+ CanDeclarationProduction(0x02*0x10+3, &csgRelPos, sizeof(csgRelPos));
+ CanDeclarationProduction(0x02*0x10+4, &odoRelPos, sizeof(odoRelPos));
  CanEnvoiProduction(&state);
-
- isrRegFlag = 0;
+ state = DISABLED;
  isrCsgFlag = 0;
+# 135 "main.c"
+ oldState = state;
  timerSetup(1, 10);
  timerInterrupt(1, &propInterrupt);
  timerStart(1);
+ (LATCbits.LATC5) = 0;
  while (1) {
-  (LATCbits.LATC5) = !(LATCbits.LATC5);
+
   switch (state) {
    case DISABLED:
-    if (canReceivedOrderFlag == 1) {
+    if (canReceivedOrderFlag) {
      switch (canReceivedCommand) {
       case 0x12:
        setPos();
@@ -7272,9 +7280,9 @@ int main(void) {
        IEC0bits.T1IE = 0;
        motorsEnable();
        isrRegFlag = 0;
-       isrCsgFlag = 1;
+       isrCsgFlag = 0;
        IEC0bits.T1IE = 1;
-       state = TEST_STANDING;
+       state = TEST;
        break;
       default:
        break;
@@ -7283,7 +7291,7 @@ int main(void) {
     }
     break;
    case STANDING:
-    if (canReceivedOrderFlag == 1) {
+    if (canReceivedOrderFlag) {
      switch (canReceivedCommand) {
       case 0x12:
        setPos();
@@ -7319,6 +7327,7 @@ int main(void) {
        state = MOVING;
        break;
       case 7:
+       (LATCbits.LATC5) = 1;
        IEC0bits.T1IE = 0;
        curPos = odoGetAbsPos();
        IEC0bits.T1IE = 1;
@@ -7335,6 +7344,7 @@ int main(void) {
         move = GOTO_XY;
         state = MOVING;
        }
+       (LATCbits.LATC5) = 0;
        break;
       case 8:
        IEC0bits.T1IE = 0;
@@ -7362,7 +7372,7 @@ int main(void) {
     break;
    case MOVING:
 
-    if (canReceivedOrderFlag == 1) {
+    if (canReceivedOrderFlag) {
      switch (canReceivedCommand) {
       case 0x12:
        setPos();
@@ -7451,8 +7461,8 @@ int main(void) {
      }
     }
     break;
-   case TEST_STANDING:
-    if (canReceivedOrderFlag == 1) {
+   case TEST:
+    if (canReceivedOrderFlag) {
      switch (canReceivedCommand) {
       case 0x12:
        setPos();
@@ -7478,37 +7488,15 @@ int main(void) {
      canReceivedOrderFlag = 0;
     }
     break;
-   case TEST_MOVING:
-    if (canReceivedOrderFlag == 1) {
-     switch (canReceivedCommand) {
-      case 0x12:
-       setPos();
-       break;
-      case 4:
-       IEC0bits.T1IE = 0;
-       motorsDisable();
-       isrRegFlag = 0;
-       isrCsgFlag = 0;
-       IEC0bits.T1IE = 1;
-       state = DISABLED;
-       break;
-      case 2:
-       IEC0bits.T1IE = 0;
-       stopNow();
-       IEC0bits.T1IE = 1;
-       break;
-      default:
-       break;
-     }
-     canReceivedOrderFlag = 0;
-    }
-    IEC0bits.T1IE = 0;
-    csgStatus = csgGetState();
-    IEC0bits.T1IE = 1;
-    if (csgStatus == CSG_STANDING) {
-     state = TEST_STANDING;
-    }
+   case TRAJ_START_OUT:
+   case TRAJ_END_OUT:
+   case TRAJ_START_OBS:
+   case TRAJ_END_OBS:
+   case TRAJ_NO_WAY:
+    if (canReceivedOrderFlag)
+     state = STANDING;
     break;
+
    default:
     break;
   }

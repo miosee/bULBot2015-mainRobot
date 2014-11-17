@@ -1,4 +1,4 @@
-	.file "D:\\Robotique\\codes\\mainRobot\\PropBoard2014-DC\\odoLibre.c"
+	.file "D:\\dev\\GitHub\\bULBot2015-mainRobot\\PropBoard2014-DC\\odoLibre.c"
 	.section	.debug_abbrev,info
 .Ldebug_abbrev0:
 	.section	.debug_info,info
@@ -424,11 +424,11 @@ _odoSetAbsPos:
 .LFE5:
 	.pushsection	.nbss,bss,near
 	.align	2
-_prOdoOldRightcnt.7461:	.space	2
+_prOdoOldRightcnt.7460:	.space	2
 	.popsection
 	.pushsection	.nbss,bss,near
 	.align	2
-_prOdoOldLeftCnt.7460:	.space	2
+_prOdoOldLeftCnt.7459:	.space	2
 	.popsection
 	.section	.debug_frame,info
 .Lframe0:
@@ -499,7 +499,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.section	.text,code
 .Letext0:
 	.section	.debug_info,info
-	.4byte	0x85c
+	.4byte	0x862
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -507,7 +507,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"GNU C 4.5.1 (XC16, Microchip v1_21) (A) Build date: Jan  2 2014"
 	.byte	0x1
 	.asciz	"odoLibre.c"
-	.asciz	"D:\\\\Robotique\\\\codes\\\\mainRobot\\\\PropBoard2014-DC"
+	.asciz	"D:\\\\dev\\\\GitHub\\\\bULBot2015-mainRobot\\\\PropBoard2014-DC"
 	.4byte	.Ltext0
 	.4byte	.Letext0
 	.4byte	.Ldebug_line0
@@ -519,12 +519,12 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.byte	0xc
 	.byte	0x2
 	.byte	0x6
-	.4byte	0xce
+	.4byte	0xd4
 	.uleb128 0x4
 	.asciz	"x"
 	.byte	0x2
 	.byte	0x7
-	.4byte	0xce
+	.4byte	0xd4
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
@@ -532,7 +532,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"y"
 	.byte	0x2
 	.byte	0x8
-	.4byte	0xce
+	.4byte	0xd4
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
@@ -540,7 +540,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"alpha"
 	.byte	0x2
 	.byte	0x9
-	.4byte	0xce
+	.4byte	0xd4
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x8
@@ -553,17 +553,17 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"realPosType"
 	.byte	0x2
 	.byte	0xa
-	.4byte	0x9d
+	.4byte	0xa3
 	.uleb128 0x3
 	.byte	0x8
 	.byte	0x2
 	.byte	0xc
-	.4byte	0x10b
+	.4byte	0x111
 	.uleb128 0x4
 	.asciz	"l"
 	.byte	0x2
 	.byte	0xd
-	.4byte	0xce
+	.4byte	0xd4
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
@@ -571,7 +571,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"r"
 	.byte	0x2
 	.byte	0xe
-	.4byte	0xce
+	.4byte	0xd4
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
@@ -580,12 +580,12 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"relativeCoord"
 	.byte	0x2
 	.byte	0xf
-	.4byte	0xea
+	.4byte	0xf0
 	.uleb128 0x6
 	.byte	0x2
 	.byte	0x4
 	.byte	0x41
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.uleb128 0x7
 	.asciz	"PPS_U1RX"
 	.sleb128 1
@@ -640,12 +640,12 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.byte	0x2
 	.byte	0x3
 	.2byte	0x70c
-	.4byte	0x2e8
+	.4byte	0x2ee
 	.uleb128 0x9
 	.4byte	.LASF0
 	.byte	0x3
 	.2byte	0x70d
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -656,7 +656,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"TQCS"
 	.byte	0x3
 	.2byte	0x70e
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -667,7 +667,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"POSRES"
 	.byte	0x3
 	.2byte	0x70f
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -678,7 +678,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"TQCKPS"
 	.byte	0x3
 	.2byte	0x710
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x2
 	.byte	0xb
@@ -689,7 +689,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"TQGATE"
 	.byte	0x3
 	.2byte	0x711
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0xa
@@ -700,7 +700,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"PCDOUT"
 	.byte	0x3
 	.2byte	0x712
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x9
@@ -711,7 +711,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"SWPAB"
 	.byte	0x3
 	.2byte	0x713
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -722,7 +722,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"QEIM"
 	.byte	0x3
 	.2byte	0x714
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x3
 	.byte	0x5
@@ -733,7 +733,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"UPDN"
 	.byte	0x3
 	.2byte	0x715
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x4
@@ -744,7 +744,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"INDX"
 	.byte	0x3
 	.2byte	0x716
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x3
@@ -755,7 +755,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"QEISIDL"
 	.byte	0x3
 	.2byte	0x717
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x2
@@ -766,7 +766,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"CNTERR"
 	.byte	0x3
 	.2byte	0x719
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x10
@@ -778,12 +778,12 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.byte	0x2
 	.byte	0x3
 	.2byte	0x71b
-	.4byte	0x35a
+	.4byte	0x360
 	.uleb128 0xa
 	.asciz	"TQCKPS0"
 	.byte	0x3
 	.2byte	0x71d
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -794,7 +794,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"TQCKPS1"
 	.byte	0x3
 	.2byte	0x71e
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -805,7 +805,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"QEIM0"
 	.byte	0x3
 	.2byte	0x720
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x7
@@ -816,7 +816,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"QEIM1"
 	.byte	0x3
 	.2byte	0x721
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x6
@@ -827,7 +827,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"QEIM2"
 	.byte	0x3
 	.2byte	0x722
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x5
@@ -839,20 +839,20 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.byte	0x2
 	.byte	0x3
 	.2byte	0x70b
-	.4byte	0x36e
+	.4byte	0x374
 	.uleb128 0xc
-	.4byte	0x1ed
+	.4byte	0x1f3
 	.uleb128 0xc
-	.4byte	0x2e8
+	.4byte	0x2ee
 	.byte	0x0
 	.uleb128 0xd
 	.asciz	"tagQEI1CONBITS"
 	.byte	0x2
 	.byte	0x3
 	.2byte	0x70a
-	.4byte	0x38f
+	.4byte	0x395
 	.uleb128 0xe
-	.4byte	0x35a
+	.4byte	0x360
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
@@ -861,17 +861,17 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"QEI1CONBITS"
 	.byte	0x3
 	.2byte	0x725
-	.4byte	0x36e
+	.4byte	0x374
 	.uleb128 0x8
 	.byte	0x2
 	.byte	0x3
 	.2byte	0x784
-	.4byte	0x49e
+	.4byte	0x4a4
 	.uleb128 0x9
 	.4byte	.LASF0
 	.byte	0x3
 	.2byte	0x785
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -882,7 +882,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"TQCS"
 	.byte	0x3
 	.2byte	0x786
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -893,7 +893,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"POSRES"
 	.byte	0x3
 	.2byte	0x787
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -904,7 +904,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"TQCKPS"
 	.byte	0x3
 	.2byte	0x788
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x2
 	.byte	0xb
@@ -915,7 +915,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"TQGATE"
 	.byte	0x3
 	.2byte	0x789
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0xa
@@ -926,7 +926,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"PCDOUT"
 	.byte	0x3
 	.2byte	0x78a
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x9
@@ -937,7 +937,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"SWPAB"
 	.byte	0x3
 	.2byte	0x78b
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -948,7 +948,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"QEIM"
 	.byte	0x3
 	.2byte	0x78c
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x3
 	.byte	0x5
@@ -959,7 +959,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"UPDN"
 	.byte	0x3
 	.2byte	0x78d
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x4
@@ -970,7 +970,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"INDX"
 	.byte	0x3
 	.2byte	0x78e
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x3
@@ -981,7 +981,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"QEISIDL"
 	.byte	0x3
 	.2byte	0x78f
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x2
@@ -992,7 +992,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"CNTERR"
 	.byte	0x3
 	.2byte	0x791
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x10
@@ -1004,12 +1004,12 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.byte	0x2
 	.byte	0x3
 	.2byte	0x793
-	.4byte	0x510
+	.4byte	0x516
 	.uleb128 0xa
 	.asciz	"TQCKPS0"
 	.byte	0x3
 	.2byte	0x795
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -1020,7 +1020,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"TQCKPS1"
 	.byte	0x3
 	.2byte	0x796
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -1031,7 +1031,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"QEIM0"
 	.byte	0x3
 	.2byte	0x798
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x7
@@ -1042,7 +1042,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"QEIM1"
 	.byte	0x3
 	.2byte	0x799
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x6
@@ -1053,7 +1053,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"QEIM2"
 	.byte	0x3
 	.2byte	0x79a
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.byte	0x2
 	.byte	0x1
 	.byte	0x5
@@ -1065,20 +1065,20 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.byte	0x2
 	.byte	0x3
 	.2byte	0x783
-	.4byte	0x524
+	.4byte	0x52a
 	.uleb128 0xc
-	.4byte	0x3a3
+	.4byte	0x3a9
 	.uleb128 0xc
-	.4byte	0x49e
+	.4byte	0x4a4
 	.byte	0x0
 	.uleb128 0xd
 	.asciz	"tagQEI2CONBITS"
 	.byte	0x2
 	.byte	0x3
 	.2byte	0x782
-	.4byte	0x545
+	.4byte	0x54b
 	.uleb128 0xe
-	.4byte	0x510
+	.4byte	0x516
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
@@ -1087,7 +1087,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"QEI2CONBITS"
 	.byte	0x3
 	.2byte	0x79d
-	.4byte	0x524
+	.4byte	0x52a
 	.uleb128 0x10
 	.byte	0x1
 	.asciz	"odoInit"
@@ -1108,48 +1108,48 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.4byte	.LFE1
 	.byte	0x1
 	.byte	0x5e
-	.4byte	0x63b
+	.4byte	0x641
 	.uleb128 0x12
 	.asciz	"prOdoOldLeftCnt"
 	.byte	0x1
 	.byte	0x39
-	.4byte	0x96
+	.4byte	0x9c
 	.byte	0x5
 	.byte	0x3
-	.4byte	_prOdoOldLeftCnt.7460
+	.4byte	_prOdoOldLeftCnt.7459
 	.uleb128 0x12
 	.asciz	"prOdoOldRightcnt"
 	.byte	0x1
 	.byte	0x39
-	.4byte	0x96
+	.4byte	0x9c
 	.byte	0x5
 	.byte	0x3
-	.4byte	_prOdoOldRightcnt.7461
+	.4byte	_prOdoOldRightcnt.7460
 	.uleb128 0x13
 	.asciz	"leftVel"
 	.byte	0x1
 	.byte	0x3a
-	.4byte	0x96
+	.4byte	0x9c
 	.uleb128 0x13
 	.asciz	"rightVel"
 	.byte	0x1
 	.byte	0x3a
-	.4byte	0x96
+	.4byte	0x9c
 	.uleb128 0x13
 	.asciz	"tmpLeft"
 	.byte	0x1
 	.byte	0x3b
-	.4byte	0x96
+	.4byte	0x9c
 	.uleb128 0x13
 	.asciz	"tmpRight"
 	.byte	0x1
 	.byte	0x3b
-	.4byte	0x96
+	.4byte	0x9c
 	.uleb128 0x12
 	.asciz	"tmpFloat"
 	.byte	0x1
 	.byte	0x3c
-	.4byte	0xce
+	.4byte	0xd4
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 8
@@ -1157,7 +1157,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"dT"
 	.byte	0x1
 	.byte	0x3c
-	.4byte	0xce
+	.4byte	0xd4
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 0
@@ -1165,7 +1165,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"dR"
 	.byte	0x1
 	.byte	0x3c
-	.4byte	0xce
+	.4byte	0xd4
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 4
@@ -1176,7 +1176,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.byte	0x1
 	.byte	0x5d
 	.byte	0x1
-	.4byte	0x10b
+	.4byte	0x111
 	.4byte	.LFB2
 	.4byte	.LFE2
 	.byte	0x1
@@ -1187,7 +1187,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.byte	0x1
 	.byte	0x61
 	.byte	0x1
-	.4byte	0x10b
+	.4byte	0x111
 	.4byte	.LFB3
 	.4byte	.LFE3
 	.byte	0x1
@@ -1198,7 +1198,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.byte	0x1
 	.byte	0x65
 	.byte	0x1
-	.4byte	0xd7
+	.4byte	0xdd
 	.4byte	.LFB4
 	.4byte	.LFE4
 	.byte	0x1
@@ -1213,12 +1213,12 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.4byte	.LFE5
 	.byte	0x1
 	.byte	0x5e
-	.4byte	0x6cd
+	.4byte	0x6d3
 	.uleb128 0x15
 	.asciz	"newPos"
 	.byte	0x1
 	.byte	0x69
-	.4byte	0xd7
+	.4byte	0xdd
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 0
@@ -1227,164 +1227,164 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.asciz	"PR2"
 	.byte	0x3
 	.2byte	0x43c
-	.4byte	0x6db
+	.4byte	0x6e1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x17
-	.4byte	0x1dd
+	.4byte	0x1e3
 	.uleb128 0x16
 	.asciz	"OC1RS"
 	.byte	0x3
 	.2byte	0x54b
-	.4byte	0x6db
+	.4byte	0x6e1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x16
 	.asciz	"OC2RS"
 	.byte	0x3
 	.2byte	0x563
-	.4byte	0x6db
+	.4byte	0x6e1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x16
 	.asciz	"OC3RS"
 	.byte	0x3
 	.2byte	0x57b
-	.4byte	0x6db
+	.4byte	0x6e1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x16
 	.asciz	"OC4RS"
 	.byte	0x3
 	.2byte	0x593
-	.4byte	0x6db
+	.4byte	0x6e1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x18
 	.4byte	.LASF1
 	.byte	0x3
 	.2byte	0x726
-	.4byte	0x72e
+	.4byte	0x734
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x17
-	.4byte	0x38f
+	.4byte	0x395
 	.uleb128 0x16
 	.asciz	"POS1CNT"
 	.byte	0x3
 	.2byte	0x779
-	.4byte	0x6db
+	.4byte	0x6e1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x18
 	.4byte	.LASF2
 	.byte	0x3
 	.2byte	0x79e
-	.4byte	0x753
+	.4byte	0x759
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x17
-	.4byte	0x545
+	.4byte	0x54b
 	.uleb128 0x16
 	.asciz	"POS2CNT"
 	.byte	0x3
 	.2byte	0x7b9
-	.4byte	0x6db
+	.4byte	0x6e1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x19
 	.4byte	.LASF3
 	.byte	0x1
 	.byte	0x13
-	.4byte	0x777
+	.4byte	0x77d
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x17
-	.4byte	0xd7
+	.4byte	0xdd
 	.uleb128 0x19
 	.4byte	.LASF4
 	.byte	0x1
 	.byte	0x14
-	.4byte	0x789
+	.4byte	0x78f
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x17
-	.4byte	0x10b
+	.4byte	0x111
 	.uleb128 0x19
 	.4byte	.LASF5
 	.byte	0x1
 	.byte	0x14
-	.4byte	0x789
+	.4byte	0x78f
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x16
 	.asciz	"PR2"
 	.byte	0x3
 	.2byte	0x43c
-	.4byte	0x6db
+	.4byte	0x6e1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x16
 	.asciz	"OC1RS"
 	.byte	0x3
 	.2byte	0x54b
-	.4byte	0x6db
+	.4byte	0x6e1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x16
 	.asciz	"OC2RS"
 	.byte	0x3
 	.2byte	0x563
-	.4byte	0x6db
+	.4byte	0x6e1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x16
 	.asciz	"OC3RS"
 	.byte	0x3
 	.2byte	0x57b
-	.4byte	0x6db
+	.4byte	0x6e1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x16
 	.asciz	"OC4RS"
 	.byte	0x3
 	.2byte	0x593
-	.4byte	0x6db
+	.4byte	0x6e1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x18
 	.4byte	.LASF1
 	.byte	0x3
 	.2byte	0x726
-	.4byte	0x72e
+	.4byte	0x734
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x16
 	.asciz	"POS1CNT"
 	.byte	0x3
 	.2byte	0x779
-	.4byte	0x6db
+	.4byte	0x6e1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x18
 	.4byte	.LASF2
 	.byte	0x3
 	.2byte	0x79e
-	.4byte	0x753
+	.4byte	0x759
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x16
 	.asciz	"POS2CNT"
 	.byte	0x3
 	.2byte	0x7b9
-	.4byte	0x6db
+	.4byte	0x6e1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x1a
 	.4byte	.LASF3
 	.byte	0x1
 	.byte	0x13
-	.4byte	0x777
+	.4byte	0x77d
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -1393,7 +1393,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.4byte	.LASF4
 	.byte	0x1
 	.byte	0x14
-	.4byte	0x789
+	.4byte	0x78f
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -1402,7 +1402,7 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.4byte	.LASF5
 	.byte	0x1
 	.byte	0x14
-	.4byte	0x789
+	.4byte	0x78f
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -1804,42 +1804,42 @@ _prOdoOldLeftCnt.7460:	.space	2
 	.4byte	0xa3
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x860
-	.4byte	0x559
+	.4byte	0x866
+	.4byte	0x55f
 	.asciz	"odoInit"
-	.4byte	0x570
+	.4byte	0x576
 	.asciz	"calculeOdometrie"
-	.4byte	0x63b
+	.4byte	0x641
 	.asciz	"odoGetRelVel"
-	.4byte	0x65b
+	.4byte	0x661
 	.asciz	"odoGetRelPos"
-	.4byte	0x67b
+	.4byte	0x681
 	.asciz	"odoGetAbsPos"
-	.4byte	0x69b
+	.4byte	0x6a1
 	.asciz	"odoSetAbsPos"
-	.4byte	0x829
+	.4byte	0x82f
 	.asciz	"prOdoAbsPos"
-	.4byte	0x83b
+	.4byte	0x841
 	.asciz	"prOdoRelVel"
-	.4byte	0x84d
+	.4byte	0x853
 	.asciz	"prOdoRelPos"
 	.4byte	0x0
 	.section	.debug_pubtypes,info
 	.4byte	0x76
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x860
-	.4byte	0xd7
+	.4byte	0x866
+	.4byte	0xdd
 	.asciz	"realPosType"
-	.4byte	0x10b
+	.4byte	0x111
 	.asciz	"relativeCoord"
-	.4byte	0x36e
+	.4byte	0x374
 	.asciz	"tagQEI1CONBITS"
-	.4byte	0x38f
+	.4byte	0x395
 	.asciz	"QEI1CONBITS"
-	.4byte	0x524
+	.4byte	0x52a
 	.asciz	"tagQEI2CONBITS"
-	.4byte	0x545
+	.4byte	0x54b
 	.asciz	"QEI2CONBITS"
 	.4byte	0x0
 	.section	.debug_aranges,info

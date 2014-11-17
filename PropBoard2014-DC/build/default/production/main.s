@@ -1,4 +1,4 @@
-	.file "D:\\Robotique\\codes\\mainRobot\\PropBoard2014-DC\\main.c"
+	.file "D:\\dev\\GitHub\\bULBot2015-mainRobot\\PropBoard2014-DC\\main.c"
 	.section	.debug_abbrev,info
 .Ldebug_abbrev0:
 	.section	.debug_info,info
@@ -20,6 +20,14 @@ _state:	.space	2
 	.global	_obstacle
 	.align	2
 _obstacle:	.space	6
+	.type	_odoRelPos,@object
+	.global	_odoRelPos
+	.align	2
+_odoRelPos:	.space	4
+	.type	_csgRelPos,@object
+	.global	_csgRelPos
+	.align	2
+_csgRelPos:	.space	4
 	.type	_isrRegFlag,@object
 	.global	_isrRegFlag
 	.align	2
@@ -36,51 +44,86 @@ _propInterrupt:
 .LFB0:
 .LSM0:
 	.set ___PA___,1
-	lnk	#18
+	lnk	#38
 .LSM1:
 	bset.b	_LATBbits,#5
 .LSM2:
 	rcall	_calculeOdometrie
 .LSM3:
-	mov	w14,w0
+	add	w14,#16,w4
+	mov	w4,w0
 	rcall	_odoGetAbsPos
-	add	w14,#12,w7
-	mov	[w14],w1
-	mov	[w14+2],w2
-	mov	[w14+4],w3
-	mov	[w14+6],w4
-	mov	[w14+8],w5
-	mov	[w14+10],w6
+	add	w14,#28,w7
+	mov	[w14+16],w1
+	mov	[w14+18],w2
+	mov	[w14+20],w3
+	mov	[w14+22],w4
+	mov	[w14+24],w5
+	mov	[w14+26],w6
 	mov	w7,w0
 	rcall	_positionFloatToInteger
-	mov	[w14+12],w4
-	mov	[w14+14],w5
+	mov	[w14+28],w4
+	mov	[w14+30],w5
 	mov	w4,_odoPhysPos
 	mov	w5,_odoPhysPos+2
-	mov	[w14+16],w5
+	mov	[w14+32],w5
 	mov	w5,_odoPhysPos+4
 .LSM4:
 	mov	#_odoPhysPos,w0
 	rcall	_CanEnvoiProduction
 .LSM5:
+	add	w14,#8,w4
+	mov	w4,w0
+	rcall	_odoGetRelPos
+	mov	#34,w0
+	add	w0,w14,w0
+	mov	[w14+8],w4
+	mov	[w14+10],w5
+	mov	[w14+12],w6
+	mov	[w14+14],w7
+		
+	rcall	_relativeCoordFloatToInteger
+	mov	[w14+34],w4
+	mov	[w14+36],w5
+	mov	w4,_odoRelPos
+	mov	w5,_odoRelPos+2
+.LSM6:
+	mov	#_odoRelPos,w0
+	rcall	_CanEnvoiProduction
+.LSM7:
+	mov	w14,w0
+	rcall	_csgGetPos
+	mov	#34,w0
+	add	w0,w14,w0
+	mov.d	[w14++],w4
+	mov.d	[w14--],w6
+	rcall	_relativeCoordFloatToInteger
+	mov	[w14+34],w4
+	mov	[w14+36],w5
+	mov	w4,_csgRelPos
+	mov	w5,_csgRelPos+2
+.LSM8:
+	mov	#_csgRelPos,w0
+	rcall	_CanEnvoiProduction
+.LSM9:
 	mov	_isrCsgFlag,w4
 	sub	w4,#0,[w15]
 	.set ___BP___,0
 	bra	z,.L2
-.LSM6:
+.LSM10:
 	rcall	_csgCompute
 .L2:
-.LSM7:
+.LSM11:
 	mov	_isrRegFlag,w4
 	sub	w4,#0,[w15]
 	.set ___BP___,0
 	bra	z,.L3
-.LSM8:
+.LSM12:
 	rcall	_regCompute
 .L3:
-.LSM9:
+.LSM13:
 	bclr.b	_LATBbits,#5
-.LSM10:
+.LSM14:
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -90,14 +133,14 @@ _propInterrupt:
 	.type	_setPos,@function
 _setPos:
 .LFB1:
-.LSM11:
+.LSM15:
 	.set ___PA___,1
 	lnk	#26
-.LSM12:
+.LSM16:
 	add	w14,#8,w4
 	mov	w4,w0
 	rcall	_getCanData
-.LSM13:
+.LSM17:
 	mov	[w14+8],w4
 	asr	w4,#15,w5
 	mov.d	w4,w0
@@ -110,7 +153,7 @@ _setPos:
 	mov.d	w0,w4
 	mov	w4,[w14+14]
 	mov	w5,[w14+16]
-.LSM14:
+.LSM18:
 	mov	[w14+10],w4
 	asr	w4,#15,w5
 	mov.d	w4,w0
@@ -123,7 +166,7 @@ _setPos:
 	mov.d	w0,w4
 	mov	w4,[w14+18]
 	mov	w5,[w14+20]
-.LSM15:
+.LSM19:
 	mov	[w14+12],w4
 	asr	w4,#15,w5
 	mov.d	w4,w0
@@ -136,9 +179,9 @@ _setPos:
 	mov.d	w0,w4
 	mov	w4,[w14+22]
 	mov	w5,[w14+24]
-.LSM16:
+.LSM20:
 	bclr.b	_IEC0bits,#3
-.LSM17:
+.LSM21:
 	mov	[w14+14],w0
 	mov	[w14+16],w1
 	mov	[w14+18],w2
@@ -146,15 +189,15 @@ _setPos:
 	mov	[w14+22],w4
 	mov	[w14+24],w5
 	rcall	_odoSetAbsPos
-.LSM18:
+.LSM22:
 	mov	w14,w0
 	rcall	_odoGetRelPos
 	mov.d	[w14++],w0
 	mov.d	[w14--],w2
 	rcall	_csgSetFinalPos
-.LSM19:
+.LSM23:
 	bset.b	_IEC0bits,#3
-.LSM20:
+.LSM24:
 	ulnk	
 	return	
 	.set ___PA___,0
@@ -164,54 +207,48 @@ _setPos:
 	.type	_main,@function
 _main:
 .LFB2:
-.LSM21:
+.LSM25:
 	.set ___PA___,1
 	lnk	#284
-.LSM22:
-	rcall	_pllConfig
-.LSM23:
-	rcall	_canPinAssign
-.LSM24:
-	bclr.b	_TRISCbits,#5
-.LSM25:
-	bclr.b	_TRISBbits,#5
 .LSM26:
-	clr	w4
-	mov	w4,_state
+	rcall	_pllConfig
 .LSM27:
-	mov	_state,w0
-	mov	w0,[w14]
+	rcall	_canPinAssign
 .LSM28:
+	bclr.b	_TRISCbits,#5
+.LSM29:
+	bclr.b	_TRISBbits,#5
+.LSM30:
 	mov	#0,w4
 	mov	#16256,w5
 	mov	w4,[w14+24]
 	mov	w5,[w14+26]
-.LSM29:
+.LSM31:
 	mov	#0,w4
 	mov	#17056,w5
 	mov	w4,[w14+28]
 	mov	w5,[w14+30]
-.LSM30:
+.LSM32:
 	mov	#0,w4
 	mov	#16256,w5
 	mov	w4,[w14+32]
 	mov	w5,[w14+34]
-.LSM31:
+.LSM33:
 	mov	#0,w4
 	mov	#17056,w5
 	mov	w4,[w14+36]
 	mov	w5,[w14+38]
-.LSM32:
+.LSM34:
 	clr.b	w4
 	mov.b	w4,w0
 	mov.b	WREG,_obstacle
-.LSM33:
+.LSM35:
 	clr	w4
 	mov	w4,_obstacle+2
-.LSM34:
+.LSM36:
 	clr	w4
 	mov	w4,_obstacle+4
-.LSM35:
+.LSM37:
 	mov	[w14+32],w4
 	mov	[w14+34],w5
 	mov	[w14+36],w6
@@ -223,56 +260,72 @@ _main:
 	mov	[w14+30],w3
 		
 	rcall	_csgInit
-.LSM36:
-	rcall	_regInit
-.LSM37:
-	rcall	_odoInit
 .LSM38:
-	rcall	_motorsInit
+	rcall	_regInit
 .LSM39:
+	rcall	_odoInit
+.LSM40:
+	rcall	_motorsInit
+.LSM41:
+	clr	w4
+	mov	w4,_isrRegFlag
+.LSM42:
 	mov.b	#2,w0
 	rcall	_CanInitialisation
-.LSM40:
+.LSM43:
 	bset.b	_IEC2bits,#3
-.LSM41:
-	mov.b	#6,w2
-	mov	#_odoPhysPos,w1
-	mov.b	#34,w0
-	rcall	_CanDeclarationProduction
-.LSM42:
+.LSM44:
 	mov.b	#2,w2
 	mov	#_state,w1
 	mov.b	#32,w0
 	rcall	_CanDeclarationProduction
-.LSM43:
+.LSM45:
+	mov.b	#6,w2
+	mov	#_odoPhysPos,w1
+	mov.b	#34,w0
+	rcall	_CanDeclarationProduction
+.LSM46:
+	mov.b	#4,w2
+	mov	#_csgRelPos,w1
+	mov.b	#35,w0
+	rcall	_CanDeclarationProduction
+.LSM47:
+	mov.b	#4,w2
+	mov	#_odoRelPos,w1
+	mov.b	#36,w0
+	rcall	_CanDeclarationProduction
+.LSM48:
 	mov	#_state,w0
 	rcall	_CanEnvoiProduction
-.LSM44:
+.LSM49:
 	clr	w4
-	mov	w4,_isrRegFlag
-.LSM45:
+	mov	w4,_state
+.LSM50:
 	clr	w4
 	mov	w4,_isrCsgFlag
-.LSM46:
+.LSM51:
+	mov	_state,w4
+	mov	w4,[w14]
+.LSM52:
 	mov	#0,w2
 	mov	#16672,w3
 	mov	#1,w0
 	rcall	_timerSetup
-.LSM47:
+.LSM53:
 	mov	#handle(_propInterrupt),w1
 	mov	#1,w0
 	rcall	_timerInterrupt
-.LSM48:
+.LSM54:
 	mov	#1,w0
 	rcall	_timerStart
-.LSM49:
+.LSM55:
 	bclr.b	_LATCbits,#5
 	bra	.L60
 .L69:
-.LSM50:
+.LSM56:
 	nop	
 .L60:
-.LSM51:
+.LSM57:
 	mov	_state,w4
 	mul.su	w4,#1,w6
 	mov	#5,w4
@@ -300,13 +353,13 @@ _main:
 	bra	.L11
 	.set	___PA___,1
 .L8:
-.LSM52:
+.LSM58:
 	mov	#_canReceivedOrderFlag,w4
 	mov.b	[w4],w4
 	sub.b	w4,#0,[w15]
 	.set ___BP___,0
 	bra	z,.L62
-.LSM53:
+.LSM59:
 	mov	#_canReceivedCommand,w4
 	mov.b	[w4],w4
 	ze	w4,w4
@@ -319,64 +372,64 @@ _main:
 	sub	w4,#3,[w15]
 	.set ___BP___,0
 	bra	z,.L15
-.LSM54:
+.LSM60:
 	bra	.L18
 .L17:
-.LSM55:
+.LSM61:
 	rcall	_setPos
-.LSM56:
+.LSM62:
 	bra	.L18
 .L15:
-.LSM57:
+.LSM63:
 	bclr.b	_IEC0bits,#3
-.LSM58:
+.LSM64:
 	rcall	_motorsEnable
-.LSM59:
+.LSM65:
 	mov	#1,w4
 	mov	w4,_isrRegFlag
-.LSM60:
+.LSM66:
 	mov	#1,w4
 	mov	w4,_isrCsgFlag
-.LSM61:
+.LSM67:
 	bset.b	_IEC0bits,#3
-.LSM62:
+.LSM68:
 	mov	#1,w4
 	mov	w4,_state
-.LSM63:
+.LSM69:
 	bra	.L18
 .L16:
-.LSM64:
+.LSM70:
 	bclr.b	_IEC0bits,#3
-.LSM65:
+.LSM71:
 	rcall	_motorsEnable
-.LSM66:
+.LSM72:
 	clr	w4
 	mov	w4,_isrRegFlag
-.LSM67:
-	mov	#1,w4
+.LSM73:
+	clr	w4
 	mov	w4,_isrCsgFlag
-.LSM68:
+.LSM74:
 	bset.b	_IEC0bits,#3
-.LSM69:
+.LSM75:
 	mov	#3,w4
 	mov	w4,_state
-.LSM70:
+.LSM76:
 	nop	
 .L18:
-.LSM71:
+.LSM77:
 	clr.b	w4
 	mov.b	w4,w0
 	mov.b	WREG,_canReceivedOrderFlag
-.LSM72:
+.LSM78:
 	bra	.L19
 .L9:
-.LSM73:
+.LSM79:
 	mov	#_canReceivedOrderFlag,w4
 	mov.b	[w4],w4
 	sub.b	w4,#0,[w15]
 	.set ___BP___,0
 	bra	z,.L63
-.LSM74:
+.LSM80:
 	mov	#_canReceivedCommand,w4
 	mov.b	[w4],w4
 	ze	w4,w4
@@ -412,35 +465,35 @@ _main:
 	bra	.L27
 	.set	___PA___,1
 .L27:
-.LSM75:
+.LSM81:
 	rcall	_setPos
-.LSM76:
+.LSM82:
 	bra	.L29
 .L24:
-.LSM77:
+.LSM83:
 	bclr.b	_IEC0bits,#3
-.LSM78:
+.LSM84:
 	rcall	_motorsDisable
-.LSM79:
+.LSM85:
 	clr	w4
 	mov	w4,_isrRegFlag
-.LSM80:
+.LSM86:
 	clr	w4
 	mov	w4,_isrCsgFlag
-.LSM81:
+.LSM87:
 	bset.b	_IEC0bits,#3
-.LSM82:
+.LSM88:
 	clr	w4
 	mov	w4,_state
-.LSM83:
+.LSM89:
 	bra	.L29
 .L22:
-.LSM84:
+.LSM90:
 	mov	#64,w4
 	add	w4,w14,w4
 	mov	w4,w0
 	rcall	_getCanData
-.LSM85:
+.LSM91:
 	mov	[w14+64],w4
 	asr	w4,#15,w5
 	mov.d	w4,w0
@@ -453,7 +506,7 @@ _main:
 	mov.d	w0,w4
 	mov	w4,[w14+10]
 	mov	w5,[w14+12]
-.LSM86:
+.LSM92:
 	mov	[w14+66],w4
 	asr	w4,#15,w5
 	mov.d	w4,w0
@@ -466,7 +519,7 @@ _main:
 	mov.d	w0,w4
 	mov	w4,[w14+14]
 	mov	w5,[w14+16]
-.LSM87:
+.LSM93:
 	mov	[w14+68],w4
 	asr	w4,#15,w5
 	mov.d	w4,w0
@@ -479,9 +532,9 @@ _main:
 	mov.d	w0,w4
 	mov	w4,[w14+18]
 	mov	w5,[w14+20]
-.LSM88:
+.LSM94:
 	bclr.b	_IEC0bits,#3
-.LSM89:
+.LSM95:
 	mov	[w14+18],w4
 	mov	[w14+20],w5
 	mov	[w14+14],w2
@@ -489,18 +542,18 @@ _main:
 	mov	[w14+10],w0
 	mov	[w14+12],w1
 	rcall	_addTranslation
-.LSM90:
+.LSM96:
 	bset.b	_IEC0bits,#3
-.LSM91:
+.LSM97:
 	clr	w4
 	mov	w4,[w14+8]
-.LSM92:
+.LSM98:
 	mov	#2,w4
 	mov	w4,_state
-.LSM93:
+.LSM99:
 	bra	.L29
 .L23:
-.LSM94:
+.LSM100:
 	mov	#258,w4
 	add	w4,w14,w4
 	mov	w4,w0
@@ -511,7 +564,7 @@ _main:
 	mov	w5,[w14+66]
 	mov	[w14+262],w5
 	mov	w5,[w14+68]
-.LSM95:
+.LSM101:
 	mov	[w14+64],w4
 	asr	w4,#15,w5
 	mov.d	w4,w0
@@ -524,7 +577,7 @@ _main:
 	mov.d	w0,w4
 	mov	w4,[w14+10]
 	mov	w5,[w14+12]
-.LSM96:
+.LSM102:
 	mov	[w14+66],w4
 	asr	w4,#15,w5
 	mov.d	w4,w0
@@ -537,7 +590,7 @@ _main:
 	mov.d	w0,w4
 	mov	w4,[w14+14]
 	mov	w5,[w14+16]
-.LSM97:
+.LSM103:
 	mov	[w14+68],w4
 	asr	w4,#15,w5
 	mov.d	w4,w0
@@ -550,9 +603,9 @@ _main:
 	mov.d	w0,w4
 	mov	w4,[w14+18]
 	mov	w5,[w14+20]
-.LSM98:
+.LSM104:
 	bclr.b	_IEC0bits,#3
-.LSM99:
+.LSM105:
 	mov	[w14+18],w4
 	mov	[w14+20],w5
 	mov	[w14+14],w2
@@ -560,29 +613,29 @@ _main:
 	mov	[w14+10],w0
 	mov	[w14+12],w1
 	rcall	_addRotation
-.LSM100:
+.LSM106:
 	bset.b	_IEC0bits,#3
-.LSM101:
+.LSM107:
 	clr	w4
 	mov	w4,[w14+8]
-.LSM102:
+.LSM108:
 	mov	#2,w4
 	mov	w4,_state
-.LSM103:
+.LSM109:
 	bra	.L29
 .L25:
-.LSM104:
+.LSM110:
 	bset.b	_LATCbits,#5
-.LSM105:
+.LSM111:
 	bclr.b	_IEC0bits,#3
-.LSM106:
+.LSM112:
 	mov	#40,w4
 	add	w4,w14,w4
 	mov	w4,w0
 	rcall	_odoGetAbsPos
-.LSM107:
+.LSM113:
 	bset.b	_IEC0bits,#3
-.LSM108:
+.LSM114:
 	mov	#258,w4
 	add	w4,w14,w4
 	mov	w4,w0
@@ -593,7 +646,7 @@ _main:
 	mov	w7,[w14+66]
 	mov	[w14+262],w7
 	mov	w7,[w14+68]
-.LSM109:
+.LSM115:
 	mov	[w14+64],w4
 	asr	w4,#15,w5
 	mov.d	w4,w0
@@ -606,7 +659,7 @@ _main:
 	mov.d	w0,w4
 	mov	w4,[w14+52]
 	mov	w5,[w14+54]
-.LSM110:
+.LSM116:
 	mov	[w14+66],w4
 	asr	w4,#15,w5
 	mov.d	w4,w0
@@ -619,12 +672,12 @@ _main:
 	mov.d	w0,w4
 	mov	w4,[w14+56]
 	mov	w5,[w14+58]
-.LSM111:
+.LSM117:
 	mul.uu	w4,#0,w4
 		
 	mov	w4,[w14+60]
 	mov	w5,[w14+62]
-.LSM112:
+.LSM118:
 	mov	#78,w0
 	add	w0,w14,w0
 	mov	_obstacle,w4
@@ -660,37 +713,37 @@ _main:
 .LCFI6:
 	mov	w0,w4
 	mov	w4,[w14+4]
-.LSM113:
+.LSM119:
 	mov	[w14+4],w4
 	sub	w4,#0,[w15]
 	.set ___BP___,0
 	bra	ge,.L30
-.LSM114:
+.LSM120:
 	mov	[w14+4],w0
 	mov	w0,_state
 	bra	.L31
 .L30:
-.LSM115:
+.LSM121:
 	mov	#1,w4
 	mov	w4,[w14+2]
-.LSM116:
+.LSM122:
 	clr	w4
 	mov	w4,[w14+6]
-.LSM117:
+.LSM123:
 	mov	#1,w4
 	mov	w4,[w14+8]
-.LSM118:
+.LSM124:
 	mov	#2,w4
 	mov	w4,_state
 .L31:
-.LSM119:
+.LSM125:
 	bclr.b	_LATCbits,#5
-.LSM120:
+.LSM126:
 	bra	.L29
 .L26:
-.LSM121:
+.LSM127:
 	bclr.b	_IEC0bits,#3
-.LSM122:
+.LSM128:
 	mov	#264,w4
 	add	w4,w14,w4
 	mov	w4,w0
@@ -712,9 +765,9 @@ _main:
 	mov	[w4--],[w5--]
 	add	w5,#4,w5
 	add	w4,#4,w4
-.LSM123:
+.LSM129:
 	bset.b	_IEC0bits,#3
-.LSM124:
+.LSM130:
 	mov	#258,w4
 	add	w4,w14,w4
 	mov	w4,w0
@@ -725,7 +778,7 @@ _main:
 	mov	w5,[w14+66]
 	mov	[w14+262],w5
 	mov	w5,[w14+68]
-.LSM125:
+.LSM131:
 	mov	[w14+64],w4
 	asr	w4,#15,w5
 	mov.d	w4,w0
@@ -738,7 +791,7 @@ _main:
 	mov.d	w0,w4
 	mov	w4,[w14+52]
 	mov	w5,[w14+54]
-.LSM126:
+.LSM132:
 	mov	[w14+66],w4
 	asr	w4,#15,w5
 	mov.d	w4,w0
@@ -751,7 +804,7 @@ _main:
 	mov.d	w0,w4
 	mov	w4,[w14+56]
 	mov	w5,[w14+58]
-.LSM127:
+.LSM133:
 	mov	[w14+68],w4
 	asr	w4,#15,w5
 	mov.d	w4,w0
@@ -764,7 +817,7 @@ _main:
 	mov.d	w0,w4
 	mov	w4,[w14+60]
 	mov	w5,[w14+62]
-.LSM128:
+.LSM134:
 	mov	#78,w0
 	add	w0,w14,w0
 	mov	_obstacle,w4
@@ -800,52 +853,52 @@ _main:
 .LCFI14:
 	mov	w0,w4
 	mov	w4,[w14+4]
-.LSM129:
+.LSM135:
 	mov	[w14+4],w4
 	sub	w4,#0,[w15]
 	.set ___BP___,0
 	bra	ge,.L32
-.LSM130:
+.LSM136:
 	mov	[w14+4],w6
 	mov	w6,_state
-.LSM131:
+.LSM137:
 	bra	.L29
 .L32:
-.LSM132:
+.LSM138:
 	mov	#1,w4
 	mov	w4,[w14+2]
-.LSM133:
+.LSM139:
 	clr	w4
 	mov	w4,[w14+6]
-.LSM134:
+.LSM140:
 	mov	#2,w4
 	mov	w4,[w14+8]
-.LSM135:
+.LSM141:
 	mov	#2,w4
 	mov	w4,_state
-.LSM136:
+.LSM142:
 	bra	.L29
 .L64:
-.LSM137:
+.LSM143:
 	nop	
 	bra	.L29
 .L65:
 	nop	
 .L29:
-.LSM138:
+.LSM144:
 	clr.b	w4
 	mov.b	w4,w0
 	mov.b	WREG,_canReceivedOrderFlag
-.LSM139:
+.LSM145:
 	bra	.L19
 .L10:
-.LSM140:
+.LSM146:
 	mov	#_canReceivedOrderFlag,w4
 	mov.b	[w4],w4
 	sub.b	w4,#0,[w15]
 	.set ___BP___,0
 	bra	z,.L34
-.LSM141:
+.LSM147:
 	mov	#_canReceivedCommand,w4
 	mov.b	[w4],w4
 	ze	w4,w4
@@ -858,61 +911,61 @@ _main:
 	sub	w4,#2,[w15]
 	.set ___BP___,0
 	bra	z,.L36
-.LSM142:
+.LSM148:
 	bra	.L39
 .L38:
-.LSM143:
+.LSM149:
 .LCFI15:
 	rcall	_setPos
-.LSM144:
+.LSM150:
 	bra	.L39
 .L37:
-.LSM145:
+.LSM151:
 	bclr.b	_IEC0bits,#3
-.LSM146:
+.LSM152:
 	rcall	_motorsDisable
-.LSM147:
+.LSM153:
 	clr	w4
 	mov	w4,_isrRegFlag
-.LSM148:
+.LSM154:
 	clr	w4
 	mov	w4,_isrCsgFlag
-.LSM149:
+.LSM155:
 	bset.b	_IEC0bits,#3
-.LSM150:
+.LSM156:
 	clr	w4
 	mov	w4,_state
-.LSM151:
+.LSM157:
 	bra	.L39
 .L36:
-.LSM152:
+.LSM158:
 	bclr.b	_IEC0bits,#3
-.LSM153:
+.LSM159:
 	rcall	_stopNow
-.LSM154:
+.LSM160:
 	bset.b	_IEC0bits,#3
-.LSM155:
+.LSM161:
 	nop	
 .L39:
-.LSM156:
+.LSM162:
 	clr.b	w4
 	mov.b	w4,w0
 	mov.b	WREG,_canReceivedOrderFlag
 .L34:
-.LSM157:
+.LSM163:
 	bclr.b	_IEC0bits,#3
-.LSM158:
+.LSM164:
 	rcall	_csgGetState
 	mov	w0,w4
 	mov	w4,[w14+22]
-.LSM159:
+.LSM165:
 	bset.b	_IEC0bits,#3
-.LSM160:
+.LSM166:
 	mov	[w14+22],w4
 	sub	w4,#0,[w15]
 	.set ___BP___,0
 	bra	nz,.L66
-.LSM161:
+.LSM167:
 	mov	[w14+8],w4
 	sub	w4,#1,[w15]
 	.set ___BP___,0
@@ -923,29 +976,29 @@ _main:
 	sub	w4,#2,[w15]
 	.set ___BP___,0
 	bra	z,.L44
-.LSM162:
+.LSM168:
 	bra	.L40
 .L42:
-.LSM163:
+.LSM169:
 	mov	#1,w4
 	mov	w4,_state
-.LSM164:
+.LSM170:
 	bra	.L40
 .L43:
-.LSM165:
+.LSM171:
 	mov	[w14+6],w4
 	sub	w4,#0,[w15]
 	.set ___BP___,0
 	bra	nz,.L45
-.LSM166:
+.LSM172:
 	mov	[w14+2],w5
 	mov	[w14+4],w4
 	sub	w5,w4,[w15]
 	.set ___BP___,0
 	bra	ge,.L46
-.LSM167:
+.LSM173:
 	bclr.b	_IEC0bits,#3
-.LSM168:
+.LSM174:
 	mov	#258,w4
 	add	w4,w14,w4
 	mov	w4,w0
@@ -966,9 +1019,9 @@ _main:
 	mov	[w4--],[w5--]
 	add	w5,#4,w5
 	add	w4,#4,w4
-.LSM169:
+.LSM175:
 	bset.b	_IEC0bits,#3
-.LSM170:
+.LSM176:
 	mov	#70,w0
 	add	w0,w14,w0
 	mov	[w14+2],w4
@@ -998,9 +1051,9 @@ _main:
 	rcall	_calcSegment
 	sub	w15,#12,w15
 .LCFI20:
-.LSM171:
+.LSM177:
 	bclr.b	_IEC0bits,#3
-.LSM172:
+.LSM178:
 	mov	[w14+74],w4
 	mov	[w14+76],w5
 	mov	[w14+28],w6
@@ -1010,21 +1063,21 @@ _main:
 	mov.d	w6,w2
 .LCFI21:
 	rcall	_addRotation
-.LSM173:
+.LSM179:
 	bset.b	_IEC0bits,#3
-.LSM174:
+.LSM180:
 	mov	#1,w4
 	mov	w4,[w14+6]
 	bra	.L47
 .L46:
-.LSM175:
+.LSM181:
 	mov	#1,w4
 	mov	w4,_state
 	bra	.L47
 .L45:
-.LSM176:
+.LSM182:
 	bclr.b	_IEC0bits,#3
-.LSM177:
+.LSM183:
 	mov	[w14+70],w4
 	mov	[w14+72],w5
 	mov	[w14+24],w6
@@ -1033,33 +1086,33 @@ _main:
 	mov	[w14+34],w1
 	mov.d	w6,w2
 	rcall	_addTranslation
-.LSM178:
+.LSM184:
 	bset.b	_IEC0bits,#3
-.LSM179:
+.LSM185:
 	clr	w4
 	mov	w4,[w14+6]
-.LSM180:
+.LSM186:
 	mov	[w14+2],w4
 	inc	w4,w4
 	mov	w4,[w14+2]
 .L47:
-.LSM181:
+.LSM187:
 	bra	.L40
 .L44:
-.LSM182:
+.LSM188:
 	mov	[w14+6],w4
 	sub	w4,#0,[w15]
 	.set ___BP___,0
 	bra	nz,.L48
-.LSM183:
+.LSM189:
 	mov	[w14+2],w5
 	mov	[w14+4],w4
 	sub	w5,w4,[w15]
 	.set ___BP___,0
 	bra	ge,.L49
-.LSM184:
+.LSM190:
 	bclr.b	_IEC0bits,#3
-.LSM185:
+.LSM191:
 	mov	#258,w4
 	add	w4,w14,w4
 	mov	w4,w0
@@ -1080,9 +1133,9 @@ _main:
 	mov	[w4--],[w5--]
 	add	w5,#4,w5
 	add	w4,#4,w4
-.LSM186:
+.LSM192:
 	bset.b	_IEC0bits,#3
-.LSM187:
+.LSM193:
 	mov	#276,w0
 	add	w0,w14,w0
 	mov	[w14+2],w4
@@ -1121,9 +1174,9 @@ _main:
 	mov	w5,[w14+72]
 	mov	w6,[w14+74]
 	mov	w7,[w14+76]
-.LSM188:
+.LSM194:
 	bclr.b	_IEC0bits,#3
-.LSM189:
+.LSM195:
 	mov	[w14+74],w4
 	mov	[w14+76],w5
 	mov	[w14+28],w6
@@ -1133,22 +1186,22 @@ _main:
 	mov.d	w6,w2
 .LCFI27:
 	rcall	_addRotation
-.LSM190:
+.LSM196:
 	bset.b	_IEC0bits,#3
-.LSM191:
+.LSM197:
 	mov	#1,w4
 	mov	w4,[w14+6]
 	bra	.L50
 .L49:
-.LSM192:
+.LSM198:
 	mov	[w14+2],w5
 	mov	[w14+4],w4
 	sub	w5,w4,[w15]
 	.set ___BP___,0
 	bra	nz,.L51
-.LSM193:
+.LSM199:
 	bclr.b	_IEC0bits,#3
-.LSM194:
+.LSM200:
 	mov	#258,w4
 	add	w4,w14,w4
 	mov	w4,w0
@@ -1169,9 +1222,9 @@ _main:
 	mov	[w4--],[w5--]
 	add	w5,#4,w5
 	add	w4,#4,w4
-.LSM195:
+.LSM201:
 	bset.b	_IEC0bits,#3
-.LSM196:
+.LSM202:
 	mov	[w14+60],w6
 	mov	[w14+62],w7
 	mov	[w14+48],w4
@@ -1182,9 +1235,9 @@ _main:
 	mov.d	w0,w4
 	mov	w4,[w14+10]
 	mov	w5,[w14+12]
-.LSM197:
+.LSM203:
 	bclr.b	_IEC0bits,#3
-.LSM198:
+.LSM204:
 	mov	[w14+28],w6
 	mov	[w14+30],w7
 	mov	[w14+36],w0
@@ -1193,22 +1246,22 @@ _main:
 	mov	[w14+12],w5
 	mov.d	w6,w2
 	rcall	_addRotation
-.LSM199:
+.LSM205:
 	bset.b	_IEC0bits,#3
-.LSM200:
+.LSM206:
 	mov	[w14+2],w4
 	inc	w4,w4
 	mov	w4,[w14+2]
 	bra	.L50
 .L51:
-.LSM201:
+.LSM207:
 	mov	#1,w4
 	mov	w4,_state
 	bra	.L50
 .L48:
-.LSM202:
+.LSM208:
 	bclr.b	_IEC0bits,#3
-.LSM203:
+.LSM209:
 	mov	[w14+70],w4
 	mov	[w14+72],w5
 	mov	[w14+24],w6
@@ -1217,29 +1270,29 @@ _main:
 	mov	[w14+34],w1
 	mov.d	w6,w2
 	rcall	_addTranslation
-.LSM204:
+.LSM210:
 	bset.b	_IEC0bits,#3
-.LSM205:
+.LSM211:
 	clr	w4
 	mov	w4,[w14+6]
-.LSM206:
+.LSM212:
 	mov	[w14+2],w4
 	inc	w4,w4
 	mov	w4,[w14+2]
 .L50:
-.LSM207:
+.LSM213:
 	nop	
 .L40:
-.LSM208:
+.LSM214:
 	bra	.L19
 .L11:
-.LSM209:
+.LSM215:
 	mov	#_canReceivedOrderFlag,w4
 	mov.b	[w4],w4
 	sub.b	w4,#0,[w15]
 	.set ___BP___,0
 	bra	z,.L67
-.LSM210:
+.LSM216:
 	mov	#_canReceivedCommand,w4
 	mov.b	[w4],w4
 	ze	w4,w4
@@ -1252,33 +1305,33 @@ _main:
 	sub	w4,#4,[w15]
 	.set ___BP___,0
 	bra	z,.L54
-.LSM211:
+.LSM217:
 	bra	.L57
 .L56:
-.LSM212:
+.LSM218:
 	rcall	_setPos
-.LSM213:
+.LSM219:
 	bra	.L57
 .L54:
-.LSM214:
+.LSM220:
 	bclr.b	_IEC0bits,#3
-.LSM215:
+.LSM221:
 	rcall	_motorsDisable
-.LSM216:
+.LSM222:
 	clr	w4
 	mov	w4,_isrRegFlag
-.LSM217:
+.LSM223:
 	clr	w4
 	mov	w4,_isrCsgFlag
-.LSM218:
+.LSM224:
 	bset.b	_IEC0bits,#3
-.LSM219:
+.LSM225:
 	clr	w4
 	mov	w4,_state
-.LSM220:
+.LSM226:
 	bra	.L57
 .L55:
-.LSM221:
+.LSM227:
 	mov	#_canReceivedData,w4
 	mov.b	[w4],w4
 	ze	w4,w4
@@ -1293,7 +1346,7 @@ _main:
 	mov.d	w0,w4
 	mov	w4,[w14+10]
 	mov	w5,[w14+12]
-.LSM222:
+.LSM228:
 	mov	#_canReceivedData+1,w4
 	mov.b	[w4],w4
 	ze	w4,w4
@@ -1308,73 +1361,73 @@ _main:
 	mov.d	w0,w4
 	mov	w4,[w14+14]
 	mov	w5,[w14+16]
-.LSM223:
+.LSM229:
 	bclr.b	_IEC0bits,#3
-.LSM224:
+.LSM230:
 	mov	[w14+14],w2
 	mov	[w14+16],w3
 	mov	[w14+10],w0
 	mov	[w14+12],w1
 	rcall	_motorsSetSpeed
-.LSM225:
+.LSM231:
 	bset.b	_IEC0bits,#3
-.LSM226:
+.LSM232:
 	nop	
 .L57:
-.LSM227:
+.LSM233:
 	clr.b	w4
 	mov.b	w4,w0
 	mov.b	WREG,_canReceivedOrderFlag
-.LSM228:
+.LSM234:
 	bra	.L19
 .L7:
-.LSM229:
+.LSM235:
 	mov	#_canReceivedOrderFlag,w4
 	mov.b	[w4],w4
 	sub.b	w4,#0,[w15]
 	.set ___BP___,0
 	bra	z,.L68
-.LSM230:
+.LSM236:
 	mov	#1,w4
 	mov	w4,_state
-.LSM231:
+.LSM237:
 	bra	.L19
 .L61:
-.LSM232:
+.LSM238:
 	nop	
 	bra	.L19
 .L62:
-.LSM233:
+.LSM239:
 	nop	
 	bra	.L19
 .L63:
-.LSM234:
+.LSM240:
 	nop	
 	bra	.L19
 .L66:
-.LSM235:
+.LSM241:
 	nop	
 	bra	.L19
 .L67:
-.LSM236:
+.LSM242:
 	nop	
 	bra	.L19
 .L68:
-.LSM237:
+.LSM243:
 	nop	
 .L19:
-.LSM238:
+.LSM244:
 	mov	_state,w4
 	sub	w4,[w14],[w15]
 	.set ___BP___,0
 	bra	z,.L69
-.LSM239:
+.LSM245:
 	mov	_state,w4
 	mov	w4,[w14]
-.LSM240:
+.LSM246:
 	mov	#_state,w0
 	rcall	_CanEnvoiProduction
-.LSM241:
+.LSM247:
 	bra	.L60
 .LFE2:
 	.align	2
@@ -1382,46 +1435,46 @@ _main:
 	.type	_getCanData,@function
 _getCanData:
 .LFB3:
-.LSM242:
+.LSM248:
 	.set ___PA___,1
 	lnk	#8
 	mov	w0,w4
-.LSM243:
+.LSM249:
 	mov	#_canReceivedData,w5
 	mov.b	[w5],w5
 	mov.b	w5,[w14+6]
 	mov	#_canReceivedData+1,w5
 	mov.b	[w5],w5
 	mov.b	w5,[w14+7]
-.LSM244:
+.LSM250:
 	mov	[w14+6],w5
 	mov	w5,[w14]
-.LSM245:
+.LSM251:
 	mov	#_canReceivedData+2,w5
 	mov.b	[w5],w5
 	mov.b	w5,[w14+6]
 	mov	#_canReceivedData+3,w5
 	mov.b	[w5],w5
 	mov.b	w5,[w14+7]
-.LSM246:
+.LSM252:
 	mov	[w14+6],w5
 	mov	w5,[w14+2]
-.LSM247:
+.LSM253:
 	mov	#_canReceivedData+4,w5
 	mov.b	[w5],w5
 	mov.b	w5,[w14+6]
 	mov	#_canReceivedData+5,w5
 	mov.b	[w5],w5
 	mov.b	w5,[w14+7]
-.LSM248:
+.LSM254:
 	mov	[w14+6],w5
 	mov	w5,[w14+4]
-.LSM249:
+.LSM255:
 	mov	[w14++],[w4++]
 	mov	[w14--],[w4--]
 	mov	[w14+4],w5
 	mov	w5,[w4+4]
-.LSM250:
+.LSM256:
 	mov	w4,w0
 	ulnk	
 	return	
@@ -1592,7 +1645,7 @@ _getCanData:
 	.section	.text,code
 .Letext0:
 	.section	.debug_info,info
-	.4byte	0xdee
+	.4byte	0xe6f
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -1600,7 +1653,7 @@ _getCanData:
 	.asciz	"GNU C 4.5.1 (XC16, Microchip v1_21) (A) Build date: Jan  2 2014"
 	.byte	0x1
 	.asciz	"main.c"
-	.asciz	"D:\\\\Robotique\\\\codes\\\\mainRobot\\\\PropBoard2014-DC"
+	.asciz	"D:\\\\dev\\\\GitHub\\\\bULBot2015-mainRobot\\\\PropBoard2014-DC"
 	.4byte	.Ltext0
 	.4byte	.Letext0
 	.4byte	.Ldebug_line0
@@ -1608,12 +1661,12 @@ _getCanData:
 	.byte	0x6
 	.byte	0x2
 	.byte	0xe
-	.4byte	0xc3
+	.4byte	0xc9
 	.uleb128 0x3
 	.asciz	"x"
 	.byte	0x2
 	.byte	0xf
-	.4byte	0xc3
+	.4byte	0xc9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
@@ -1621,7 +1674,7 @@ _getCanData:
 	.asciz	"y"
 	.byte	0x2
 	.byte	0x10
-	.4byte	0xc3
+	.4byte	0xc9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x2
@@ -1629,7 +1682,7 @@ _getCanData:
 	.asciz	"alpha"
 	.byte	0x2
 	.byte	0x11
-	.4byte	0xc3
+	.4byte	0xc9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
@@ -1642,12 +1695,39 @@ _getCanData:
 	.asciz	"positionInteger"
 	.byte	0x2
 	.byte	0x12
-	.4byte	0x92
+	.4byte	0x98
+	.uleb128 0x2
+	.byte	0x4
+	.byte	0x2
+	.byte	0x17
+	.4byte	0x108
+	.uleb128 0x3
+	.asciz	"l"
+	.byte	0x2
+	.byte	0x18
+	.4byte	0xc9
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x0
+	.uleb128 0x3
+	.asciz	"r"
+	.byte	0x2
+	.byte	0x19
+	.4byte	0xc9
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0x2
+	.byte	0x0
+	.uleb128 0x5
+	.asciz	"relativeCoordInteger"
+	.byte	0x2
+	.byte	0x1a
+	.4byte	0xe7
 	.uleb128 0x6
 	.byte	0x2
 	.byte	0x2
 	.byte	0x27
-	.4byte	0x15e
+	.4byte	0x1a1
 	.uleb128 0x7
 	.asciz	"DISABLED"
 	.sleb128 0
@@ -1680,17 +1760,17 @@ _getCanData:
 	.asciz	"propStateType"
 	.byte	0x2
 	.byte	0x31
-	.4byte	0xe1
+	.4byte	0x124
 	.uleb128 0x2
 	.byte	0xc
 	.byte	0x3
 	.byte	0x6
-	.4byte	0x1a4
+	.4byte	0x1e7
 	.uleb128 0x3
 	.asciz	"x"
 	.byte	0x3
 	.byte	0x7
-	.4byte	0x1a4
+	.4byte	0x1e7
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
@@ -1698,7 +1778,7 @@ _getCanData:
 	.asciz	"y"
 	.byte	0x3
 	.byte	0x8
-	.4byte	0x1a4
+	.4byte	0x1e7
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
@@ -1706,7 +1786,7 @@ _getCanData:
 	.asciz	"alpha"
 	.byte	0x3
 	.byte	0x9
-	.4byte	0x1a4
+	.4byte	0x1e7
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x8
@@ -1719,17 +1799,17 @@ _getCanData:
 	.asciz	"realPosType"
 	.byte	0x3
 	.byte	0xa
-	.4byte	0x173
+	.4byte	0x1b6
 	.uleb128 0x2
 	.byte	0x8
 	.byte	0x3
 	.byte	0xc
-	.4byte	0x1e1
+	.4byte	0x224
 	.uleb128 0x3
 	.asciz	"l"
 	.byte	0x3
 	.byte	0xd
-	.4byte	0x1a4
+	.4byte	0x1e7
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
@@ -1737,7 +1817,7 @@ _getCanData:
 	.asciz	"r"
 	.byte	0x3
 	.byte	0xe
-	.4byte	0x1a4
+	.4byte	0x1e7
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
@@ -1746,7 +1826,7 @@ _getCanData:
 	.asciz	"relativeCoord"
 	.byte	0x3
 	.byte	0xf
-	.4byte	0x1c0
+	.4byte	0x203
 	.uleb128 0x4
 	.byte	0x1
 	.byte	0x6
@@ -1755,7 +1835,7 @@ _getCanData:
 	.byte	0x2
 	.byte	0x4
 	.byte	0x7
-	.4byte	0x223
+	.4byte	0x266
 	.uleb128 0x7
 	.asciz	"CSG_STANDING"
 	.sleb128 0
@@ -1767,17 +1847,17 @@ _getCanData:
 	.asciz	"csgStatusType"
 	.byte	0x4
 	.byte	0xa
-	.4byte	0x1fe
+	.4byte	0x241
 	.uleb128 0x2
 	.byte	0x6
 	.byte	0x5
 	.byte	0xe
-	.4byte	0x26a
+	.4byte	0x2ad
 	.uleb128 0x3
 	.asciz	"status"
 	.byte	0x5
 	.byte	0xf
-	.4byte	0x1f6
+	.4byte	0x239
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
@@ -1785,7 +1865,7 @@ _getCanData:
 	.asciz	"x"
 	.byte	0x5
 	.byte	0x10
-	.4byte	0xc3
+	.4byte	0xc9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x2
@@ -1793,7 +1873,7 @@ _getCanData:
 	.asciz	"y"
 	.byte	0x5
 	.byte	0x11
-	.4byte	0xc3
+	.4byte	0xc9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
@@ -1802,7 +1882,7 @@ _getCanData:
 	.asciz	"obsType"
 	.byte	0x5
 	.byte	0x12
-	.4byte	0x238
+	.4byte	0x27b
 	.uleb128 0x4
 	.byte	0x2
 	.byte	0x7
@@ -1812,12 +1892,12 @@ _getCanData:
 	.byte	0x2
 	.byte	0x6
 	.2byte	0x1aa
-	.4byte	0x3d0
+	.4byte	0x413
 	.uleb128 0x9
 	.asciz	"INT0IE"
 	.byte	0x6
 	.2byte	0x1ab
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -1828,7 +1908,7 @@ _getCanData:
 	.asciz	"IC1IE"
 	.byte	0x6
 	.2byte	0x1ac
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -1839,7 +1919,7 @@ _getCanData:
 	.asciz	"OC1IE"
 	.byte	0x6
 	.2byte	0x1ad
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -1850,7 +1930,7 @@ _getCanData:
 	.asciz	"T1IE"
 	.byte	0x6
 	.2byte	0x1ae
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -1861,7 +1941,7 @@ _getCanData:
 	.asciz	"DMA0IE"
 	.byte	0x6
 	.2byte	0x1af
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -1872,7 +1952,7 @@ _getCanData:
 	.asciz	"IC2IE"
 	.byte	0x6
 	.2byte	0x1b0
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xa
@@ -1883,7 +1963,7 @@ _getCanData:
 	.asciz	"OC2IE"
 	.byte	0x6
 	.2byte	0x1b1
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x9
@@ -1894,7 +1974,7 @@ _getCanData:
 	.asciz	"T2IE"
 	.byte	0x6
 	.2byte	0x1b2
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -1905,7 +1985,7 @@ _getCanData:
 	.asciz	"T3IE"
 	.byte	0x6
 	.2byte	0x1b3
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x7
@@ -1916,7 +1996,7 @@ _getCanData:
 	.asciz	"SPI1EIE"
 	.byte	0x6
 	.2byte	0x1b4
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x6
@@ -1927,7 +2007,7 @@ _getCanData:
 	.asciz	"SPI1IE"
 	.byte	0x6
 	.2byte	0x1b5
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x5
@@ -1938,7 +2018,7 @@ _getCanData:
 	.asciz	"U1RXIE"
 	.byte	0x6
 	.2byte	0x1b6
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x4
@@ -1949,7 +2029,7 @@ _getCanData:
 	.asciz	"U1TXIE"
 	.byte	0x6
 	.2byte	0x1b7
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x3
@@ -1960,7 +2040,7 @@ _getCanData:
 	.asciz	"AD1IE"
 	.byte	0x6
 	.2byte	0x1b8
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x2
@@ -1971,7 +2051,7 @@ _getCanData:
 	.asciz	"DMA1IE"
 	.byte	0x6
 	.2byte	0x1b9
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x1
@@ -1983,18 +2063,18 @@ _getCanData:
 	.asciz	"IEC0BITS"
 	.byte	0x6
 	.2byte	0x1ba
-	.4byte	0x289
+	.4byte	0x2cc
 	.uleb128 0x8
 	.asciz	"tagIEC2BITS"
 	.byte	0x2
 	.byte	0x6
 	.2byte	0x1dc
-	.4byte	0x488
+	.4byte	0x4cb
 	.uleb128 0x9
 	.asciz	"SPI2EIE"
 	.byte	0x6
 	.2byte	0x1dd
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -2005,7 +2085,7 @@ _getCanData:
 	.asciz	"SPI2IE"
 	.byte	0x6
 	.2byte	0x1de
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -2016,7 +2096,7 @@ _getCanData:
 	.asciz	"C1RXIE"
 	.byte	0x6
 	.2byte	0x1df
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -2027,7 +2107,7 @@ _getCanData:
 	.asciz	"C1IE"
 	.byte	0x6
 	.2byte	0x1e0
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -2038,7 +2118,7 @@ _getCanData:
 	.asciz	"DMA3IE"
 	.byte	0x6
 	.2byte	0x1e1
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -2049,7 +2129,7 @@ _getCanData:
 	.asciz	"PMPIE"
 	.byte	0x6
 	.2byte	0x1e3
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x2
@@ -2060,7 +2140,7 @@ _getCanData:
 	.asciz	"DMA4IE"
 	.byte	0x6
 	.2byte	0x1e4
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x1
@@ -2072,18 +2152,18 @@ _getCanData:
 	.asciz	"IEC2BITS"
 	.byte	0x6
 	.2byte	0x1e5
-	.4byte	0x3e1
+	.4byte	0x424
 	.uleb128 0x8
 	.asciz	"tagTRISBBITS"
 	.byte	0x2
 	.byte	0x6
 	.2byte	0x9b5
-	.4byte	0x606
+	.4byte	0x649
 	.uleb128 0x9
 	.asciz	"TRISB0"
 	.byte	0x6
 	.2byte	0x9b6
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -2094,7 +2174,7 @@ _getCanData:
 	.asciz	"TRISB1"
 	.byte	0x6
 	.2byte	0x9b7
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -2105,7 +2185,7 @@ _getCanData:
 	.asciz	"TRISB2"
 	.byte	0x6
 	.2byte	0x9b8
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -2116,7 +2196,7 @@ _getCanData:
 	.asciz	"TRISB3"
 	.byte	0x6
 	.2byte	0x9b9
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -2127,7 +2207,7 @@ _getCanData:
 	.asciz	"TRISB4"
 	.byte	0x6
 	.2byte	0x9ba
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -2138,7 +2218,7 @@ _getCanData:
 	.asciz	"TRISB5"
 	.byte	0x6
 	.2byte	0x9bb
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xa
@@ -2149,7 +2229,7 @@ _getCanData:
 	.asciz	"TRISB6"
 	.byte	0x6
 	.2byte	0x9bc
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x9
@@ -2160,7 +2240,7 @@ _getCanData:
 	.asciz	"TRISB7"
 	.byte	0x6
 	.2byte	0x9bd
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -2171,7 +2251,7 @@ _getCanData:
 	.asciz	"TRISB8"
 	.byte	0x6
 	.2byte	0x9be
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x7
@@ -2182,7 +2262,7 @@ _getCanData:
 	.asciz	"TRISB9"
 	.byte	0x6
 	.2byte	0x9bf
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x6
@@ -2193,7 +2273,7 @@ _getCanData:
 	.asciz	"TRISB10"
 	.byte	0x6
 	.2byte	0x9c0
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x5
@@ -2204,7 +2284,7 @@ _getCanData:
 	.asciz	"TRISB11"
 	.byte	0x6
 	.2byte	0x9c1
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x4
@@ -2215,7 +2295,7 @@ _getCanData:
 	.asciz	"TRISB12"
 	.byte	0x6
 	.2byte	0x9c2
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x3
@@ -2226,7 +2306,7 @@ _getCanData:
 	.asciz	"TRISB13"
 	.byte	0x6
 	.2byte	0x9c3
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x2
@@ -2237,7 +2317,7 @@ _getCanData:
 	.asciz	"TRISB14"
 	.byte	0x6
 	.2byte	0x9c4
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x1
@@ -2248,7 +2328,7 @@ _getCanData:
 	.asciz	"TRISB15"
 	.byte	0x6
 	.2byte	0x9c5
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x10
@@ -2260,18 +2340,18 @@ _getCanData:
 	.asciz	"TRISBBITS"
 	.byte	0x6
 	.2byte	0x9c6
-	.4byte	0x499
+	.4byte	0x4dc
 	.uleb128 0x8
 	.asciz	"tagLATBBITS"
 	.byte	0x2
 	.byte	0x6
 	.2byte	0x9e1
-	.4byte	0x774
+	.4byte	0x7b7
 	.uleb128 0x9
 	.asciz	"LATB0"
 	.byte	0x6
 	.2byte	0x9e2
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -2282,7 +2362,7 @@ _getCanData:
 	.asciz	"LATB1"
 	.byte	0x6
 	.2byte	0x9e3
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -2293,7 +2373,7 @@ _getCanData:
 	.asciz	"LATB2"
 	.byte	0x6
 	.2byte	0x9e4
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -2304,7 +2384,7 @@ _getCanData:
 	.asciz	"LATB3"
 	.byte	0x6
 	.2byte	0x9e5
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -2315,7 +2395,7 @@ _getCanData:
 	.asciz	"LATB4"
 	.byte	0x6
 	.2byte	0x9e6
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -2326,7 +2406,7 @@ _getCanData:
 	.asciz	"LATB5"
 	.byte	0x6
 	.2byte	0x9e7
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xa
@@ -2337,7 +2417,7 @@ _getCanData:
 	.asciz	"LATB6"
 	.byte	0x6
 	.2byte	0x9e8
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x9
@@ -2348,7 +2428,7 @@ _getCanData:
 	.asciz	"LATB7"
 	.byte	0x6
 	.2byte	0x9e9
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -2359,7 +2439,7 @@ _getCanData:
 	.asciz	"LATB8"
 	.byte	0x6
 	.2byte	0x9ea
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x7
@@ -2370,7 +2450,7 @@ _getCanData:
 	.asciz	"LATB9"
 	.byte	0x6
 	.2byte	0x9eb
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x6
@@ -2381,7 +2461,7 @@ _getCanData:
 	.asciz	"LATB10"
 	.byte	0x6
 	.2byte	0x9ec
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x5
@@ -2392,7 +2472,7 @@ _getCanData:
 	.asciz	"LATB11"
 	.byte	0x6
 	.2byte	0x9ed
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x4
@@ -2403,7 +2483,7 @@ _getCanData:
 	.asciz	"LATB12"
 	.byte	0x6
 	.2byte	0x9ee
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x3
@@ -2414,7 +2494,7 @@ _getCanData:
 	.asciz	"LATB13"
 	.byte	0x6
 	.2byte	0x9ef
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x2
@@ -2425,7 +2505,7 @@ _getCanData:
 	.asciz	"LATB14"
 	.byte	0x6
 	.2byte	0x9f0
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x1
@@ -2436,7 +2516,7 @@ _getCanData:
 	.asciz	"LATB15"
 	.byte	0x6
 	.2byte	0x9f1
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x10
@@ -2448,18 +2528,18 @@ _getCanData:
 	.asciz	"LATBBITS"
 	.byte	0x6
 	.2byte	0x9f2
-	.4byte	0x618
+	.4byte	0x65b
 	.uleb128 0x8
 	.asciz	"tagTRISCBITS"
 	.byte	0x2
 	.byte	0x6
 	.2byte	0xa0d
-	.4byte	0x86e
+	.4byte	0x8b1
 	.uleb128 0x9
 	.asciz	"TRISC0"
 	.byte	0x6
 	.2byte	0xa0e
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -2470,7 +2550,7 @@ _getCanData:
 	.asciz	"TRISC1"
 	.byte	0x6
 	.2byte	0xa0f
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -2481,7 +2561,7 @@ _getCanData:
 	.asciz	"TRISC2"
 	.byte	0x6
 	.2byte	0xa10
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -2492,7 +2572,7 @@ _getCanData:
 	.asciz	"TRISC3"
 	.byte	0x6
 	.2byte	0xa11
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -2503,7 +2583,7 @@ _getCanData:
 	.asciz	"TRISC4"
 	.byte	0x6
 	.2byte	0xa12
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -2514,7 +2594,7 @@ _getCanData:
 	.asciz	"TRISC5"
 	.byte	0x6
 	.2byte	0xa13
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xa
@@ -2525,7 +2605,7 @@ _getCanData:
 	.asciz	"TRISC6"
 	.byte	0x6
 	.2byte	0xa14
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x9
@@ -2536,7 +2616,7 @@ _getCanData:
 	.asciz	"TRISC7"
 	.byte	0x6
 	.2byte	0xa15
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -2547,7 +2627,7 @@ _getCanData:
 	.asciz	"TRISC8"
 	.byte	0x6
 	.2byte	0xa16
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x7
@@ -2558,7 +2638,7 @@ _getCanData:
 	.asciz	"TRISC9"
 	.byte	0x6
 	.2byte	0xa17
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x6
@@ -2570,18 +2650,18 @@ _getCanData:
 	.asciz	"TRISCBITS"
 	.byte	0x6
 	.2byte	0xa18
-	.4byte	0x785
+	.4byte	0x7c8
 	.uleb128 0x8
 	.asciz	"tagLATCBITS"
 	.byte	0x2
 	.byte	0x6
 	.2byte	0xa2d
-	.4byte	0x95e
+	.4byte	0x9a1
 	.uleb128 0x9
 	.asciz	"LATC0"
 	.byte	0x6
 	.2byte	0xa2e
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -2592,7 +2672,7 @@ _getCanData:
 	.asciz	"LATC1"
 	.byte	0x6
 	.2byte	0xa2f
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -2603,7 +2683,7 @@ _getCanData:
 	.asciz	"LATC2"
 	.byte	0x6
 	.2byte	0xa30
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -2614,7 +2694,7 @@ _getCanData:
 	.asciz	"LATC3"
 	.byte	0x6
 	.2byte	0xa31
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -2625,7 +2705,7 @@ _getCanData:
 	.asciz	"LATC4"
 	.byte	0x6
 	.2byte	0xa32
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -2636,7 +2716,7 @@ _getCanData:
 	.asciz	"LATC5"
 	.byte	0x6
 	.2byte	0xa33
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0xa
@@ -2647,7 +2727,7 @@ _getCanData:
 	.asciz	"LATC6"
 	.byte	0x6
 	.2byte	0xa34
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x9
@@ -2658,7 +2738,7 @@ _getCanData:
 	.asciz	"LATC7"
 	.byte	0x6
 	.2byte	0xa35
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -2669,7 +2749,7 @@ _getCanData:
 	.asciz	"LATC8"
 	.byte	0x6
 	.2byte	0xa36
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x7
@@ -2680,7 +2760,7 @@ _getCanData:
 	.asciz	"LATC9"
 	.byte	0x6
 	.2byte	0xa37
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x2
 	.byte	0x1
 	.byte	0x6
@@ -2692,7 +2772,7 @@ _getCanData:
 	.asciz	"LATCBITS"
 	.byte	0x6
 	.2byte	0xa38
-	.4byte	0x880
+	.4byte	0x8c3
 	.uleb128 0x4
 	.byte	0x1
 	.byte	0x8
@@ -2702,68 +2782,68 @@ _getCanData:
 	.byte	0x2
 	.byte	0x1
 	.byte	0x15
-	.4byte	0x9b5
+	.4byte	0x9f8
 	.uleb128 0xc
 	.asciz	"i"
 	.byte	0x1
 	.byte	0x16
-	.4byte	0xc3
+	.4byte	0xc9
 	.uleb128 0xc
 	.asciz	"ui"
 	.byte	0x1
 	.byte	0x17
-	.4byte	0x279
+	.4byte	0x2bc
 	.uleb128 0xc
 	.asciz	"b"
 	.byte	0x1
 	.byte	0x18
-	.4byte	0x9b5
+	.4byte	0x9f8
 	.uleb128 0xc
 	.asciz	"ub"
 	.byte	0x1
 	.byte	0x19
-	.4byte	0x9c5
+	.4byte	0xa08
 	.byte	0x0
 	.uleb128 0xd
-	.4byte	0x1f6
-	.4byte	0x9c5
+	.4byte	0x239
+	.4byte	0xa08
 	.uleb128 0xe
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x1
 	.byte	0x0
 	.uleb128 0xd
-	.4byte	0x96f
-	.4byte	0x9d5
+	.4byte	0x9b2
+	.4byte	0xa18
 	.uleb128 0xe
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x1
 	.byte	0x0
 	.uleb128 0x2
 	.byte	0x6
 	.byte	0x1
-	.byte	0x33
-	.4byte	0xa0b
+	.byte	0x39
+	.4byte	0xa4e
 	.uleb128 0x3
 	.asciz	"int0"
 	.byte	0x1
-	.byte	0x34
-	.4byte	0xc3
+	.byte	0x3a
+	.4byte	0xc9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
 	.uleb128 0x3
 	.asciz	"int1"
 	.byte	0x1
-	.byte	0x34
-	.4byte	0xc3
+	.byte	0x3a
+	.4byte	0xc9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x2
 	.uleb128 0x3
 	.asciz	"int2"
 	.byte	0x1
-	.byte	0x34
-	.4byte	0xc3
+	.byte	0x3a
+	.4byte	0xc9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
@@ -2771,8 +2851,8 @@ _getCanData:
 	.uleb128 0x5
 	.asciz	"canDataType"
 	.byte	0x1
-	.byte	0x35
-	.4byte	0x9d5
+	.byte	0x3b
+	.4byte	0xa18
 	.uleb128 0xf
 	.byte	0x1
 	.asciz	"propInterrupt"
@@ -2787,26 +2867,26 @@ _getCanData:
 	.byte	0x1
 	.asciz	"setPos"
 	.byte	0x1
-	.byte	0x38
+	.byte	0x3e
 	.byte	0x1
 	.4byte	.LFB1
 	.4byte	.LFE1
 	.byte	0x1
 	.byte	0x5e
-	.4byte	0xa75
+	.4byte	0xab8
 	.uleb128 0x11
 	.4byte	.LASF0
 	.byte	0x1
-	.byte	0x39
-	.4byte	0xa0b
+	.byte	0x3f
+	.4byte	0xa4e
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 8
 	.uleb128 0x12
 	.asciz	"curPos"
 	.byte	0x1
-	.byte	0x3a
-	.4byte	0x1ad
+	.byte	0x40
+	.4byte	0x1f0
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 14
@@ -2815,139 +2895,139 @@ _getCanData:
 	.byte	0x1
 	.asciz	"main"
 	.byte	0x1
-	.byte	0x4a
+	.byte	0x50
 	.byte	0x1
-	.4byte	0xc3
+	.4byte	0xc9
 	.4byte	.LFB2
 	.4byte	.LFE2
 	.byte	0x1
 	.byte	0x5e
-	.4byte	0xbd1
+	.4byte	0xc14
 	.uleb128 0x12
 	.asciz	"oldState"
 	.byte	0x1
-	.byte	0x4b
-	.4byte	0x15e
+	.byte	0x51
+	.4byte	0x1a1
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 0
 	.uleb128 0x12
 	.asciz	"csgStatus"
 	.byte	0x1
-	.byte	0x4c
-	.4byte	0x223
+	.byte	0x52
+	.4byte	0x266
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 22
 	.uleb128 0x12
 	.asciz	"nomVel"
 	.byte	0x1
-	.byte	0x4d
-	.4byte	0x1e1
+	.byte	0x53
+	.4byte	0x224
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 24
 	.uleb128 0x12
 	.asciz	"nomAcc"
 	.byte	0x1
-	.byte	0x4e
-	.4byte	0x1e1
+	.byte	0x54
+	.4byte	0x224
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 32
 	.uleb128 0x12
 	.asciz	"curPos"
 	.byte	0x1
-	.byte	0x4f
-	.4byte	0x1ad
+	.byte	0x55
+	.4byte	0x1f0
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 40
 	.uleb128 0x12
 	.asciz	"finalPos"
 	.byte	0x1
-	.byte	0x4f
-	.4byte	0x1ad
+	.byte	0x55
+	.4byte	0x1f0
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 52
 	.uleb128 0x11
 	.4byte	.LASF0
 	.byte	0x1
-	.byte	0x50
-	.4byte	0xa0b
+	.byte	0x56
+	.4byte	0xa4e
 	.byte	0x3
 	.byte	0x7e
 	.sleb128 64
 	.uleb128 0x12
 	.asciz	"tmp0"
 	.byte	0x1
-	.byte	0x51
-	.4byte	0x1a4
+	.byte	0x57
+	.4byte	0x1e7
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 10
 	.uleb128 0x12
 	.asciz	"tmp1"
 	.byte	0x1
-	.byte	0x51
-	.4byte	0x1a4
+	.byte	0x57
+	.4byte	0x1e7
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 14
 	.uleb128 0x12
 	.asciz	"tmp2"
 	.byte	0x1
-	.byte	0x51
-	.4byte	0x1a4
+	.byte	0x57
+	.4byte	0x1e7
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 18
 	.uleb128 0x12
 	.asciz	"segment"
 	.byte	0x1
-	.byte	0x52
-	.4byte	0x1e1
+	.byte	0x58
+	.4byte	0x224
 	.byte	0x3
 	.byte	0x7e
 	.sleb128 70
 	.uleb128 0x12
 	.asciz	"path"
 	.byte	0x1
-	.byte	0x53
-	.4byte	0xbd1
+	.byte	0x59
+	.4byte	0xc14
 	.byte	0x3
 	.byte	0x7e
 	.sleb128 78
 	.uleb128 0x12
 	.asciz	"curSeg"
 	.byte	0x1
-	.byte	0x54
-	.4byte	0xc3
+	.byte	0x5a
+	.4byte	0xc9
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 2
 	.uleb128 0x12
 	.asciz	"nbSeg"
 	.byte	0x1
-	.byte	0x54
-	.4byte	0xc3
+	.byte	0x5a
+	.4byte	0xc9
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 4
 	.uleb128 0x12
 	.asciz	"segPhase"
 	.byte	0x1
-	.byte	0x54
-	.4byte	0xc3
+	.byte	0x5a
+	.4byte	0xc9
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 6
 	.uleb128 0x6
 	.byte	0x2
 	.byte	0x1
-	.byte	0x55
-	.4byte	0xbc1
+	.byte	0x5b
+	.4byte	0xc04
 	.uleb128 0x7
 	.asciz	"SIMPLE_MOVE"
 	.sleb128 0
@@ -2961,44 +3041,44 @@ _getCanData:
 	.uleb128 0x12
 	.asciz	"move"
 	.byte	0x1
-	.byte	0x59
-	.4byte	0xb91
+	.byte	0x5f
+	.4byte	0xbd4
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 8
 	.byte	0x0
 	.uleb128 0xd
-	.4byte	0x1ad
-	.4byte	0xbe1
+	.4byte	0x1f0
+	.4byte	0xc24
 	.uleb128 0xe
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0xe
 	.byte	0x0
 	.uleb128 0x14
 	.byte	0x1
 	.asciz	"getCanData"
 	.byte	0x1
-	.2byte	0x177
+	.2byte	0x188
 	.byte	0x1
-	.4byte	0xa0b
+	.4byte	0xa4e
 	.4byte	.LFB3
 	.4byte	.LFE3
 	.byte	0x1
 	.byte	0x5e
-	.4byte	0xc29
+	.4byte	0xc6c
 	.uleb128 0x15
 	.4byte	.LASF0
 	.byte	0x1
-	.2byte	0x178
-	.4byte	0xa0b
+	.2byte	0x189
+	.4byte	0xa4e
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 0
 	.uleb128 0x16
 	.asciz	"tempINTEG"
 	.byte	0x1
-	.2byte	0x179
-	.4byte	0x980
+	.2byte	0x18a
+	.4byte	0x9c3
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 6
@@ -3007,189 +3087,203 @@ _getCanData:
 	.4byte	.LASF1
 	.byte	0x6
 	.2byte	0x1bb
-	.4byte	0xc37
+	.4byte	0xc7a
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x18
-	.4byte	0x3d0
+	.4byte	0x413
 	.uleb128 0x17
 	.4byte	.LASF2
 	.byte	0x6
 	.2byte	0x1e6
-	.4byte	0xc4a
+	.4byte	0xc8d
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x18
-	.4byte	0x488
+	.4byte	0x4cb
 	.uleb128 0x17
 	.4byte	.LASF3
 	.byte	0x6
 	.2byte	0x9c7
-	.4byte	0xc5d
+	.4byte	0xca0
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x18
-	.4byte	0x606
+	.4byte	0x649
 	.uleb128 0x17
 	.4byte	.LASF4
 	.byte	0x6
 	.2byte	0x9f3
-	.4byte	0xc70
+	.4byte	0xcb3
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x18
-	.4byte	0x774
+	.4byte	0x7b7
 	.uleb128 0x17
 	.4byte	.LASF5
 	.byte	0x6
 	.2byte	0xa19
-	.4byte	0xc83
+	.4byte	0xcc6
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x18
-	.4byte	0x86e
+	.4byte	0x8b1
 	.uleb128 0x17
 	.4byte	.LASF6
 	.byte	0x6
 	.2byte	0xa39
-	.4byte	0xc96
+	.4byte	0xcd9
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x18
-	.4byte	0x95e
+	.4byte	0x9a1
 	.uleb128 0x19
 	.4byte	.LASF7
 	.byte	0x7
 	.byte	0x4d
-	.4byte	0x96f
+	.4byte	0x9b2
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xd
-	.4byte	0x96f
-	.4byte	0xcb8
+	.4byte	0x9b2
+	.4byte	0xcfb
 	.uleb128 0xe
-	.4byte	0x279
+	.4byte	0x2bc
 	.byte	0x6
 	.byte	0x0
 	.uleb128 0x19
 	.4byte	.LASF8
 	.byte	0x7
 	.byte	0x4e
-	.4byte	0xca8
+	.4byte	0xceb
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x19
 	.4byte	.LASF9
 	.byte	0x7
 	.byte	0x4f
-	.4byte	0x96f
+	.4byte	0x9b2
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x19
 	.4byte	.LASF10
 	.byte	0x1
 	.byte	0x1d
-	.4byte	0xca
+	.4byte	0xd0
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x1a
 	.asciz	"state"
 	.byte	0x1
 	.byte	0x1e
-	.4byte	0x15e
+	.4byte	0x1a1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x19
 	.4byte	.LASF11
 	.byte	0x1
 	.byte	0x1f
-	.4byte	0x26a
+	.4byte	0x2ad
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x19
 	.4byte	.LASF12
 	.byte	0x1
-	.byte	0x22
-	.4byte	0xd08
+	.byte	0x20
+	.4byte	0x108
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x18
-	.4byte	0xc3
 	.uleb128 0x19
 	.4byte	.LASF13
 	.byte	0x1
+	.byte	0x20
+	.4byte	0x108
+	.byte	0x1
+	.byte	0x1
+	.uleb128 0x19
+	.4byte	.LASF14
+	.byte	0x1
 	.byte	0x22
-	.4byte	0xd08
+	.4byte	0xd65
+	.byte	0x1
+	.byte	0x1
+	.uleb128 0x18
+	.4byte	0xc9
+	.uleb128 0x19
+	.4byte	.LASF15
+	.byte	0x1
+	.byte	0x22
+	.4byte	0xd65
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x17
 	.4byte	.LASF1
 	.byte	0x6
 	.2byte	0x1bb
-	.4byte	0xc37
+	.4byte	0xc7a
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x17
 	.4byte	.LASF2
 	.byte	0x6
 	.2byte	0x1e6
-	.4byte	0xc4a
+	.4byte	0xc8d
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x17
 	.4byte	.LASF3
 	.byte	0x6
 	.2byte	0x9c7
-	.4byte	0xc5d
+	.4byte	0xca0
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x17
 	.4byte	.LASF4
 	.byte	0x6
 	.2byte	0x9f3
-	.4byte	0xc70
+	.4byte	0xcb3
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x17
 	.4byte	.LASF5
 	.byte	0x6
 	.2byte	0xa19
-	.4byte	0xc83
+	.4byte	0xcc6
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x17
 	.4byte	.LASF6
 	.byte	0x6
 	.2byte	0xa39
-	.4byte	0xc96
+	.4byte	0xcd9
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x19
 	.4byte	.LASF7
 	.byte	0x7
 	.byte	0x4d
-	.4byte	0x96f
+	.4byte	0x9b2
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x19
 	.4byte	.LASF8
 	.byte	0x7
 	.byte	0x4e
-	.4byte	0xca8
+	.4byte	0xceb
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x19
 	.4byte	.LASF9
 	.byte	0x7
 	.byte	0x4f
-	.4byte	0x96f
+	.4byte	0x9b2
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x1b
 	.4byte	.LASF10
 	.byte	0x1
 	.byte	0x1d
-	.4byte	0xca
+	.4byte	0xd0
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -3198,7 +3292,7 @@ _getCanData:
 	.asciz	"state"
 	.byte	0x1
 	.byte	0x1e
-	.4byte	0x15e
+	.4byte	0x1a1
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -3207,7 +3301,7 @@ _getCanData:
 	.4byte	.LASF11
 	.byte	0x1
 	.byte	0x1f
-	.4byte	0x26a
+	.4byte	0x2ad
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -3215,17 +3309,35 @@ _getCanData:
 	.uleb128 0x1b
 	.4byte	.LASF12
 	.byte	0x1
+	.byte	0x20
+	.4byte	0x108
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
+	.4byte	_odoRelPos
+	.uleb128 0x1b
+	.4byte	.LASF13
+	.byte	0x1
+	.byte	0x20
+	.4byte	0x108
+	.byte	0x1
+	.byte	0x5
+	.byte	0x3
+	.4byte	_csgRelPos
+	.uleb128 0x1b
+	.4byte	.LASF14
+	.byte	0x1
 	.byte	0x22
-	.4byte	0xd08
+	.4byte	0xd65
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	_isrRegFlag
 	.uleb128 0x1b
-	.4byte	.LASF13
+	.4byte	.LASF15
 	.byte	0x1
 	.byte	0x22
-	.4byte	0xd08
+	.4byte	0xd65
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -3668,73 +3780,79 @@ _getCanData:
 	.byte	0x0
 	.byte	0x0
 	.section	.debug_pubnames,info
-	.4byte	0x87
+	.4byte	0xa3
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0xdf2
-	.4byte	0xa1e
+	.4byte	0xe73
+	.4byte	0xa61
 	.asciz	"propInterrupt"
-	.4byte	0xa3b
+	.4byte	0xa7e
 	.asciz	"setPos"
-	.4byte	0xa75
+	.4byte	0xab8
 	.asciz	"main"
-	.4byte	0xbe1
+	.4byte	0xc24
 	.asciz	"getCanData"
-	.4byte	0xd95
+	.4byte	0xdf2
 	.asciz	"odoPhysPos"
-	.4byte	0xda7
+	.4byte	0xe04
 	.asciz	"state"
-	.4byte	0xdbb
+	.4byte	0xe18
 	.asciz	"obstacle"
-	.4byte	0xdcd
+	.4byte	0xe2a
+	.asciz	"odoRelPos"
+	.4byte	0xe3c
+	.asciz	"csgRelPos"
+	.4byte	0xe4e
 	.asciz	"isrRegFlag"
-	.4byte	0xddf
+	.4byte	0xe60
 	.asciz	"isrCsgFlag"
 	.4byte	0x0
 	.section	.debug_pubtypes,info
-	.4byte	0x140
+	.4byte	0x159
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0xdf2
-	.4byte	0xca
+	.4byte	0xe73
+	.4byte	0xd0
 	.asciz	"positionInteger"
-	.4byte	0x15e
+	.4byte	0x108
+	.asciz	"relativeCoordInteger"
+	.4byte	0x1a1
 	.asciz	"propStateType"
-	.4byte	0x1ad
+	.4byte	0x1f0
 	.asciz	"realPosType"
-	.4byte	0x1e1
+	.4byte	0x224
 	.asciz	"relativeCoord"
-	.4byte	0x223
+	.4byte	0x266
 	.asciz	"csgStatusType"
-	.4byte	0x26a
+	.4byte	0x2ad
 	.asciz	"obsType"
-	.4byte	0x289
+	.4byte	0x2cc
 	.asciz	"tagIEC0BITS"
-	.4byte	0x3d0
+	.4byte	0x413
 	.asciz	"IEC0BITS"
-	.4byte	0x3e1
+	.4byte	0x424
 	.asciz	"tagIEC2BITS"
-	.4byte	0x488
+	.4byte	0x4cb
 	.asciz	"IEC2BITS"
-	.4byte	0x499
+	.4byte	0x4dc
 	.asciz	"tagTRISBBITS"
-	.4byte	0x606
+	.4byte	0x649
 	.asciz	"TRISBBITS"
-	.4byte	0x618
+	.4byte	0x65b
 	.asciz	"tagLATBBITS"
-	.4byte	0x774
+	.4byte	0x7b7
 	.asciz	"LATBBITS"
-	.4byte	0x785
+	.4byte	0x7c8
 	.asciz	"tagTRISCBITS"
-	.4byte	0x86e
+	.4byte	0x8b1
 	.asciz	"TRISCBITS"
-	.4byte	0x880
+	.4byte	0x8c3
 	.asciz	"tagLATCBITS"
-	.4byte	0x95e
+	.4byte	0x9a1
 	.asciz	"LATCBITS"
-	.4byte	0x980
+	.4byte	0x9c3
 	.asciz	"INTEG"
-	.4byte	0xa0b
+	.4byte	0xa4e
 	.asciz	"canDataType"
 	.4byte	0x0
 	.section	.debug_aranges,info
@@ -3831,7 +3949,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM3
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -3851,7 +3969,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM7
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -3870,25 +3988,18 @@ _getCanData:
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
-	.4byte	.LFE0
-	.byte	0x0
-	.uleb128 0x1
-	.byte	0x1
-	.byte	0x0
-	.uleb128 0x5
-	.byte	0x2
 	.4byte	.LSM11
-	.byte	0x4b
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM12
-	.byte	0x18
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM13
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -3897,13 +4008,20 @@ _getCanData:
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
+	.4byte	.LFE0
+	.byte	0x0
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
 	.4byte	.LSM15
-	.byte	0x15
+	.byte	0x51
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM16
-	.byte	0x15
+	.byte	0x18
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -3927,20 +4045,13 @@ _getCanData:
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
-	.4byte	.LFE1
-	.byte	0x0
-	.uleb128 0x1
-	.byte	0x1
-	.byte	0x0
-	.uleb128 0x5
-	.byte	0x2
 	.4byte	.LSM21
-	.byte	0x5d
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM22
-	.byte	0x26
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -3954,13 +4065,20 @@ _getCanData:
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
+	.4byte	.LFE1
+	.byte	0x0
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
 	.4byte	.LSM25
-	.byte	0x15
+	.byte	0x63
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM26
-	.byte	0x15
+	.byte	0x26
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4025,7 +4143,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM39
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4035,12 +4153,12 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM41
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM42
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4080,21 +4198,17 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM50
-	.byte	0x3
-	.sleb128 248
-	.byte	0x1
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM51
-	.byte	0x3
-	.sleb128 -245
-	.byte	0x1
+	.byte	0x1f
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM52
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4104,29 +4218,31 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM54
-	.byte	0x29
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM55
-	.byte	0x3
-	.sleb128 -19
-	.byte	0x1
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM56
-	.byte	0x15
+	.byte	0x3
+	.sleb128 248
+	.byte	0x1
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM57
-	.byte	0x16
+	.byte	0x3
+	.sleb128 -245
+	.byte	0x1
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM58
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4136,12 +4252,14 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM60
-	.byte	0x15
+	.byte	0x29
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM61
-	.byte	0x15
+	.byte	0x3
+	.sleb128 -19
+	.byte	0x1
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4151,12 +4269,12 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM63
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM64
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4186,22 +4304,22 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM70
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM71
-	.byte	0x18
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM72
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM73
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4211,7 +4329,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM75
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4221,17 +4339,17 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM77
-	.byte	0x16
+	.byte	0x18
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM78
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM79
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4241,7 +4359,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM81
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4251,12 +4369,12 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM83
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM84
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4286,7 +4404,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM90
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4306,7 +4424,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM94
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4336,7 +4454,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM100
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4356,7 +4474,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM104
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4386,7 +4504,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM110
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4411,7 +4529,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM115
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4431,7 +4549,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM119
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4461,7 +4579,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM125
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4471,7 +4589,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM127
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4491,12 +4609,12 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM131
-	.byte	0x1b
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM132
-	.byte	0xf
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4516,27 +4634,27 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM136
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM137
-	.byte	0x16
+	.byte	0x1b
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM138
-	.byte	0x16
+	.byte	0xf
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM139
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM140
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4546,19 +4664,17 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM142
-	.byte	0x26
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM143
-	.byte	0x3
-	.sleb128 -16
-	.byte	0x1
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM144
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4568,7 +4684,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM146
-	.byte	0x15
+	.byte	0x17
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4578,12 +4694,14 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM148
-	.byte	0x15
+	.byte	0x26
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM149
-	.byte	0x15
+	.byte	0x3
+	.sleb128 -16
+	.byte	0x1
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4593,12 +4711,12 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM151
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM152
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4618,17 +4736,17 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM156
-	.byte	0x18
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM157
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM158
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4648,14 +4766,12 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM162
-	.byte	0x4e
+	.byte	0x18
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM163
-	.byte	0x3
-	.sleb128 -56
-	.byte	0x1
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4665,7 +4781,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM165
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4680,12 +4796,14 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM168
-	.byte	0x15
+	.byte	0x4e
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM169
-	.byte	0x15
+	.byte	0x3
+	.sleb128 -56
+	.byte	0x1
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4695,7 +4813,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM171
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4715,12 +4833,12 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM175
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM176
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4750,7 +4868,7 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM182
-	.byte	0x16
+	.byte	0x17
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4775,12 +4893,12 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM187
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM188
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4845,12 +4963,12 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM201
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM202
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4880,12 +4998,12 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM208
-	.byte	0x19
+	.byte	0x17
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM209
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4895,29 +5013,27 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM211
-	.byte	0x28
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM212
-	.byte	0x3
-	.sleb128 -18
-	.byte	0x1
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM213
-	.byte	0x15
-	.byte	0x0
-	.uleb128 0x5
-	.byte	0x2
-	.4byte	.LSM214
 	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
+	.4byte	.LSM214
+	.byte	0x19
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
 	.4byte	.LSM215
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4927,12 +5043,14 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM217
-	.byte	0x15
+	.byte	0x28
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM218
-	.byte	0x15
+	.byte	0x3
+	.sleb128 -18
+	.byte	0x1
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4942,12 +5060,12 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM220
-	.byte	0x15
+	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM221
-	.byte	0x16
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -4977,17 +5095,17 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM227
-	.byte	0x18
-	.byte	0x0
-	.uleb128 0x5
-	.byte	0x2
-	.4byte	.LSM228
 	.byte	0x16
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
+	.4byte	.LSM228
+	.byte	0x15
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
 	.4byte	.LSM229
-	.byte	0x1a
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -5002,78 +5120,69 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM232
-	.byte	0x17
+	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM233
+	.byte	0x18
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
+	.4byte	.LSM234
+	.byte	0x16
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
+	.4byte	.LSM235
+	.byte	0x1a
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
+	.4byte	.LSM236
+	.byte	0x15
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
+	.4byte	.LSM237
+	.byte	0x15
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
+	.4byte	.LSM238
+	.byte	0x17
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
+	.4byte	.LSM239
 	.byte	0x3
 	.sleb128 -209
 	.byte	0x1
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
-	.4byte	.LSM234
+	.4byte	.LSM240
 	.byte	0x64
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
-	.4byte	.LSM235
+	.4byte	.LSM241
 	.byte	0x6f
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
-	.4byte	.LSM236
+	.4byte	.LSM242
 	.byte	0x2f
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
-	.4byte	.LSM237
+	.4byte	.LSM243
 	.byte	0x1c
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
-	.4byte	.LSM238
-	.byte	0x1a
-	.byte	0x0
-	.uleb128 0x5
-	.byte	0x2
-	.4byte	.LSM239
-	.byte	0x15
-	.byte	0x0
-	.uleb128 0x5
-	.byte	0x2
-	.4byte	.LSM240
-	.byte	0x15
-	.byte	0x0
-	.uleb128 0x5
-	.byte	0x2
-	.4byte	.LSM241
-	.byte	0x17
-	.byte	0x0
-	.uleb128 0x5
-	.byte	0x2
-	.4byte	.LFE2
-	.byte	0x0
-	.uleb128 0x1
-	.byte	0x1
-	.byte	0x0
-	.uleb128 0x5
-	.byte	0x2
-	.4byte	.LSM242
-	.byte	0x3
-	.sleb128 374
-	.byte	0x1
-	.byte	0x0
-	.uleb128 0x5
-	.byte	0x2
-	.4byte	.LSM243
-	.byte	0x18
-	.byte	0x0
-	.uleb128 0x5
-	.byte	0x2
 	.4byte	.LSM244
-	.byte	0x15
+	.byte	0x1a
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
@@ -5088,21 +5197,60 @@ _getCanData:
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM247
-	.byte	0x15
+	.byte	0x17
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
+	.4byte	.LFE2
+	.byte	0x0
+	.uleb128 0x1
+	.byte	0x1
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM248
-	.byte	0x15
+	.byte	0x3
+	.sleb128 391
+	.byte	0x1
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM249
-	.byte	0x16
+	.byte	0x18
 	.byte	0x0
 	.uleb128 0x5
 	.byte	0x2
 	.4byte	.LSM250
+	.byte	0x15
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
+	.4byte	.LSM251
+	.byte	0x15
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
+	.4byte	.LSM252
+	.byte	0x15
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
+	.4byte	.LSM253
+	.byte	0x15
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
+	.4byte	.LSM254
+	.byte	0x15
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
+	.4byte	.LSM255
+	.byte	0x16
+	.byte	0x0
+	.uleb128 0x5
+	.byte	0x2
+	.4byte	.LSM256
 	.byte	0x15
 	.byte	0x0
 	.uleb128 0x5
@@ -5117,6 +5265,8 @@ _getCanData:
 	.asciz	"canReceivedCommand"
 .LASF3:
 	.asciz	"TRISBbits"
+.LASF13:
+	.asciz	"csgRelPos"
 .LASF11:
 	.asciz	"obstacle"
 .LASF4:
@@ -5125,17 +5275,19 @@ _getCanData:
 	.asciz	"TRISCbits"
 .LASF1:
 	.asciz	"IEC0bits"
-.LASF12:
+.LASF14:
 	.asciz	"isrRegFlag"
 .LASF6:
 	.asciz	"LATCbits"
 .LASF9:
 	.asciz	"canReceivedOrderFlag"
+.LASF12:
+	.asciz	"odoRelPos"
 .LASF0:
 	.asciz	"canData"
 .LASF8:
 	.asciz	"canReceivedData"
-.LASF13:
+.LASF15:
 	.asciz	"isrCsgFlag"
 .LASF10:
 	.asciz	"odoPhysPos"

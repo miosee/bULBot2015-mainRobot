@@ -1,5 +1,5 @@
 # 1 "main.c"
-# 1 "D:\\Robotique\\codes\\mainRobot\\PropBoard2014-DC//"
+# 1 "D:\\dev\\GitHub\\bULBot2015-mainRobot\\PropBoard2014-DC//"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "main.c"
@@ -7160,15 +7160,21 @@ union INTEG {
 positionInteger odoPhysPos;
 propStateType state;
 obsType obstacle;
-
+relativeCoordInteger odoRelPos, csgRelPos;
 
 volatile int isrRegFlag, isrCsgFlag;
 
 void propInterrupt(void) {
  (LATBbits.LATB5) = 1;
  calculeOdometrie();
+
  odoPhysPos = positionFloatToInteger(odoGetAbsPos());
  CanEnvoiProduction(&odoPhysPos);
+ odoRelPos = relativeCoordFloatToInteger(odoGetRelPos());
+ CanEnvoiProduction(&odoRelPos);
+ csgRelPos = relativeCoordFloatToInteger(csgGetPos());
+ CanEnvoiProduction(&csgRelPos);
+
  if (isrCsgFlag) {
   csgCompute();
  }
@@ -7224,8 +7230,6 @@ int main(void) {
  canPinAssign();
  TRISCbits.TRISC5 = 0;
  TRISBbits.TRISB5 = 0;
- state = DISABLED;
- oldState = state;
  nomVel.l = 1;
  nomVel.r = 80;
  nomAcc.l = 1;
@@ -7237,16 +7241,20 @@ int main(void) {
  regInit();
  odoInit();
  motorsInit();
+ isrRegFlag = 0;
 
  CanInitialisation(0x02);
  IEC2bits.C1IE = 1;
 
- CanDeclarationProduction(0x02*0x10+2, &odoPhysPos, sizeof(odoPhysPos));
  CanDeclarationProduction(0x02*0x10+0, &state, sizeof(state));
+ CanDeclarationProduction(0x02*0x10+2, &odoPhysPos, sizeof(odoPhysPos));
+ CanDeclarationProduction(0x02*0x10+3, &csgRelPos, sizeof(csgRelPos));
+ CanDeclarationProduction(0x02*0x10+4, &odoRelPos, sizeof(odoRelPos));
  CanEnvoiProduction(&state);
-
- isrRegFlag = 0;
+ state = DISABLED;
  isrCsgFlag = 0;
+# 135 "main.c"
+ oldState = state;
  timerSetup(1, 10);
  timerInterrupt(1, &propInterrupt);
  timerStart(1);
@@ -7272,7 +7280,7 @@ int main(void) {
        IEC0bits.T1IE = 0;
        motorsEnable();
        isrRegFlag = 0;
-       isrCsgFlag = 1;
+       isrCsgFlag = 0;
        IEC0bits.T1IE = 1;
        state = TEST;
        break;

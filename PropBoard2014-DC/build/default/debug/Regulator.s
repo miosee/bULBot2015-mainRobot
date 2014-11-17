@@ -1,4 +1,4 @@
-	.file "D:\\Robotique\\codes\\mainRobot\\PropBoard2014-DC\\Regulator.c"
+	.file "D:\\dev\\GitHub\\bULBot2015-mainRobot\\PropBoard2014-DC\\Regulator.c"
 	.section	.debug_abbrev,info
 .Ldebug_abbrev0:
 	.section	.debug_info,info
@@ -395,7 +395,7 @@ _regCompute:
 	.section	.text,code
 .Letext0:
 	.section	.debug_info,info
-	.4byte	0x25b
+	.4byte	0x261
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -403,7 +403,7 @@ _regCompute:
 	.asciz	"GNU C 4.5.1 (XC16, Microchip v1_21) (A) Build date: Jan  2 2014"
 	.byte	0x1
 	.asciz	"Regulator.c"
-	.asciz	"D:\\\\Robotique\\\\codes\\\\mainRobot\\\\PropBoard2014-DC"
+	.asciz	"D:\\\\dev\\\\GitHub\\\\bULBot2015-mainRobot\\\\PropBoard2014-DC"
 	.4byte	.Ltext0
 	.4byte	.Letext0
 	.4byte	.Ldebug_line0
@@ -419,12 +419,12 @@ _regCompute:
 	.byte	0x8
 	.byte	0x2
 	.byte	0xc
-	.4byte	0xc8
+	.4byte	0xce
 	.uleb128 0x4
 	.asciz	"l"
 	.byte	0x2
 	.byte	0xd
-	.4byte	0x9e
+	.4byte	0xa4
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
@@ -432,7 +432,7 @@ _regCompute:
 	.asciz	"r"
 	.byte	0x2
 	.byte	0xe
-	.4byte	0x9e
+	.4byte	0xa4
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
@@ -441,7 +441,7 @@ _regCompute:
 	.asciz	"relativeCoord"
 	.byte	0x2
 	.byte	0xf
-	.4byte	0xa7
+	.4byte	0xad
 	.uleb128 0x2
 	.byte	0x1
 	.byte	0x6
@@ -450,7 +450,7 @@ _regCompute:
 	.byte	0x2
 	.byte	0x3
 	.byte	0x1
-	.4byte	0x110
+	.4byte	0x116
 	.uleb128 0x7
 	.asciz	"PATINAGE_DETECTED"
 	.sleb128 1
@@ -462,7 +462,7 @@ _regCompute:
 	.asciz	"regType"
 	.byte	0x3
 	.byte	0x4
-	.4byte	0xe5
+	.4byte	0xeb
 	.uleb128 0x8
 	.byte	0x1
 	.asciz	"regInit"
@@ -479,17 +479,17 @@ _regCompute:
 	.byte	0x1
 	.byte	0x1a
 	.byte	0x1
-	.4byte	0x110
+	.4byte	0x116
 	.4byte	.LFB1
 	.4byte	.LFE1
 	.byte	0x1
 	.byte	0x5e
-	.4byte	0x220
+	.4byte	0x226
 	.uleb128 0xa
 	.asciz	"odoPos"
 	.byte	0x1
 	.byte	0x1b
-	.4byte	0xc8
+	.4byte	0xce
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 32
@@ -497,7 +497,7 @@ _regCompute:
 	.asciz	"csgPos"
 	.byte	0x1
 	.byte	0x1c
-	.4byte	0xc8
+	.4byte	0xce
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 40
@@ -505,7 +505,7 @@ _regCompute:
 	.asciz	"odoVel"
 	.byte	0x1
 	.byte	0x1d
-	.4byte	0xc8
+	.4byte	0xce
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 48
@@ -513,7 +513,7 @@ _regCompute:
 	.asciz	"csgVel"
 	.byte	0x1
 	.byte	0x1e
-	.4byte	0xc8
+	.4byte	0xce
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 56
@@ -521,7 +521,7 @@ _regCompute:
 	.asciz	"errT"
 	.byte	0x1
 	.byte	0x1f
-	.4byte	0x9e
+	.4byte	0xa4
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 8
@@ -529,7 +529,7 @@ _regCompute:
 	.asciz	"errR"
 	.byte	0x1
 	.byte	0x1f
-	.4byte	0x9e
+	.4byte	0xa4
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 12
@@ -537,7 +537,7 @@ _regCompute:
 	.asciz	"errVt"
 	.byte	0x1
 	.byte	0x1f
-	.4byte	0x9e
+	.4byte	0xa4
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 16
@@ -545,7 +545,7 @@ _regCompute:
 	.asciz	"errVr"
 	.byte	0x1
 	.byte	0x1f
-	.4byte	0x9e
+	.4byte	0xa4
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 20
@@ -553,7 +553,7 @@ _regCompute:
 	.asciz	"dcTrans"
 	.byte	0x1
 	.byte	0x20
-	.4byte	0x9e
+	.4byte	0xa4
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 24
@@ -561,7 +561,7 @@ _regCompute:
 	.asciz	"dcRot"
 	.byte	0x1
 	.byte	0x20
-	.4byte	0x9e
+	.4byte	0xa4
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 28
@@ -569,7 +569,7 @@ _regCompute:
 	.asciz	"dcLeft"
 	.byte	0x1
 	.byte	0x20
-	.4byte	0x9e
+	.4byte	0xa4
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 0
@@ -577,7 +577,7 @@ _regCompute:
 	.asciz	"dcRight"
 	.byte	0x1
 	.byte	0x20
-	.4byte	0x9e
+	.4byte	0xa4
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 4
@@ -586,21 +586,21 @@ _regCompute:
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x12
-	.4byte	0x9e
+	.4byte	0xa4
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xb
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x12
-	.4byte	0x9e
+	.4byte	0xa4
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xc
 	.4byte	.LASF0
 	.byte	0x1
 	.byte	0x12
-	.4byte	0x9e
+	.4byte	0xa4
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -609,7 +609,7 @@ _regCompute:
 	.4byte	.LASF1
 	.byte	0x1
 	.byte	0x12
-	.4byte	0x9e
+	.4byte	0xa4
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -809,24 +809,24 @@ _regCompute:
 	.4byte	0x50
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x25f
-	.4byte	0x11f
+	.4byte	0x265
+	.4byte	0x125
 	.asciz	"regInit"
-	.4byte	0x136
+	.4byte	0x13c
 	.asciz	"regCompute"
-	.4byte	0x23a
+	.4byte	0x240
 	.asciz	"prRegOldDcLeft"
-	.4byte	0x24c
+	.4byte	0x252
 	.asciz	"prRegOldDcRight"
 	.4byte	0x0
 	.section	.debug_pubtypes,info
 	.4byte	0x2c
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x25f
-	.4byte	0xc8
+	.4byte	0x265
+	.4byte	0xce
 	.asciz	"relativeCoord"
-	.4byte	0x110
+	.4byte	0x116
 	.asciz	"regType"
 	.4byte	0x0
 	.section	.debug_aranges,info

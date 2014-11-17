@@ -1,5 +1,5 @@
 # 1 "GenerTraj.c"
-# 1 "D:\\Robotique\\codes\\mainRobot\\PropBoard2014-DC//"
+# 1 "D:\\dev\\GitHub\\bULBot2015-mainRobot\\PropBoard2014-DC//"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "GenerTraj.c"
@@ -95,8 +95,7 @@ typedef struct {
  DISABLED = 0,
  STANDING = 1,
  MOVING = 2,
- TEST_STANDING = 3,
- TEST_MOVING = 4,
+ TEST = 3,
  TRAJ_START_OUT = -1,
  TRAJ_END_OUT = -2,
  TRAJ_START_OBS = -3,
@@ -356,7 +355,7 @@ inline void updateDistance(int neigbour, int curNode, int endNode) {
  b2 = neigbour - 20*a2;
  dir = atanMP( b2-b1, a2-a1 );
 
- dist = 2*(( ( (a1-a2) > 0 )?(a1-a2):(-a1-a2) )+( ( (b1-b2) > 0 )?(b1-b2):(-b1-b2) ));
+ dist = 2*((((a1-a2) < 0) ? -(a1-a2) : (a1-a2))+(((b1-b2) < 0) ? -(b1-b2) : (b1-b2)));
  if (dist > 3) {
   dist = 3;
  }

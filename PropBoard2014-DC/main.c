@@ -29,15 +29,21 @@ union INTEG {
 positionInteger odoPhysPos;		//! position actuelle du robot, en mm et deg/10
 propStateType state;
 obsType obstacle;
-
+relativeCoordInteger odoRelPos, csgRelPos;
 // variables ISR
 volatile int isrRegFlag, isrCsgFlag;
 
 void propInterrupt(void) {
 	DBG_PIN1 = 1;
 	calculeOdometrie();		// on calcule la position absolue mesurée avec les encodeurs libres
+#ifndef DEBUG_MODE
 	odoPhysPos = positionFloatToInteger(odoGetAbsPos());
 	CanEnvoiProduction(&odoPhysPos);
+	odoRelPos = relativeCoordFloatToInteger(odoGetRelPos());
+	CanEnvoiProduction(&odoRelPos);
+	csgRelPos = relativeCoordFloatToInteger(csgGetPos());
+	CanEnvoiProduction(&csgRelPos);
+#endif
 	if (isrCsgFlag) {
 		csgCompute();			// on calcule la nouvelle consigne
 	}
@@ -93,8 +99,6 @@ int main(void) {
 	canPinAssign();		// assigne les pattes du CAN
 	TRISCbits.TRISC5 = 0;
 	TRISBbits.TRISB5 = 0;
-	state = DISABLED;	// initialisation de la machine d'état
-	oldState = state;
 	nomVel.l = 1;		// m/s
 	nomVel.r = 80;		// rad/s
 	nomAcc.l = 1;		// m/s^2
@@ -106,16 +110,29 @@ int main(void) {
 	regInit();			// initialise les régulateurs de vitesses et positions
 	odoInit();			// initialise les périphériques QEI pour la mesure des encodeurs
 	motorsInit();		// initialise les périphériques PWM pour le contrôle des moteurs
+	isrRegFlag = 0;
 #ifndef DEBUG_MODE
 	CanInitialisation(CN_PROPULSION);	// Initialise le périphérique CAN
 	ACTIVATE_CAN_INTERRUPTS = 1;	    // Enables CAN interrupts
 	// Déclare les objets CAN produits par ce PIC
-	CanDeclarationProduction(CO_PROP_POS, &odoPhysPos, sizeof(odoPhysPos));
 	CanDeclarationProduction(CO_PROP_STATUS, &state, sizeof(state));
+	CanDeclarationProduction(CO_PROP_POS, &odoPhysPos, sizeof(odoPhysPos));
+	CanDeclarationProduction(CO_PROP_REL_CSG, &csgRelPos, sizeof(csgRelPos));
+	CanDeclarationProduction(CO_PROP_REL_ODO, &odoRelPos, sizeof(odoRelPos));
 	CanEnvoiProduction(&state);
-#endif
-	isrRegFlag = 0;
+	state = DISABLED;	// initialisation de la machine d'état
 	isrCsgFlag = 0;
+#else
+	canReceivedOrderFlag = 1;
+	canReceivedCommand = PROP_TRANSLATION;
+//	canReceivedData[0] = 0xE8; canReceivedData[1] = 0x03;
+	canReceivedData[0] = 0x18; canReceivedData[1] = 0xFC;
+	canReceivedData[2] = 0xE8; canReceivedData[3] = 0x03;
+	canReceivedData[4] = 0xE8; canReceivedData[5] = 0x03;
+	state = STANDING;
+	isrCsgFlag = 1;
+#endif
+	oldState = state;
 	timerSetup(TIMER_1, 10);		// Configuration du timer1 pour avoir une base de temps de 10ms
 	timerInterrupt(TIMER_1, &propInterrupt);
 	timerStart(TIMER_1);
@@ -141,7 +158,7 @@ int main(void) {
 							disableIsrTimer1();
 							motorsEnable(); // on active les moteurs en entrant dans l'état TEST_STANDING
 							isrRegFlag = 0;
-							isrCsgFlag = 1;
+							isrCsgFlag = 0;
 							enableIsrTimer1();
 							state = TEST;
 							break;

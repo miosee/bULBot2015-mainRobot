@@ -1,4 +1,4 @@
-	.file "D:\\Robotique\\codes\\mainRobot\\PropBoard2014-DC\\mouvements.c"
+	.file "D:\\dev\\GitHub\\bULBot2015-mainRobot\\PropBoard2014-DC\\mouvements.c"
 	.section	.debug_abbrev,info
 .Ldebug_abbrev0:
 	.section	.debug_info,info
@@ -448,7 +448,7 @@ _calcSegment:
 	.section	.text,code
 .Letext0:
 	.section	.debug_info,info
-	.4byte	0x2d5
+	.4byte	0x2db
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -456,7 +456,7 @@ _calcSegment:
 	.asciz	"GNU C 4.5.1 (XC16, Microchip v1_21) (A) Build date: Jan  2 2014"
 	.byte	0x1
 	.asciz	"mouvements.c"
-	.asciz	"D:\\\\Robotique\\\\codes\\\\mainRobot\\\\PropBoard2014-DC"
+	.asciz	"D:\\\\dev\\\\GitHub\\\\bULBot2015-mainRobot\\\\PropBoard2014-DC"
 	.4byte	.Ltext0
 	.4byte	.Letext0
 	.4byte	.Ldebug_line0
@@ -468,12 +468,12 @@ _calcSegment:
 	.byte	0xc
 	.byte	0x2
 	.byte	0x6
-	.4byte	0xd0
+	.4byte	0xd6
 	.uleb128 0x4
 	.asciz	"x"
 	.byte	0x2
 	.byte	0x7
-	.4byte	0xd0
+	.4byte	0xd6
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
@@ -481,7 +481,7 @@ _calcSegment:
 	.asciz	"y"
 	.byte	0x2
 	.byte	0x8
-	.4byte	0xd0
+	.4byte	0xd6
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
@@ -489,7 +489,7 @@ _calcSegment:
 	.asciz	"alpha"
 	.byte	0x2
 	.byte	0x9
-	.4byte	0xd0
+	.4byte	0xd6
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x8
@@ -502,17 +502,17 @@ _calcSegment:
 	.asciz	"realPosType"
 	.byte	0x2
 	.byte	0xa
-	.4byte	0x9f
+	.4byte	0xa5
 	.uleb128 0x3
 	.byte	0x8
 	.byte	0x2
 	.byte	0xc
-	.4byte	0x10d
+	.4byte	0x113
 	.uleb128 0x4
 	.asciz	"l"
 	.byte	0x2
 	.byte	0xd
-	.4byte	0xd0
+	.4byte	0xd6
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
@@ -520,7 +520,7 @@ _calcSegment:
 	.asciz	"r"
 	.byte	0x2
 	.byte	0xe
-	.4byte	0xd0
+	.4byte	0xd6
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
@@ -529,7 +529,7 @@ _calcSegment:
 	.asciz	"relativeCoord"
 	.byte	0x2
 	.byte	0xf
-	.4byte	0xec
+	.4byte	0xf2
 	.uleb128 0x2
 	.byte	0x1
 	.byte	0x6
@@ -560,12 +560,12 @@ _calcSegment:
 	.4byte	.LFE0
 	.byte	0x1
 	.byte	0x5e
-	.4byte	0x1cf
+	.4byte	0x1d5
 	.uleb128 0x7
 	.asciz	"acc"
 	.byte	0x1
 	.byte	0x7
-	.4byte	0xd0
+	.4byte	0xd6
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 8
@@ -573,7 +573,7 @@ _calcSegment:
 	.asciz	"vel"
 	.byte	0x1
 	.byte	0x7
-	.4byte	0xd0
+	.4byte	0xd6
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 12
@@ -581,7 +581,7 @@ _calcSegment:
 	.asciz	"length"
 	.byte	0x1
 	.byte	0x7
-	.4byte	0xd0
+	.4byte	0xd6
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 16
@@ -589,7 +589,7 @@ _calcSegment:
 	.asciz	"tmp"
 	.byte	0x1
 	.byte	0x8
-	.4byte	0x10d
+	.4byte	0x113
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 0
@@ -604,12 +604,12 @@ _calcSegment:
 	.4byte	.LFE1
 	.byte	0x1
 	.byte	0x5e
-	.4byte	0x22a
+	.4byte	0x230
 	.uleb128 0x7
 	.asciz	"acc"
 	.byte	0x1
 	.byte	0x15
-	.4byte	0xd0
+	.4byte	0xd6
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 8
@@ -617,7 +617,7 @@ _calcSegment:
 	.asciz	"vel"
 	.byte	0x1
 	.byte	0x15
-	.4byte	0xd0
+	.4byte	0xd6
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 12
@@ -625,7 +625,7 @@ _calcSegment:
 	.asciz	"length"
 	.byte	0x1
 	.byte	0x15
-	.4byte	0xd0
+	.4byte	0xd6
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 16
@@ -633,7 +633,7 @@ _calcSegment:
 	.asciz	"tmp"
 	.byte	0x1
 	.byte	0x16
-	.4byte	0x10d
+	.4byte	0x113
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 0
@@ -648,12 +648,12 @@ _calcSegment:
 	.4byte	.LFE2
 	.byte	0x1
 	.byte	0x5e
-	.4byte	0x270
+	.4byte	0x276
 	.uleb128 0x8
 	.asciz	"vel"
 	.byte	0x1
 	.byte	0x24
-	.4byte	0x10d
+	.4byte	0x113
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 0
@@ -661,7 +661,7 @@ _calcSegment:
 	.asciz	"acc"
 	.byte	0x1
 	.byte	0x24
-	.4byte	0x10d
+	.4byte	0x113
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 8
@@ -669,7 +669,7 @@ _calcSegment:
 	.asciz	"pos"
 	.byte	0x1
 	.byte	0x24
-	.4byte	0x10d
+	.4byte	0x113
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 16
@@ -680,7 +680,7 @@ _calcSegment:
 	.byte	0x1
 	.byte	0x37
 	.byte	0x1
-	.4byte	0x10d
+	.4byte	0x113
 	.4byte	.LFB3
 	.4byte	.LFE3
 	.byte	0x1
@@ -689,7 +689,7 @@ _calcSegment:
 	.asciz	"curPos"
 	.byte	0x1
 	.byte	0x37
-	.4byte	0xd9
+	.4byte	0xdf
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 16
@@ -697,7 +697,7 @@ _calcSegment:
 	.asciz	"newPos"
 	.byte	0x1
 	.byte	0x37
-	.4byte	0xd9
+	.4byte	0xdf
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 -18
@@ -705,7 +705,7 @@ _calcSegment:
 	.asciz	"x"
 	.byte	0x1
 	.byte	0x38
-	.4byte	0xd0
+	.4byte	0xd6
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 0
@@ -713,7 +713,7 @@ _calcSegment:
 	.asciz	"y"
 	.byte	0x1
 	.byte	0x38
-	.4byte	0xd0
+	.4byte	0xd6
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 4
@@ -721,7 +721,7 @@ _calcSegment:
 	.asciz	"seg"
 	.byte	0x1
 	.byte	0x39
-	.4byte	0x10d
+	.4byte	0x113
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 8
@@ -880,24 +880,24 @@ _calcSegment:
 	.4byte	0x4d
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x2d9
-	.4byte	0x171
+	.4byte	0x2df
+	.4byte	0x177
 	.asciz	"addTranslation"
-	.4byte	0x1cf
+	.4byte	0x1d5
 	.asciz	"addRotation"
-	.4byte	0x22a
+	.4byte	0x230
 	.asciz	"stopNow"
-	.4byte	0x270
+	.4byte	0x276
 	.asciz	"calcSegment"
 	.4byte	0x0
 	.section	.debug_pubtypes,info
 	.4byte	0x30
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x2d9
-	.4byte	0xd9
+	.4byte	0x2df
+	.4byte	0xdf
 	.asciz	"realPosType"
-	.4byte	0x10d
+	.4byte	0x113
 	.asciz	"relativeCoord"
 	.4byte	0x0
 	.section	.debug_aranges,info

@@ -23,10 +23,10 @@ float satureAngle(float angle);		// ramène l'angle dans l'intervalle -pi -> +pi
 #define RAD_TO_DEG10	(1800.0/PI)
 #define DEG10_TO_RAD	(PI/1800.0)
 
-#define MAX(a, b)   ( ( (a) < (b) )?(b):(a) )
-#define MIN(a, b)   ( ( (a) > (b) )?(b):(a) )
-#define ABS(a)		( ( (a) > 0 )?(a):(-a) )
-#define SIGN(a)		( ( (a) >= 0 )?(1):(-1) )
+#define MAX(a, b)   (((a) < (b)) ? (b) : (a))
+#define MIN(a, b)   (((a) > (b)) ? (a) : (b))
+#define ABS(a)		(((a) < 0) ? -(a) : (a))
+#define SIGN(a)		(((a) < 0) ? -1 : 1)
 
 
 #endif

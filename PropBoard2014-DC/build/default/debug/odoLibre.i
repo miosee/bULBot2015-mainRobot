@@ -1,5 +1,5 @@
 # 1 "odoLibre.c"
-# 1 "D:\\Robotique\\codes\\mainRobot\\PropBoard2014-DC//"
+# 1 "D:\\dev\\GitHub\\bULBot2015-mainRobot\\PropBoard2014-DC//"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "odoLibre.c"
@@ -35,8 +35,7 @@ typedef struct {
  DISABLED = 0,
  STANDING = 1,
  MOVING = 2,
- TEST_STANDING = 3,
- TEST_MOVING = 4,
+ TEST = 3,
  TRAJ_START_OUT = -1,
  TRAJ_END_OUT = -2,
  TRAJ_START_OBS = -3,

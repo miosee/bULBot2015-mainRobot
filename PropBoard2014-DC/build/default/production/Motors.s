@@ -1,4 +1,4 @@
-	.file "D:\\Robotique\\codes\\mainRobot\\PropBoard2014-DC\\Motors.c"
+	.file "D:\\dev\\GitHub\\bULBot2015-mainRobot\\PropBoard2014-DC\\Motors.c"
 	.section	.debug_abbrev,info
 .Ldebug_abbrev0:
 	.section	.debug_info,info
@@ -315,7 +315,7 @@ _motorsSetSpeed:
 	.section	.text,code
 .Letext0:
 	.section	.debug_info,info
-	.4byte	0xab0
+	.4byte	0xab6
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -323,7 +323,7 @@ _motorsSetSpeed:
 	.asciz	"GNU C 4.5.1 (XC16, Microchip v1_21) (A) Build date: Jan  2 2014"
 	.byte	0x1
 	.asciz	"Motors.c"
-	.asciz	"D:\\\\Robotique\\\\codes\\\\mainRobot\\\\PropBoard2014-DC"
+	.asciz	"D:\\\\dev\\\\GitHub\\\\bULBot2015-mainRobot\\\\PropBoard2014-DC"
 	.4byte	.Ltext0
 	.4byte	.Letext0
 	.4byte	.Ldebug_line0
@@ -331,7 +331,7 @@ _motorsSetSpeed:
 	.byte	0x2
 	.byte	0x3
 	.byte	0x1a
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.uleb128 0x3
 	.asciz	"PPS_C1OUT"
 	.sleb128 1
@@ -408,12 +408,12 @@ _motorsSetSpeed:
 	.byte	0x2
 	.byte	0x2
 	.2byte	0x975
-	.4byte	0x28a
+	.4byte	0x290
 	.uleb128 0x6
 	.asciz	"TRISA0"
 	.byte	0x2
 	.2byte	0x976
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -424,7 +424,7 @@ _motorsSetSpeed:
 	.asciz	"TRISA1"
 	.byte	0x2
 	.2byte	0x977
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -435,7 +435,7 @@ _motorsSetSpeed:
 	.asciz	"TRISA2"
 	.byte	0x2
 	.2byte	0x978
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -446,7 +446,7 @@ _motorsSetSpeed:
 	.asciz	"TRISA3"
 	.byte	0x2
 	.2byte	0x979
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -457,7 +457,7 @@ _motorsSetSpeed:
 	.asciz	"TRISA4"
 	.byte	0x2
 	.2byte	0x97a
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -468,7 +468,7 @@ _motorsSetSpeed:
 	.asciz	"TRISA7"
 	.byte	0x2
 	.2byte	0x97c
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -479,7 +479,7 @@ _motorsSetSpeed:
 	.asciz	"TRISA8"
 	.byte	0x2
 	.2byte	0x97d
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x7
@@ -490,7 +490,7 @@ _motorsSetSpeed:
 	.asciz	"TRISA9"
 	.byte	0x2
 	.2byte	0x97e
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x6
@@ -501,7 +501,7 @@ _motorsSetSpeed:
 	.asciz	"TRISA10"
 	.byte	0x2
 	.2byte	0x97f
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x5
@@ -513,18 +513,18 @@ _motorsSetSpeed:
 	.asciz	"TRISABITS"
 	.byte	0x2
 	.2byte	0x980
-	.4byte	0x1b5
+	.4byte	0x1bb
 	.uleb128 0x5
 	.asciz	"tagLATABITS"
 	.byte	0x2
 	.byte	0x2
 	.2byte	0x995
-	.4byte	0x367
+	.4byte	0x36d
 	.uleb128 0x6
 	.asciz	"LATA0"
 	.byte	0x2
 	.2byte	0x996
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -535,7 +535,7 @@ _motorsSetSpeed:
 	.asciz	"LATA1"
 	.byte	0x2
 	.2byte	0x997
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -546,7 +546,7 @@ _motorsSetSpeed:
 	.asciz	"LATA2"
 	.byte	0x2
 	.2byte	0x998
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -557,7 +557,7 @@ _motorsSetSpeed:
 	.asciz	"LATA3"
 	.byte	0x2
 	.2byte	0x999
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -568,7 +568,7 @@ _motorsSetSpeed:
 	.asciz	"LATA4"
 	.byte	0x2
 	.2byte	0x99a
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -579,7 +579,7 @@ _motorsSetSpeed:
 	.asciz	"LATA7"
 	.byte	0x2
 	.2byte	0x99c
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -590,7 +590,7 @@ _motorsSetSpeed:
 	.asciz	"LATA8"
 	.byte	0x2
 	.2byte	0x99d
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x7
@@ -601,7 +601,7 @@ _motorsSetSpeed:
 	.asciz	"LATA9"
 	.byte	0x2
 	.2byte	0x99e
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x6
@@ -612,7 +612,7 @@ _motorsSetSpeed:
 	.asciz	"LATA10"
 	.byte	0x2
 	.2byte	0x99f
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x5
@@ -624,18 +624,18 @@ _motorsSetSpeed:
 	.asciz	"LATABITS"
 	.byte	0x2
 	.2byte	0x9a0
-	.4byte	0x29c
+	.4byte	0x2a2
 	.uleb128 0x5
 	.asciz	"tagTRISBBITS"
 	.byte	0x2
 	.byte	0x2
 	.2byte	0x9b5
-	.4byte	0x4e5
+	.4byte	0x4eb
 	.uleb128 0x6
 	.asciz	"TRISB0"
 	.byte	0x2
 	.2byte	0x9b6
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -646,7 +646,7 @@ _motorsSetSpeed:
 	.asciz	"TRISB1"
 	.byte	0x2
 	.2byte	0x9b7
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -657,7 +657,7 @@ _motorsSetSpeed:
 	.asciz	"TRISB2"
 	.byte	0x2
 	.2byte	0x9b8
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -668,7 +668,7 @@ _motorsSetSpeed:
 	.asciz	"TRISB3"
 	.byte	0x2
 	.2byte	0x9b9
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -679,7 +679,7 @@ _motorsSetSpeed:
 	.asciz	"TRISB4"
 	.byte	0x2
 	.2byte	0x9ba
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -690,7 +690,7 @@ _motorsSetSpeed:
 	.asciz	"TRISB5"
 	.byte	0x2
 	.2byte	0x9bb
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xa
@@ -701,7 +701,7 @@ _motorsSetSpeed:
 	.asciz	"TRISB6"
 	.byte	0x2
 	.2byte	0x9bc
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x9
@@ -712,7 +712,7 @@ _motorsSetSpeed:
 	.asciz	"TRISB7"
 	.byte	0x2
 	.2byte	0x9bd
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -723,7 +723,7 @@ _motorsSetSpeed:
 	.asciz	"TRISB8"
 	.byte	0x2
 	.2byte	0x9be
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x7
@@ -734,7 +734,7 @@ _motorsSetSpeed:
 	.asciz	"TRISB9"
 	.byte	0x2
 	.2byte	0x9bf
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x6
@@ -745,7 +745,7 @@ _motorsSetSpeed:
 	.asciz	"TRISB10"
 	.byte	0x2
 	.2byte	0x9c0
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x5
@@ -756,7 +756,7 @@ _motorsSetSpeed:
 	.asciz	"TRISB11"
 	.byte	0x2
 	.2byte	0x9c1
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x4
@@ -767,7 +767,7 @@ _motorsSetSpeed:
 	.asciz	"TRISB12"
 	.byte	0x2
 	.2byte	0x9c2
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x3
@@ -778,7 +778,7 @@ _motorsSetSpeed:
 	.asciz	"TRISB13"
 	.byte	0x2
 	.2byte	0x9c3
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x2
@@ -789,7 +789,7 @@ _motorsSetSpeed:
 	.asciz	"TRISB14"
 	.byte	0x2
 	.2byte	0x9c4
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x1
@@ -800,7 +800,7 @@ _motorsSetSpeed:
 	.asciz	"TRISB15"
 	.byte	0x2
 	.2byte	0x9c5
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x10
@@ -812,18 +812,18 @@ _motorsSetSpeed:
 	.asciz	"TRISBBITS"
 	.byte	0x2
 	.2byte	0x9c6
-	.4byte	0x378
+	.4byte	0x37e
 	.uleb128 0x5
 	.asciz	"tagLATBBITS"
 	.byte	0x2
 	.byte	0x2
 	.2byte	0x9e1
-	.4byte	0x653
+	.4byte	0x659
 	.uleb128 0x6
 	.asciz	"LATB0"
 	.byte	0x2
 	.2byte	0x9e2
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -834,7 +834,7 @@ _motorsSetSpeed:
 	.asciz	"LATB1"
 	.byte	0x2
 	.2byte	0x9e3
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -845,7 +845,7 @@ _motorsSetSpeed:
 	.asciz	"LATB2"
 	.byte	0x2
 	.2byte	0x9e4
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -856,7 +856,7 @@ _motorsSetSpeed:
 	.asciz	"LATB3"
 	.byte	0x2
 	.2byte	0x9e5
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -867,7 +867,7 @@ _motorsSetSpeed:
 	.asciz	"LATB4"
 	.byte	0x2
 	.2byte	0x9e6
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -878,7 +878,7 @@ _motorsSetSpeed:
 	.asciz	"LATB5"
 	.byte	0x2
 	.2byte	0x9e7
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xa
@@ -889,7 +889,7 @@ _motorsSetSpeed:
 	.asciz	"LATB6"
 	.byte	0x2
 	.2byte	0x9e8
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x9
@@ -900,7 +900,7 @@ _motorsSetSpeed:
 	.asciz	"LATB7"
 	.byte	0x2
 	.2byte	0x9e9
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -911,7 +911,7 @@ _motorsSetSpeed:
 	.asciz	"LATB8"
 	.byte	0x2
 	.2byte	0x9ea
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x7
@@ -922,7 +922,7 @@ _motorsSetSpeed:
 	.asciz	"LATB9"
 	.byte	0x2
 	.2byte	0x9eb
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x6
@@ -933,7 +933,7 @@ _motorsSetSpeed:
 	.asciz	"LATB10"
 	.byte	0x2
 	.2byte	0x9ec
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x5
@@ -944,7 +944,7 @@ _motorsSetSpeed:
 	.asciz	"LATB11"
 	.byte	0x2
 	.2byte	0x9ed
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x4
@@ -955,7 +955,7 @@ _motorsSetSpeed:
 	.asciz	"LATB12"
 	.byte	0x2
 	.2byte	0x9ee
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x3
@@ -966,7 +966,7 @@ _motorsSetSpeed:
 	.asciz	"LATB13"
 	.byte	0x2
 	.2byte	0x9ef
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x2
@@ -977,7 +977,7 @@ _motorsSetSpeed:
 	.asciz	"LATB14"
 	.byte	0x2
 	.2byte	0x9f0
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x1
@@ -988,7 +988,7 @@ _motorsSetSpeed:
 	.asciz	"LATB15"
 	.byte	0x2
 	.2byte	0x9f1
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x10
@@ -1000,18 +1000,18 @@ _motorsSetSpeed:
 	.asciz	"LATBBITS"
 	.byte	0x2
 	.2byte	0x9f2
-	.4byte	0x4f7
+	.4byte	0x4fd
 	.uleb128 0x5
 	.asciz	"tagTRISCBITS"
 	.byte	0x2
 	.byte	0x2
 	.2byte	0xa0d
-	.4byte	0x74d
+	.4byte	0x753
 	.uleb128 0x6
 	.asciz	"TRISC0"
 	.byte	0x2
 	.2byte	0xa0e
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -1022,7 +1022,7 @@ _motorsSetSpeed:
 	.asciz	"TRISC1"
 	.byte	0x2
 	.2byte	0xa0f
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -1033,7 +1033,7 @@ _motorsSetSpeed:
 	.asciz	"TRISC2"
 	.byte	0x2
 	.2byte	0xa10
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -1044,7 +1044,7 @@ _motorsSetSpeed:
 	.asciz	"TRISC3"
 	.byte	0x2
 	.2byte	0xa11
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -1055,7 +1055,7 @@ _motorsSetSpeed:
 	.asciz	"TRISC4"
 	.byte	0x2
 	.2byte	0xa12
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -1066,7 +1066,7 @@ _motorsSetSpeed:
 	.asciz	"TRISC5"
 	.byte	0x2
 	.2byte	0xa13
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xa
@@ -1077,7 +1077,7 @@ _motorsSetSpeed:
 	.asciz	"TRISC6"
 	.byte	0x2
 	.2byte	0xa14
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x9
@@ -1088,7 +1088,7 @@ _motorsSetSpeed:
 	.asciz	"TRISC7"
 	.byte	0x2
 	.2byte	0xa15
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -1099,7 +1099,7 @@ _motorsSetSpeed:
 	.asciz	"TRISC8"
 	.byte	0x2
 	.2byte	0xa16
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x7
@@ -1110,7 +1110,7 @@ _motorsSetSpeed:
 	.asciz	"TRISC9"
 	.byte	0x2
 	.2byte	0xa17
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x6
@@ -1122,18 +1122,18 @@ _motorsSetSpeed:
 	.asciz	"TRISCBITS"
 	.byte	0x2
 	.2byte	0xa18
-	.4byte	0x664
+	.4byte	0x66a
 	.uleb128 0x5
 	.asciz	"tagLATCBITS"
 	.byte	0x2
 	.byte	0x2
 	.2byte	0xa2d
-	.4byte	0x83d
+	.4byte	0x843
 	.uleb128 0x6
 	.asciz	"LATC0"
 	.byte	0x2
 	.2byte	0xa2e
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -1144,7 +1144,7 @@ _motorsSetSpeed:
 	.asciz	"LATC1"
 	.byte	0x2
 	.2byte	0xa2f
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -1155,7 +1155,7 @@ _motorsSetSpeed:
 	.asciz	"LATC2"
 	.byte	0x2
 	.2byte	0xa30
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -1166,7 +1166,7 @@ _motorsSetSpeed:
 	.asciz	"LATC3"
 	.byte	0x2
 	.2byte	0xa31
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -1177,7 +1177,7 @@ _motorsSetSpeed:
 	.asciz	"LATC4"
 	.byte	0x2
 	.2byte	0xa32
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -1188,7 +1188,7 @@ _motorsSetSpeed:
 	.asciz	"LATC5"
 	.byte	0x2
 	.2byte	0xa33
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xa
@@ -1199,7 +1199,7 @@ _motorsSetSpeed:
 	.asciz	"LATC6"
 	.byte	0x2
 	.2byte	0xa34
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x9
@@ -1210,7 +1210,7 @@ _motorsSetSpeed:
 	.asciz	"LATC7"
 	.byte	0x2
 	.2byte	0xa35
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -1221,7 +1221,7 @@ _motorsSetSpeed:
 	.asciz	"LATC8"
 	.byte	0x2
 	.2byte	0xa36
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x7
@@ -1232,7 +1232,7 @@ _motorsSetSpeed:
 	.asciz	"LATC9"
 	.byte	0x2
 	.2byte	0xa37
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x6
@@ -1244,18 +1244,18 @@ _motorsSetSpeed:
 	.asciz	"LATCBITS"
 	.byte	0x2
 	.2byte	0xa38
-	.4byte	0x75f
+	.4byte	0x765
 	.uleb128 0x5
 	.asciz	"tagAD1PCFGLBITS"
 	.byte	0x2
 	.byte	0x2
 	.2byte	0xaea
-	.4byte	0x91c
+	.4byte	0x922
 	.uleb128 0x6
 	.asciz	"PCFG0"
 	.byte	0x2
 	.2byte	0xaeb
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xf
@@ -1266,7 +1266,7 @@ _motorsSetSpeed:
 	.asciz	"PCFG1"
 	.byte	0x2
 	.2byte	0xaec
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xe
@@ -1277,7 +1277,7 @@ _motorsSetSpeed:
 	.asciz	"PCFG2"
 	.byte	0x2
 	.2byte	0xaed
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xd
@@ -1288,7 +1288,7 @@ _motorsSetSpeed:
 	.asciz	"PCFG3"
 	.byte	0x2
 	.2byte	0xaee
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xc
@@ -1299,7 +1299,7 @@ _motorsSetSpeed:
 	.asciz	"PCFG4"
 	.byte	0x2
 	.2byte	0xaef
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xb
@@ -1310,7 +1310,7 @@ _motorsSetSpeed:
 	.asciz	"PCFG5"
 	.byte	0x2
 	.2byte	0xaf0
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0xa
@@ -1321,7 +1321,7 @@ _motorsSetSpeed:
 	.asciz	"PCFG6"
 	.byte	0x2
 	.2byte	0xaf1
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x9
@@ -1332,7 +1332,7 @@ _motorsSetSpeed:
 	.asciz	"PCFG7"
 	.byte	0x2
 	.2byte	0xaf2
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x8
@@ -1343,7 +1343,7 @@ _motorsSetSpeed:
 	.asciz	"PCFG8"
 	.byte	0x2
 	.2byte	0xaf3
-	.4byte	0x1a5
+	.4byte	0x1ab
 	.byte	0x2
 	.byte	0x1
 	.byte	0x7
@@ -1355,7 +1355,7 @@ _motorsSetSpeed:
 	.asciz	"AD1PCFGLBITS"
 	.byte	0x2
 	.2byte	0xaf4
-	.4byte	0x84e
+	.4byte	0x854
 	.uleb128 0x8
 	.byte	0x1
 	.asciz	"motorsInit"
@@ -1396,12 +1396,12 @@ _motorsSetSpeed:
 	.4byte	.LFE3
 	.byte	0x1
 	.byte	0x5e
-	.4byte	0x9c3
+	.4byte	0x9c9
 	.uleb128 0xa
 	.asciz	"dcR"
 	.byte	0x1
 	.byte	0x4d
-	.4byte	0x9c3
+	.4byte	0x9c9
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 0
@@ -1409,7 +1409,7 @@ _motorsSetSpeed:
 	.asciz	"dcL"
 	.byte	0x1
 	.byte	0x4d
-	.4byte	0x9c3
+	.4byte	0x9c9
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 4
@@ -1422,112 +1422,112 @@ _motorsSetSpeed:
 	.4byte	.LASF0
 	.byte	0x2
 	.2byte	0x981
-	.4byte	0x9da
+	.4byte	0x9e0
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xc
-	.4byte	0x28a
+	.4byte	0x290
 	.uleb128 0xb
 	.4byte	.LASF1
 	.byte	0x2
 	.2byte	0x9a1
-	.4byte	0x9ed
+	.4byte	0x9f3
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xc
-	.4byte	0x367
+	.4byte	0x36d
 	.uleb128 0xb
 	.4byte	.LASF2
 	.byte	0x2
 	.2byte	0x9c7
-	.4byte	0xa00
+	.4byte	0xa06
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xc
-	.4byte	0x4e5
+	.4byte	0x4eb
 	.uleb128 0xb
 	.4byte	.LASF3
 	.byte	0x2
 	.2byte	0x9f3
-	.4byte	0xa13
+	.4byte	0xa19
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xc
-	.4byte	0x653
+	.4byte	0x659
 	.uleb128 0xb
 	.4byte	.LASF4
 	.byte	0x2
 	.2byte	0xa19
-	.4byte	0xa26
+	.4byte	0xa2c
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xc
-	.4byte	0x74d
+	.4byte	0x753
 	.uleb128 0xb
 	.4byte	.LASF5
 	.byte	0x2
 	.2byte	0xa39
-	.4byte	0xa39
+	.4byte	0xa3f
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xc
-	.4byte	0x83d
+	.4byte	0x843
 	.uleb128 0xb
 	.4byte	.LASF6
 	.byte	0x2
 	.2byte	0xaf5
-	.4byte	0xa4c
+	.4byte	0xa52
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xc
-	.4byte	0x91c
+	.4byte	0x922
 	.uleb128 0xb
 	.4byte	.LASF0
 	.byte	0x2
 	.2byte	0x981
-	.4byte	0x9da
+	.4byte	0x9e0
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xb
 	.4byte	.LASF1
 	.byte	0x2
 	.2byte	0x9a1
-	.4byte	0x9ed
+	.4byte	0x9f3
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xb
 	.4byte	.LASF2
 	.byte	0x2
 	.2byte	0x9c7
-	.4byte	0xa00
+	.4byte	0xa06
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xb
 	.4byte	.LASF3
 	.byte	0x2
 	.2byte	0x9f3
-	.4byte	0xa13
+	.4byte	0xa19
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xb
 	.4byte	.LASF4
 	.byte	0x2
 	.2byte	0xa19
-	.4byte	0xa26
+	.4byte	0xa2c
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xb
 	.4byte	.LASF5
 	.byte	0x2
 	.2byte	0xa39
-	.4byte	0xa39
+	.4byte	0xa3f
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0xb
 	.4byte	.LASF6
 	.byte	0x2
 	.2byte	0xaf5
-	.4byte	0xa4c
+	.4byte	0xa52
 	.byte	0x1
 	.byte	0x1
 	.byte	0x0
@@ -1721,48 +1721,48 @@ _motorsSetSpeed:
 	.4byte	0x53
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0xab4
-	.4byte	0x931
+	.4byte	0xaba
+	.4byte	0x937
 	.asciz	"motorsInit"
-	.4byte	0x94b
+	.4byte	0x951
 	.asciz	"motorsEnable"
-	.4byte	0x967
+	.4byte	0x96d
 	.asciz	"motorsDisable"
-	.4byte	0x984
+	.4byte	0x98a
 	.asciz	"motorsSetSpeed"
 	.4byte	0x0
 	.section	.debug_pubtypes,info
 	.4byte	0xe7
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0xab4
-	.4byte	0x1b5
+	.4byte	0xaba
+	.4byte	0x1bb
 	.asciz	"tagTRISABITS"
-	.4byte	0x28a
+	.4byte	0x290
 	.asciz	"TRISABITS"
-	.4byte	0x29c
+	.4byte	0x2a2
 	.asciz	"tagLATABITS"
-	.4byte	0x367
+	.4byte	0x36d
 	.asciz	"LATABITS"
-	.4byte	0x378
+	.4byte	0x37e
 	.asciz	"tagTRISBBITS"
-	.4byte	0x4e5
+	.4byte	0x4eb
 	.asciz	"TRISBBITS"
-	.4byte	0x4f7
+	.4byte	0x4fd
 	.asciz	"tagLATBBITS"
-	.4byte	0x653
+	.4byte	0x659
 	.asciz	"LATBBITS"
-	.4byte	0x664
+	.4byte	0x66a
 	.asciz	"tagTRISCBITS"
-	.4byte	0x74d
+	.4byte	0x753
 	.asciz	"TRISCBITS"
-	.4byte	0x75f
+	.4byte	0x765
 	.asciz	"tagLATCBITS"
-	.4byte	0x83d
+	.4byte	0x843
 	.asciz	"LATCBITS"
-	.4byte	0x84e
+	.4byte	0x854
 	.asciz	"tagAD1PCFGLBITS"
-	.4byte	0x91c
+	.4byte	0x922
 	.asciz	"AD1PCFGLBITS"
 	.4byte	0x0
 	.section	.debug_aranges,info

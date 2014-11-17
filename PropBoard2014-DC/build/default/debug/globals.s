@@ -1,4 +1,4 @@
-	.file "D:\\Robotique\\codes\\mainRobot\\PropBoard2014-DC\\globals.c"
+	.file "D:\\dev\\GitHub\\bULBot2015-mainRobot\\PropBoard2014-DC\\globals.c"
 	.section	.debug_abbrev,info
 .Ldebug_abbrev0:
 	.section	.debug_info,info
@@ -237,7 +237,7 @@ _satureAngle:
 	.section	.text,code
 .Letext0:
 	.section	.debug_info,info
-	.4byte	0x270
+	.4byte	0x276
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
@@ -245,7 +245,7 @@ _satureAngle:
 	.asciz	"GNU C 4.5.1 (XC16, Microchip v1_21) (A) Build date: Jan  2 2014"
 	.byte	0x1
 	.asciz	"globals.c"
-	.asciz	"D:\\\\Robotique\\\\codes\\\\mainRobot\\\\PropBoard2014-DC"
+	.asciz	"D:\\\\dev\\\\GitHub\\\\bULBot2015-mainRobot\\\\PropBoard2014-DC"
 	.4byte	.Ltext0
 	.4byte	.Letext0
 	.4byte	.Ldebug_line0
@@ -253,12 +253,12 @@ _satureAngle:
 	.byte	0x6
 	.byte	0x2
 	.byte	0xe
-	.4byte	0xc6
+	.4byte	0xcc
 	.uleb128 0x3
 	.asciz	"x"
 	.byte	0x2
 	.byte	0xf
-	.4byte	0xc6
+	.4byte	0xcc
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
@@ -266,7 +266,7 @@ _satureAngle:
 	.asciz	"y"
 	.byte	0x2
 	.byte	0x10
-	.4byte	0xc6
+	.4byte	0xcc
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x2
@@ -274,7 +274,7 @@ _satureAngle:
 	.asciz	"alpha"
 	.byte	0x2
 	.byte	0x11
-	.4byte	0xc6
+	.4byte	0xcc
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
@@ -287,17 +287,17 @@ _satureAngle:
 	.asciz	"positionInteger"
 	.byte	0x2
 	.byte	0x12
-	.4byte	0x95
+	.4byte	0x9b
 	.uleb128 0x2
 	.byte	0x4
 	.byte	0x2
 	.byte	0x17
-	.4byte	0x105
+	.4byte	0x10b
 	.uleb128 0x3
 	.asciz	"l"
 	.byte	0x2
 	.byte	0x18
-	.4byte	0xc6
+	.4byte	0xcc
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
@@ -305,7 +305,7 @@ _satureAngle:
 	.asciz	"r"
 	.byte	0x2
 	.byte	0x19
-	.4byte	0xc6
+	.4byte	0xcc
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x2
@@ -314,17 +314,17 @@ _satureAngle:
 	.asciz	"relativeCoordInteger"
 	.byte	0x2
 	.byte	0x1a
-	.4byte	0xe4
+	.4byte	0xea
 	.uleb128 0x2
 	.byte	0xc
 	.byte	0x3
 	.byte	0x6
-	.4byte	0x152
+	.4byte	0x158
 	.uleb128 0x3
 	.asciz	"x"
 	.byte	0x3
 	.byte	0x7
-	.4byte	0x152
+	.4byte	0x158
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
@@ -332,7 +332,7 @@ _satureAngle:
 	.asciz	"y"
 	.byte	0x3
 	.byte	0x8
-	.4byte	0x152
+	.4byte	0x158
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
@@ -340,7 +340,7 @@ _satureAngle:
 	.asciz	"alpha"
 	.byte	0x3
 	.byte	0x9
-	.4byte	0x152
+	.4byte	0x158
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x8
@@ -353,17 +353,17 @@ _satureAngle:
 	.asciz	"realPosType"
 	.byte	0x3
 	.byte	0xa
-	.4byte	0x121
+	.4byte	0x127
 	.uleb128 0x2
 	.byte	0x8
 	.byte	0x3
 	.byte	0xc
-	.4byte	0x18f
+	.4byte	0x195
 	.uleb128 0x3
 	.asciz	"l"
 	.byte	0x3
 	.byte	0xd
-	.4byte	0x152
+	.4byte	0x158
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x0
@@ -371,7 +371,7 @@ _satureAngle:
 	.asciz	"r"
 	.byte	0x3
 	.byte	0xe
-	.4byte	0x152
+	.4byte	0x158
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
@@ -380,24 +380,24 @@ _satureAngle:
 	.asciz	"relativeCoord"
 	.byte	0x3
 	.byte	0xf
-	.4byte	0x16e
+	.4byte	0x174
 	.uleb128 0x6
 	.byte	0x1
 	.asciz	"positionFloatToInteger"
 	.byte	0x1
 	.byte	0x4
 	.byte	0x1
-	.4byte	0xcd
+	.4byte	0xd3
 	.4byte	.LFB0
 	.4byte	.LFE0
 	.byte	0x1
 	.byte	0x5e
-	.4byte	0x1f1
+	.4byte	0x1f7
 	.uleb128 0x7
 	.asciz	"posFl"
 	.byte	0x1
 	.byte	0x4
-	.4byte	0x15b
+	.4byte	0x161
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 6
@@ -405,7 +405,7 @@ _satureAngle:
 	.asciz	"pos"
 	.byte	0x1
 	.byte	0x5
-	.4byte	0xcd
+	.4byte	0xd3
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 0
@@ -416,17 +416,17 @@ _satureAngle:
 	.byte	0x1
 	.byte	0xe
 	.byte	0x1
-	.4byte	0x105
+	.4byte	0x10b
 	.4byte	.LFB1
 	.4byte	.LFE1
 	.byte	0x1
 	.byte	0x5e
-	.4byte	0x243
+	.4byte	0x249
 	.uleb128 0x7
 	.asciz	"posFl"
 	.byte	0x1
 	.byte	0xe
-	.4byte	0x18f
+	.4byte	0x195
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 4
@@ -434,7 +434,7 @@ _satureAngle:
 	.asciz	"pos"
 	.byte	0x1
 	.byte	0xf
-	.4byte	0x105
+	.4byte	0x10b
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 0
@@ -445,7 +445,7 @@ _satureAngle:
 	.byte	0x1
 	.byte	0x17
 	.byte	0x1
-	.4byte	0x152
+	.4byte	0x158
 	.4byte	.LFB2
 	.4byte	.LFE2
 	.byte	0x1
@@ -454,7 +454,7 @@ _satureAngle:
 	.asciz	"angle"
 	.byte	0x1
 	.byte	0x17
-	.4byte	0x152
+	.4byte	0x158
 	.byte	0x2
 	.byte	0x7e
 	.sleb128 0
@@ -615,26 +615,26 @@ _satureAngle:
 	.4byte	0x59
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x274
-	.4byte	0x1a4
+	.4byte	0x27a
+	.4byte	0x1aa
 	.asciz	"positionFloatToInteger"
-	.4byte	0x1f1
+	.4byte	0x1f7
 	.asciz	"relativeCoordFloatToInteger"
-	.4byte	0x243
+	.4byte	0x249
 	.asciz	"satureAngle"
 	.4byte	0x0
 	.section	.debug_pubtypes,info
 	.4byte	0x5d
 	.2byte	0x2
 	.4byte	.Ldebug_info0
-	.4byte	0x274
-	.4byte	0xcd
+	.4byte	0x27a
+	.4byte	0xd3
 	.asciz	"positionInteger"
-	.4byte	0x105
+	.4byte	0x10b
 	.asciz	"relativeCoordInteger"
-	.4byte	0x15b
+	.4byte	0x161
 	.asciz	"realPosType"
-	.4byte	0x18f
+	.4byte	0x195
 	.asciz	"relativeCoord"
 	.4byte	0x0
 	.section	.debug_aranges,info

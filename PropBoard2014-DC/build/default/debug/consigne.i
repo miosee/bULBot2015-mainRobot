@@ -1,5 +1,5 @@
 # 1 "consigne.c"
-# 1 "D:\\Robotique\\codes\\mainRobot\\PropBoard2014-DC//"
+# 1 "D:\\dev\\GitHub\\bULBot2015-mainRobot\\PropBoard2014-DC//"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "consigne.c"
@@ -35,8 +35,7 @@ typedef struct {
  DISABLED = 0,
  STANDING = 1,
  MOVING = 2,
- TEST_STANDING = 3,
- TEST_MOVING = 4,
+ TEST = 3,
  TRAJ_START_OUT = -1,
  TRAJ_END_OUT = -2,
  TRAJ_START_OBS = -3,
@@ -225,16 +224,32 @@ void csgSetFinalPos(relativeCoord finalPos) {
 
 
 inline void csgSetNomAcc(relativeCoord nomAcc) {
- prCsgNomAcc.l = nomAcc.l;
- prCsgNomAcc.r = nomAcc.r;
+ if (nomAcc.l >=0) {
+  prCsgNomAcc.l = nomAcc.l;
+ } else {
+  prCsgNomAcc.l = -nomAcc.l;
+ }
+ if (nomAcc.r >= 0) {
+  prCsgNomAcc.r = nomAcc.r;
+ } else {
+  prCsgNomAcc.r = -nomAcc.r;
+ }
  prMinDist.l = prCsgNomAcc.l*((1/100.0)*(1/100.0)/2);
  prMinDist.r = prCsgNomAcc.r*((1/100.0)*(1/100.0)/2);
 }
 
 
 inline void csgSetNomVel(relativeCoord nomVel) {
- prCsgNomVel.l = nomVel.l;
- prCsgNomVel.r = nomVel.r;
+ if (nomVel.l >= 0) {
+  prCsgNomVel.l = nomVel.l;
+ } else {
+  prCsgNomVel.l = -nomVel.l;
+ }
+ if (nomVel.r >= 0) {
+  prCsgNomVel.r = nomVel.r;
+ } else {
+  prCsgNomVel.r = -nomVel.r;
+ }
 }
 
 
@@ -274,13 +289,14 @@ csgStatusType csgCompute(void) {
  csgStatusType state;
 
  state = CSG_STANDING;
- if (( ( (prCsgFinalPos.l - prCsgPos.l) > 0 )?(prCsgFinalPos.l - prCsgPos.l):(-prCsgFinalPos.l - prCsgPos.l) ) <= prMinDist.l) {
+ tmp = (((prCsgFinalPos.l - prCsgPos.l) < 0) ? -(prCsgFinalPos.l - prCsgPos.l) : (prCsgFinalPos.l - prCsgPos.l));
+ if (tmp <= prMinDist.l) {
   prCsgVel.l = 0;
   prCsgPos.l = prCsgFinalPos.l;
  } else {
   state = CSG_MOVING;
   sqrVel = prCsgVel.l*prCsgVel.l;
-  tmp = prCsgPos.l + prCsgVel.l*(1/100.0) + ( ( (prCsgVel.l) >= 0 )?(1):(-1) )*sqrVel/(2*prCsgNomAcc.l);
+  tmp = prCsgPos.l + prCsgVel.l*(1/100.0) + (((prCsgVel.l) < 0) ? -1 : 1)*sqrVel/(2*prCsgNomAcc.l);
   if (prCsgPos.l < prCsgFinalPos.l) {
    if (tmp > prCsgFinalPos.l) {
     acc = sqrVel/(2*(prCsgPos.l - prCsgFinalPos.l));
@@ -310,13 +326,13 @@ csgStatusType csgCompute(void) {
   prCsgVel.l += acc*(1/100.0);
  }
 
- if (( ( (prCsgFinalPos.r - prCsgPos.r) > 0 )?(prCsgFinalPos.r - prCsgPos.r):(-prCsgFinalPos.r - prCsgPos.r) ) <= prMinDist.r) {
+ if ((((prCsgFinalPos.r - prCsgPos.r) < 0) ? -(prCsgFinalPos.r - prCsgPos.r) : (prCsgFinalPos.r - prCsgPos.r)) <= prMinDist.r) {
   prCsgVel.r = 0;
   prCsgPos.r = prCsgFinalPos.r;
  } else {
   state = CSG_MOVING;
   sqrVel = prCsgVel.r*prCsgVel.r;
-  tmp = prCsgPos.r + prCsgVel.r*(1/100.0) + ( ( (prCsgVel.r) >= 0 )?(1):(-1) )*sqrVel/(2*prCsgNomAcc.r);
+  tmp = prCsgPos.r + prCsgVel.r*(1/100.0) + (((prCsgVel.r) < 0) ? -1 : 1)*sqrVel/(2*prCsgNomAcc.r);
   if (prCsgPos.r < prCsgFinalPos.r) {
    if (tmp > prCsgFinalPos.r) {
     acc = sqrVel/(2*(prCsgPos.r - prCsgFinalPos.r));

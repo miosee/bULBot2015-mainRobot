@@ -44,16 +44,32 @@ void csgSetFinalPos(relativeCoord finalPos) {
 
 // Modifie les accélérations polaires nominales
 inline void csgSetNomAcc(relativeCoord nomAcc) {
-	prCsgNomAcc.l = nomAcc.l;
-	prCsgNomAcc.r = nomAcc.r;
+	if (nomAcc.l >=0) {
+		prCsgNomAcc.l = nomAcc.l;
+	} else {
+		prCsgNomAcc.l = -nomAcc.l;
+	}
+	if (nomAcc.r >= 0) {
+		prCsgNomAcc.r = nomAcc.r;
+	} else {
+		prCsgNomAcc.r = -nomAcc.r;
+	}
 	prMinDist.l = prCsgNomAcc.l*SQR_TS_DEMI;
 	prMinDist.r = prCsgNomAcc.r*SQR_TS_DEMI;
 }
 
 // Modifie les vitesses polaires nominales
 inline void csgSetNomVel(relativeCoord nomVel) {
-	prCsgNomVel.l = nomVel.l;
-	prCsgNomVel.r = nomVel.r;
+	if (nomVel.l >= 0) {
+		prCsgNomVel.l = nomVel.l;
+	} else {
+		prCsgNomVel.l = -nomVel.l;
+	}
+	if (nomVel.r >= 0) {
+		prCsgNomVel.r = nomVel.r;
+	} else {
+		prCsgNomVel.r = -nomVel.r;
+	}
 }
 
 // Renvoie la consigne de vitesse polaire actuelle
@@ -93,7 +109,8 @@ csgStatusType csgCompute(void) {
 	csgStatusType state;
 
 	state = CSG_STANDING;
-	if (ABS(prCsgFinalPos.l - prCsgPos.l) <= prMinDist.l) {			// si a distance qu'il reste a parcourir est négligeable
+	tmp = ABS(prCsgFinalPos.l - prCsgPos.l);
+	if (tmp <= prMinDist.l) {			// si a distance qu'il reste a parcourir est négligeable
 		prCsgVel.l = 0;
 		prCsgPos.l = prCsgFinalPos.l;
 	} else {

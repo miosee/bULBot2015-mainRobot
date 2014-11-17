@@ -185,10 +185,10 @@ void propulsionTranslaClotho(moveType newmove);
 #define CO_PROP_LEFT_MES_POS		CN_PROPULSION*0x10+4
 */
 
-// TEST 2014
-#define CO_PROP_VEL_CSG                 CN_PROPULSION*0x10+3 // 23
+// TEST 2015
+#define CO_PROP_REL_CSG                 CN_PROPULSION*0x10+3 // 23
 
-#define CO_PROP_VEL                     CN_PROPULSION*0x10+4  //24
+#define CO_PROP_REL_ODO                 CN_PROPULSION*0x10+4  //24
 
 // position commandée du moteur droit (un long sur 4 octets)
 #define CO_PROP_RIGHT_COM_POS		CN_PROPULSION*0x10+5

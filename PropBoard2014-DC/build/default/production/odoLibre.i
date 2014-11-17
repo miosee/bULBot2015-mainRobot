@@ -1,5 +1,5 @@
 # 1 "odoLibre.c"
-# 1 "D:\\Robotique\\codes\\mainRobot\\PropBoard2014-DC//"
+# 1 "D:\\dev\\GitHub\\bULBot2015-mainRobot\\PropBoard2014-DC//"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "odoLibre.c"
@@ -7002,20 +7002,14 @@ void calculeOdometrie(void) {
  int leftVel, rightVel;
  int tmpLeft, tmpRight;
  float tmpFloat, dT, dR;
+# 75 "odoLibre.c"
+ dT = (float)(((int)OC1RS-(int)OC2RS)+((int)OC3RS-(int)OC4RS));
+ dT /= (PR2+1);
+ dT *= (1.2/100.0);
+ dR = (float)(((int)OC1RS-(int)OC2RS)-((int)OC3RS-(int)OC4RS));
+ dR /= (PR2+1);
+ dR *= (1.2/100.0)/0.075;
 
-
-
-
- tmpLeft = (POS2CNT);
- tmpRight = (POS1CNT);
- leftVel = tmpLeft - prOdoOldLeftCnt;
- rightVel = tmpRight - prOdoOldRightcnt;
- prOdoOldLeftCnt = tmpLeft;
- prOdoOldRightcnt = tmpRight;
-
- dT = (0.999*rightVel + 1.001*leftVel)*((3.14159)*47.8E-3/4096/2);
- dR = (0.999*rightVel - 1.001*leftVel)*((3.14159)*47.8E-3/4096/163.0539E-3);
-# 82 "odoLibre.c"
  tmpFloat = prOdoAbsPos.alpha + dR/2;
  prOdoAbsPos.x += dT*cosf(tmpFloat);
  prOdoAbsPos.y += dT*sinf(tmpFloat);
