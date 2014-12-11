@@ -1,4 +1,4 @@
-Microchip Technology Inc, v†^
+Microchip Technology Inc, v@†N
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.21\bin\bin\..\bin/elf-ld.exe
@@ -172,10 +172,10 @@ section                    address   length (PC units)   length (bytes) (dec)
 .text                        0x200              0x14a6          0x1ef9  (7929)
 .const                      0x16a6               0x29e           0x3ed  (1005)
 libmxconst                  0x1944               0x104           0x186  (390)
-.text                       0x1a48              0x385c          0x548a  (21642)
-.dinit                      0x52a4                0x4c            0x72  (114)
+.text                       0x1a48              0x387c          0x54ba  (21690)
+.dinit                      0x52c4                0x4c            0x72  (114)
 
-                     Total program memory used (bytes):         0x7968  (31080) 23%
+                     Total program memory used (bytes):         0x7998  (31128) 23%
 
 
 Data Memory  [Origin = 0x800, Length = 0x4000]
@@ -185,9 +185,9 @@ section                    address      alignment gaps    total length  (dec)
 .nbss                        0x800                   0           0xf18  (3864)
 .ndata                      0x1718                   0             0xa  (10)
 .nbss                       0x1722                   0             0xa  (10)
-_039ADDE0_at_address_00004000    0x4000                   0            0x80  (128)
-_039ADEA0_at_address_00004080    0x4080                   0            0x10  (16)
-_039ADE40_at_address_00004090    0x4090                   0            0x10  (16)
+_03B1DDE0_at_address_00004000    0x4000                   0            0x80  (128)
+_03B1DEA0_at_address_00004080    0x4080                   0            0x10  (16)
+_03B1DE40_at_address_00004090    0x4090                   0            0x10  (16)
 
                         Total data memory used (bytes):          0xfcc  (4044) 24%
 
@@ -418,27 +418,27 @@ External Symbols in Program Memory (by address):
                   0x004872                  _pwmSetCycle
                   0x0048ec                  _pwmEnable
                   0x00492e                  _pwmDisable
-                  0x004972                  _addTranslation
-                  0x0049ba                  _addRotation
-                  0x004a08                  _stopNow
-                  0x004b32                  _calcSegment
-                  0x004bca                  _odoInit
-                  0x004c36                  _calculeOdometrie
-                  0x004d80                  _odoGetRelVel
-                  0x004d9c                  _odoGetRelPos
-                  0x004db8                  _odoGetAbsPos
-                  0x004dde                  _odoSetAbsPos
-                  0x004e0c                  _regInit
-                  0x004e1e                  _regCompute
-                  0x005020                  _motorsInit
-                  0x00507c                  _motorsEnable
-                  0x0050a2                  _motorsDisable
-                  0x0050c8                  _motorsSetSpeed
-                  0x005142                  _positionFloatToInteger
-                  0x0051ac                  _relativeCoordFloatToInteger
-                  0x0051f6                  _satureAngle
-                  0x00524e                  _pllConfig
-                  0x005292                  _canPinAssign
+                  0x004972                  _odoInit
+                  0x0049de                  _calculeOdometrie
+                  0x004b48                  _odoGetRelVel
+                  0x004b64                  _odoGetRelPos
+                  0x004b80                  _odoGetAbsPos
+                  0x004ba6                  _odoSetAbsPos
+                  0x004bd4                  _addTranslation
+                  0x004c1c                  _addRotation
+                  0x004c6a                  _stopNow
+                  0x004d94                  _calcSegment
+                  0x004e2c                  _regInit
+                  0x004e3e                  _regCompute
+                  0x005040                  _motorsInit
+                  0x00509c                  _motorsEnable
+                  0x0050c2                  _motorsDisable
+                  0x0050e8                  _motorsSetSpeed
+                  0x005162                  _positionFloatToInteger
+                  0x0051cc                  _relativeCoordFloatToInteger
+                  0x005216                  _satureAngle
+                  0x00526e                  _pllConfig
+                  0x0052b2                  _canPinAssign
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
@@ -531,15 +531,15 @@ External Symbols in Program Memory (by name):
                   0x000c36                  __unpackdnrmf
                   0x000f36                  __unpackf
                   0x001c48                  _addObstacle
-                  0x0049ba                  _addRotation
-                  0x004972                  _addTranslation
+                  0x004c1c                  _addRotation
+                  0x004bd4                  _addTranslation
                   0x00035c                  _atan2f
                   0x001ec4                  _atanMP
                   0x0009cc                  _atanf
                   0x0009cc                  _atanfx
-                  0x004b32                  _calcSegment
-                  0x004c36                  _calculeOdometrie
-                  0x005292                  _canPinAssign
+                  0x004d94                  _calcSegment
+                  0x0049de                  _calculeOdometrie
+                  0x0052b2                  _canPinAssign
                   0x001b9a                  _computeSegAngle
                   0x002312                  _convertPath
                   0x00053c                  _cosf
@@ -567,17 +567,17 @@ External Symbols in Program Memory (by name):
                   0x0016a6                  _initialMap
                   0x0024f6                  _isObsInMap
                   0x003056                  _main
-                  0x0050a2                  _motorsDisable
-                  0x00507c                  _motorsEnable
-                  0x005020                  _motorsInit
-                  0x0050c8                  _motorsSetSpeed
-                  0x004db8                  _odoGetAbsPos
-                  0x004d9c                  _odoGetRelPos
-                  0x004d80                  _odoGetRelVel
-                  0x004bca                  _odoInit
-                  0x004dde                  _odoSetAbsPos
-                  0x00524e                  _pllConfig
-                  0x005142                  _positionFloatToInteger
+                  0x0050c2                  _motorsDisable
+                  0x00509c                  _motorsEnable
+                  0x005040                  _motorsInit
+                  0x0050e8                  _motorsSetSpeed
+                  0x004b80                  _odoGetAbsPos
+                  0x004b64                  _odoGetRelPos
+                  0x004b48                  _odoGetRelVel
+                  0x004972                  _odoInit
+                  0x004ba6                  _odoSetAbsPos
+                  0x00526e                  _pllConfig
+                  0x005162                  _positionFloatToInteger
                   0x004470                  _ppsInConfig
                   0x0041b4                  _ppsOutConfig
                   0x002f68                  _propInterrupt
@@ -587,16 +587,16 @@ External Symbols in Program Memory (by name):
                   0x004784                  _pwmSetDuration
                   0x0046ae                  _pwmSetDutyCycle
                   0x00461e                  _pwmSetup
-                  0x004e1e                  _regCompute
-                  0x004e0c                  _regInit
-                  0x0051ac                  _relativeCoordFloatToInteger
-                  0x0051f6                  _satureAngle
+                  0x004e3e                  _regCompute
+                  0x004e2c                  _regInit
+                  0x0051cc                  _relativeCoordFloatToInteger
+                  0x005216                  _satureAngle
                   0x002fe6                  _setPos
                   0x00047a                  _sinf
                   0x00047a                  _sinfx
                   0x000eba                  _sqrtf
                   0x000eba                  _sqrtfx
-                  0x004a08                  _stopNow
+                  0x004c6a                  _stopNow
                   0x004058                  _timerInterrupt
                   0x003d36                  _timerSetup
                   0x003e3e                  _timerSetup32
@@ -860,7 +860,7 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x9bbc
+.debug_info       0x000000       0x9b2c
  *(.debug_info)
  .debug_info      0x000000       0x23ee build/default/production/_ext/2095425508/CanDspic.o
  .debug_info      0x0023ee        0x798 build/default/production/_ext/2095425508/CanInterruptsDspic.o
@@ -872,13 +872,13 @@ __FUID3
  .debug_info      0x0073e0        0x265 build/default/production/Regulator.o
  .debug_info      0x007645        0x27a build/default/production/globals.o
  .debug_info      0x0078bf        0x3f5 build/default/production/consigne.o
- .debug_info      0x007cb4        0x866 build/default/production/odoLibre.o
- .debug_info      0x00851a        0xaba build/default/production/Motors.o
- .debug_info      0x008fd4        0x909 build/default/production/GenerTraj.o
- .debug_info      0x0098dd        0x2df build/default/production/mouvements.o
+ .debug_info      0x007cb4        0x7d6 build/default/production/odoLibre.o
+ .debug_info      0x00848a        0xaba build/default/production/Motors.o
+ .debug_info      0x008f44        0x909 build/default/production/GenerTraj.o
+ .debug_info      0x00984d        0x2df build/default/production/mouvements.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000       0x102f
+.debug_abbrev     0x000000       0x1022
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x24b build/default/production/_ext/2095425508/CanDspic.o
  .debug_abbrev    0x00024b        0x122 build/default/production/_ext/2095425508/CanInterruptsDspic.o
@@ -890,12 +890,12 @@ __FUID3
  .debug_abbrev    0x0009ba         0xbd build/default/production/Regulator.o
  .debug_abbrev    0x000a77         0x96 build/default/production/globals.o
  .debug_abbrev    0x000b0d         0xe5 build/default/production/consigne.o
- .debug_abbrev    0x000bf2        0x187 build/default/production/odoLibre.o
- .debug_abbrev    0x000d79         0xb9 build/default/production/Motors.o
- .debug_abbrev    0x000e32        0x169 build/default/production/GenerTraj.o
- .debug_abbrev    0x000f9b         0x94 build/default/production/mouvements.o
+ .debug_abbrev    0x000bf2        0x17a build/default/production/odoLibre.o
+ .debug_abbrev    0x000d6c         0xb9 build/default/production/Motors.o
+ .debug_abbrev    0x000e25        0x169 build/default/production/GenerTraj.o
+ .debug_abbrev    0x000f8e         0x94 build/default/production/mouvements.o
 
-.debug_line       0x000000       0x322f
+.debug_line       0x000000       0x323f
  *(.debug_line)
  .debug_line      0x000000        0x79e build/default/production/_ext/2095425508/CanDspic.o
  .debug_line      0x00079e        0x17e build/default/production/_ext/2095425508/CanInterruptsDspic.o
@@ -907,10 +907,10 @@ __FUID3
  .debug_line      0x001d45        0x163 build/default/production/Regulator.o
  .debug_line      0x001ea8         0xf4 build/default/production/globals.o
  .debug_line      0x001f9c        0x423 build/default/production/consigne.o
- .debug_line      0x0023bf        0x2bb build/default/production/odoLibre.o
- .debug_line      0x00267a        0x278 build/default/production/Motors.o
- .debug_line      0x0028f2        0x79c build/default/production/GenerTraj.o
- .debug_line      0x00308e        0x1a1 build/default/production/mouvements.o
+ .debug_line      0x0023bf        0x2cb build/default/production/odoLibre.o
+ .debug_line      0x00268a        0x278 build/default/production/Motors.o
+ .debug_line      0x002902        0x79c build/default/production/GenerTraj.o
+ .debug_line      0x00309e        0x1a1 build/default/production/mouvements.o
 
 .debug_frame      0x000000        0x778
  *(.debug_frame)
@@ -2486,21 +2486,21 @@ __c30_signature
  __c30_signature
                   0x000d42          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(fpack.eo)
 
-_039ADDE0_at_address_00004000
+_03B1DDE0_at_address_00004000
                     0x4000         0x80
- _039ADDE0_at_address_00004000
+ _03B1DDE0_at_address_00004000
                     0x4000         0x80 build/default/production/_ext/2095425508/CanDspic.o
                     0x4000                  _transmitBuffers
 
-_039ADE40_at_address_00004090
+_03B1DE40_at_address_00004090
                     0x4090         0x10
- _039ADE40_at_address_00004090
+ _03B1DE40_at_address_00004090
                     0x4090         0x10 build/default/production/_ext/2095425508/CanDspic.o
                     0x4090                  _receiveBufferOrders
 
-_039ADEA0_at_address_00004080
+_03B1DEA0_at_address_00004080
                     0x4080         0x10
- _039ADEA0_at_address_00004080
+ _03B1DEA0_at_address_00004080
                     0x4080         0x10 build/default/production/_ext/2095425508/CanDspic.o
                     0x4080                  _receiveBufferObjects
 
@@ -2570,7 +2570,7 @@ libmxconst          0x9944        0x104 load address 0x001944
  libmxconst         0x99f0         0x30 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(ssqrtfx.eo)
  libmxconst         0x9a20         0x28 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(sinfx.eo)
 
-.text             0x001a48       0x385c
+.text             0x001a48       0x387c
  .text            0x001a48        0xccc build/default/production/GenerTraj.o
                   0x001a48                  _RPtoMP
                   0x001b06                  _MPtoRP
@@ -2639,33 +2639,33 @@ libmxconst          0x9944        0x104 load address 0x001944
                   0x004872                  _pwmSetCycle
                   0x0048ec                  _pwmEnable
                   0x00492e                  _pwmDisable
- .text            0x004972        0x258 build/default/production/mouvements.o
-                  0x004972                  _addTranslation
-                  0x0049ba                  _addRotation
-                  0x004a08                  _stopNow
-                  0x004b32                  _calcSegment
- .text            0x004bca        0x242 build/default/production/odoLibre.o
-                  0x004bca                  _odoInit
-                  0x004c36                  _calculeOdometrie
-                  0x004d80                  _odoGetRelVel
-                  0x004d9c                  _odoGetRelPos
-                  0x004db8                  _odoGetAbsPos
-                  0x004dde                  _odoSetAbsPos
- .text            0x004e0c        0x214 build/default/production/Regulator.o
-                  0x004e0c                  _regInit
-                  0x004e1e                  _regCompute
- .text            0x005020        0x122 build/default/production/Motors.o
-                  0x005020                  _motorsInit
-                  0x00507c                  _motorsEnable
-                  0x0050a2                  _motorsDisable
-                  0x0050c8                  _motorsSetSpeed
- .text            0x005142        0x10c build/default/production/globals.o
-                  0x005142                  _positionFloatToInteger
-                  0x0051ac                  _relativeCoordFloatToInteger
-                  0x0051f6                  _satureAngle
- .text            0x00524e         0x56 build/default/production/Configware.o
-                  0x00524e                  _pllConfig
-                  0x005292                  _canPinAssign
+ .text            0x004972        0x262 build/default/production/odoLibre.o
+                  0x004972                  _odoInit
+                  0x0049de                  _calculeOdometrie
+                  0x004b48                  _odoGetRelVel
+                  0x004b64                  _odoGetRelPos
+                  0x004b80                  _odoGetAbsPos
+                  0x004ba6                  _odoSetAbsPos
+ .text            0x004bd4        0x258 build/default/production/mouvements.o
+                  0x004bd4                  _addTranslation
+                  0x004c1c                  _addRotation
+                  0x004c6a                  _stopNow
+                  0x004d94                  _calcSegment
+ .text            0x004e2c        0x214 build/default/production/Regulator.o
+                  0x004e2c                  _regInit
+                  0x004e3e                  _regCompute
+ .text            0x005040        0x122 build/default/production/Motors.o
+                  0x005040                  _motorsInit
+                  0x00509c                  _motorsEnable
+                  0x0050c2                  _motorsDisable
+                  0x0050e8                  _motorsSetSpeed
+ .text            0x005162        0x10c build/default/production/globals.o
+                  0x005162                  _positionFloatToInteger
+                  0x0051cc                  _relativeCoordFloatToInteger
+                  0x005216                  _satureAngle
+ .text            0x00526e         0x56 build/default/production/Configware.o
+                  0x00526e                  _pllConfig
+                  0x0052b2                  _canPinAssign
 
-.dinit            0x0052a4         0x4c
- .dinit           0x0052a4         0x4c data_init
+.dinit            0x0052c4         0x4c
+ .dinit           0x0052c4         0x4c data_init
