@@ -7164,6 +7164,8 @@ relativeCoordInteger odoRelPos, csgRelPos;
 
 volatile int isrRegFlag, isrCsgFlag;
 
+
+
 void propInterrupt(void) {
  (LATBbits.LATB5) = 1;
  calculeOdometrie();
@@ -7185,10 +7187,29 @@ void propInterrupt(void) {
 }
 
 
+
+
+
+
 typedef struct {
  int int0, int1, int2;
 } canDataType;
-canDataType getCanData(void);
+inline canDataType getCanData(void) {
+    canDataType canData;
+ union INTEG tempINTEG;
+
+ tempINTEG.ub[0] = canReceivedData[0]; tempINTEG.ub[1] = canReceivedData[1];
+ canData.int0 = tempINTEG.i;
+ tempINTEG.ub[0] = canReceivedData[2]; tempINTEG.ub[1] = canReceivedData[3];
+ canData.int1 = tempINTEG.i;
+ tempINTEG.ub[0] = canReceivedData[4]; tempINTEG.ub[1] = canReceivedData[5];
+ canData.int2 = tempINTEG.i;
+ return(canData);
+}
+
+
+
+
 
 inline void setPos(void) {
  canDataType canData;
@@ -7231,9 +7252,9 @@ int main(void) {
  TRISCbits.TRISC5 = 0;
  TRISBbits.TRISB5 = 0;
  nomVel.l = 1;
- nomVel.r = 80;
+ nomVel.r = (3.14159)/2;
  nomAcc.l = 1;
- nomAcc.r = 80;
+ nomAcc.r = (3.14159)/2;
  obstacle.status = 0;
  obstacle.x = 0;
  obstacle.y = 0;
@@ -7253,7 +7274,7 @@ int main(void) {
  CanEnvoiProduction(&state);
  state = DISABLED;
  isrCsgFlag = 0;
-# 135 "main.c"
+# 161 "main.c"
  oldState = state;
  timerSetup(1, 10);
  timerInterrupt(1, &propInterrupt);
@@ -7508,19 +7529,4 @@ int main(void) {
 
  }
  return (1);
-}
-
-
-canDataType getCanData(void) {
- canDataType canData;
- union INTEG tempINTEG;
-
- tempINTEG.ub[0] = canReceivedData[0]; tempINTEG.ub[1] = canReceivedData[1];
- canData.int0 = tempINTEG.i;
- tempINTEG.ub[0] = canReceivedData[2]; tempINTEG.ub[1] = canReceivedData[3];
- canData.int1 = tempINTEG.i;
- tempINTEG.ub[0] = canReceivedData[4]; tempINTEG.ub[1] = canReceivedData[5];
- canData.int2 = tempINTEG.i;
-
- return(canData);
 }

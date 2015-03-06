@@ -1,4 +1,4 @@
-Microchip Technology Inc, v†g
+Microchip Technology Inc, vð…N
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.21\bin\bin\..\bin/elf-ld.exe
@@ -36,10 +36,8 @@ Command:
   build/default/debug/GenerTraj.o \
   build/default/debug/mouvements.o \
   --defsym=__MPLAB_BUILD=1 \
-  --defsym=__ICD2RAM=1 \
   --defsym=__MPLAB_DEBUG=1 \
   --defsym=__DEBUG=1 \
-  --defsym=__MPLAB_DEBUGGER_PK3=1 \
   -Tp33FJ128MC804.gld.00 \
   --stack=16 \
   --check-sections \
@@ -176,25 +174,24 @@ section                    address   length (PC units)   length (bytes) (dec)
 .text                        0x200              0x14a6          0x1ef9  (7929)
 .const                      0x16a6               0x29e           0x3ed  (1005)
 libmxconst                  0x1944               0x104           0x186  (390)
-.text                       0x1a48              0x385c          0x548a  (21642)
-.dinit                      0x52a4                0x4c            0x72  (114)
+.text                       0x1a48              0x3822          0x5433  (21555)
+.dinit                      0x526a                0x4c            0x72  (114)
 
-                     Total program memory used (bytes):         0x7968  (31080) 23%
+                     Total program memory used (bytes):         0x7911  (30993) 23%
 
 
 Data Memory  [Origin = 0x800, Length = 0x4000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.icd                         0x800                0x50            0x50  (80)
-.nbss                        0x850                   0           0xf18  (3864)
-.ndata                      0x1768                   0             0xa  (10)
-.nbss                       0x1772                   0             0xa  (10)
-_039E1DE0_at_address_00004000    0x4000                   0            0x80  (128)
-_039E1EA0_at_address_00004080    0x4080                   0            0x10  (16)
-_039E1E40_at_address_00004090    0x4090                   0            0x10  (16)
+.nbss                        0x800                   0           0xf18  (3864)
+.ndata                      0x1718                   0             0xa  (10)
+.nbss                       0x1722                   0             0xa  (10)
+_039ADDE0_at_address_00004000    0x4000                   0            0x80  (128)
+_039ADEA0_at_address_00004080    0x4080                   0            0x10  (16)
+_039ADE40_at_address_00004090    0x4090                   0            0x10  (16)
 
-                        Total data memory used (bytes):         0x101c  (4124) 25%
+                        Total data memory used (bytes):          0xfcc  (4044) 24%
 
 
 Dynamic Memory Usage
@@ -202,101 +199,101 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                       0x177c                              0x2884  (10372)
+stack                       0x172c                              0x28d4  (10452)
 
-                        Maximum dynamic memory (bytes):         0x2884  (10372)
+                        Maximum dynamic memory (bytes):         0x28d4  (10452)
 
 
 External Symbols in Data Memory (by address):
 
-                    0x0850                  _dkNodes
-                    0x1660                  _production
-                    0x1690                  _consommation
-                    0x16ea                  _nombreObjetsProduits
-                    0x16eb                  _nombreObjetsConsommes
-                    0x16ec                  _jij
-                    0x16ed                  _kik
-                    0x16ee                  _ptrSource
-                    0x16f0                  _ptrDest
-                    0x16f2                  _canReceivedCommand
-                    0x16f3                  _canReceivedData
-                    0x16fa                  _canReceivedOrderFlag
-                    0x16fc                  _prCsgPos
-                    0x1704                  _prCsgFinalPos
-                    0x170c                  _prCsgVel
-                    0x1714                  _prCsgNomVel
-                    0x171c                  _prCsgNomAcc
-                    0x1724                  _prMinDist
-                    0x172c                  _prCsgStatus
-                    0x172e                  _prOdoAbsPos
-                    0x173a                  _prOdoRelVel
-                    0x1742                  _prOdoRelPos
-                    0x174e                  _odoPhysPos
-                    0x1754                  _state
-                    0x1756                  _obstacle
-                    0x175c                  _odoRelPos
-                    0x1760                  _csgRelPos
-                    0x1764                  _isrRegFlag
-                    0x1766                  _isrCsgFlag
-                    0x1768                  _TxISR
-                    0x1772                  _prRegOldDcLeft
-                    0x1776                  _prRegOldDcRight
+                    0x0800                  _dkNodes
+                    0x1610                  _production
+                    0x1640                  _consommation
+                    0x169a                  _nombreObjetsProduits
+                    0x169b                  _nombreObjetsConsommes
+                    0x169c                  _jij
+                    0x169d                  _kik
+                    0x169e                  _ptrSource
+                    0x16a0                  _ptrDest
+                    0x16a2                  _canReceivedCommand
+                    0x16a3                  _canReceivedData
+                    0x16aa                  _canReceivedOrderFlag
+                    0x16ac                  _prCsgPos
+                    0x16b4                  _prCsgFinalPos
+                    0x16bc                  _prCsgVel
+                    0x16c4                  _prCsgNomVel
+                    0x16cc                  _prCsgNomAcc
+                    0x16d4                  _prMinDist
+                    0x16dc                  _prCsgStatus
+                    0x16de                  _prOdoAbsPos
+                    0x16ea                  _prOdoRelVel
+                    0x16f2                  _prOdoRelPos
+                    0x16fe                  _odoPhysPos
+                    0x1704                  _state
+                    0x1706                  _obstacle
+                    0x170c                  _odoRelPos
+                    0x1710                  _csgRelPos
+                    0x1714                  _isrRegFlag
+                    0x1716                  _isrCsgFlag
+                    0x1718                  _TxISR
+                    0x1722                  _prRegOldDcLeft
+                    0x1726                  _prRegOldDcRight
                     0x4000                  _transmitBuffers
                     0x4080                  _receiveBufferObjects
                     0x4090                  _receiveBufferOrders
 
 External Symbols in Data Memory (by name):
 
-                    0x1768                  _TxISR
-                    0x16f2                  _canReceivedCommand
-                    0x16f3                  _canReceivedData
-                    0x16fa                  _canReceivedOrderFlag
-                    0x1690                  _consommation
-                    0x1760                  _csgRelPos
-                    0x0850                  _dkNodes
-                    0x1766                  _isrCsgFlag
-                    0x1764                  _isrRegFlag
-                    0x16ec                  _jij
-                    0x16ed                  _kik
-                    0x16eb                  _nombreObjetsConsommes
-                    0x16ea                  _nombreObjetsProduits
-                    0x1756                  _obstacle
-                    0x174e                  _odoPhysPos
-                    0x175c                  _odoRelPos
-                    0x1704                  _prCsgFinalPos
-                    0x171c                  _prCsgNomAcc
-                    0x1714                  _prCsgNomVel
-                    0x16fc                  _prCsgPos
-                    0x172c                  _prCsgStatus
-                    0x170c                  _prCsgVel
-                    0x1724                  _prMinDist
-                    0x172e                  _prOdoAbsPos
-                    0x1742                  _prOdoRelPos
-                    0x173a                  _prOdoRelVel
-                    0x1772                  _prRegOldDcLeft
-                    0x1776                  _prRegOldDcRight
-                    0x1660                  _production
-                    0x16f0                  _ptrDest
-                    0x16ee                  _ptrSource
+                    0x1718                  _TxISR
+                    0x16a2                  _canReceivedCommand
+                    0x16a3                  _canReceivedData
+                    0x16aa                  _canReceivedOrderFlag
+                    0x1640                  _consommation
+                    0x1710                  _csgRelPos
+                    0x0800                  _dkNodes
+                    0x1716                  _isrCsgFlag
+                    0x1714                  _isrRegFlag
+                    0x169c                  _jij
+                    0x169d                  _kik
+                    0x169b                  _nombreObjetsConsommes
+                    0x169a                  _nombreObjetsProduits
+                    0x1706                  _obstacle
+                    0x16fe                  _odoPhysPos
+                    0x170c                  _odoRelPos
+                    0x16b4                  _prCsgFinalPos
+                    0x16cc                  _prCsgNomAcc
+                    0x16c4                  _prCsgNomVel
+                    0x16ac                  _prCsgPos
+                    0x16dc                  _prCsgStatus
+                    0x16bc                  _prCsgVel
+                    0x16d4                  _prMinDist
+                    0x16de                  _prOdoAbsPos
+                    0x16f2                  _prOdoRelPos
+                    0x16ea                  _prOdoRelVel
+                    0x1722                  _prRegOldDcLeft
+                    0x1726                  _prRegOldDcRight
+                    0x1610                  _production
+                    0x16a0                  _ptrDest
+                    0x169e                  _ptrSource
                     0x4080                  _receiveBufferObjects
                     0x4090                  _receiveBufferOrders
-                    0x1754                  _state
+                    0x1704                  _state
                     0x4000                  _transmitBuffers
 
 External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x000226                  __psv_init
-                  0x000236                  __data_init_standard
                   0x000236                  __data_init
+                  0x000236                  __data_init_standard
                   0x000298                  __C1Interrupt
                   0x000358                  __DefaultInterrupt
                   0x00035c                  _atan2f
-                  0x000396                  ___ltsf2
                   0x000396                  ___lesf2
+                  0x000396                  ___ltsf2
                   0x000396                  ___eqsf2
-                  0x00039a                  ___gesf2
                   0x00039a                  ___gtsf2
+                  0x00039a                  ___gesf2
                   0x00039e                  ___fixsfsi
                   0x0003e0                  ___fixunssfsi
                   0x000416                  ___floatsisf
@@ -308,19 +305,19 @@ External Symbols in Program Memory (by address):
                   0x000474                  __fbopReturnNaN
                   0x00047a                  _sinf
                   0x00047a                  _sinfx
-                  0x00053c                  _cosf
                   0x00053c                  _cosfx
+                  0x00053c                  _cosf
                   0x0005d6                  __typef
-                  0x00060a                  ___subsf3
                   0x00060a                  ___subsf3x
+                  0x00060a                  ___subsf3
                   0x00061c                  ___addsf3x
                   0x00061c                  ___addsf3
-                  0x0007e6                  ___mulsf3x
                   0x0007e6                  ___mulsf3
+                  0x0007e6                  ___mulsf3x
                   0x0008f2                  ___udivsi3x
                   0x0008f2                  ___udivsi3
-                  0x0009cc                  _atanfx
                   0x0009cc                  _atanf
+                  0x0009cc                  _atanfx
                   0x000aea                  __srmsubf
                   0x000af0                  __smsubf
                   0x000af4                  __smaddf
@@ -331,8 +328,8 @@ External Symbols in Program Memory (by address):
                   0x000e26                  __sdivf
                   0x000e52                  __propnanf
                   0x000e64                  __smulf
-                  0x000eba                  _sqrtf
                   0x000eba                  _sqrtfx
+                  0x000eba                  _sqrtf
                   0x000f36                  __unpackf
                   0x000f9c                  __dnrmpackf
                   0x000ff0                  __srsubf
@@ -388,76 +385,76 @@ External Symbols in Program Memory (by address):
                   0x00293c                  _csgGetState
                   0x002946                  _csgCompute
                   0x002f68                  _propInterrupt
-                  0x002fe6                  _setPos
-                  0x003056                  _main
-                  0x003736                  _getCanData
-                  0x003778                  _CanDeclarationProduction
-                  0x00380e                  _CanDeclarationConsommation
-                  0x00386c                  _CanEnvoiProductions
-                  0x003898                  _CanEnvoiProduction
-                  0x0038f4                  _EnvoiCanMsg
-                  0x003968                  _CanInitialisation
-                  0x0039e2                  _CanSetOperationMode
-                  0x003a10                  _CanSetBaudRate
-                  0x003a92                  _ChargerFiltre
-                  0x003ba6                  _CanEnvoi
-                  0x003cba                  _dma0init
-                  0x003cf0                  _dma1init
-                  0x003d26                  __DMA0Interrupt
-                  0x003d2e                  __DMA1Interrupt
-                  0x003d36                  _timerSetup
-                  0x003e3e                  _timerSetup32
-                  0x003f98                  _timerStart
-                  0x003ff8                  _timerStop
-                  0x004058                  _timerInterrupt
-                  0x0040ce                  __T1Interrupt
-                  0x0040fc                  __T2Interrupt
-                  0x00412a                  __T3Interrupt
-                  0x004158                  __T4Interrupt
-                  0x004186                  __T5Interrupt
-                  0x0041b4                  _ppsOutConfig
-                  0x004470                  _ppsInConfig
-                  0x00461e                  _pwmSetup
-                  0x0046ae                  _pwmSetDutyCycle
-                  0x004784                  _pwmSetDuration
-                  0x004872                  _pwmSetCycle
-                  0x0048ec                  _pwmEnable
-                  0x00492e                  _pwmDisable
-                  0x004972                  _addTranslation
-                  0x0049ba                  _addRotation
-                  0x004a08                  _stopNow
-                  0x004b32                  _calcSegment
-                  0x004bca                  _odoInit
-                  0x004c36                  _calculeOdometrie
-                  0x004d80                  _odoGetRelVel
-                  0x004d9c                  _odoGetRelPos
-                  0x004db8                  _odoGetAbsPos
-                  0x004dde                  _odoSetAbsPos
-                  0x004e0c                  _regInit
-                  0x004e1e                  _regCompute
-                  0x005020                  _motorsInit
-                  0x00507c                  _motorsEnable
-                  0x0050a2                  _motorsDisable
-                  0x0050c8                  _motorsSetSpeed
-                  0x005142                  _positionFloatToInteger
-                  0x0051ac                  _relativeCoordFloatToInteger
-                  0x0051f6                  _satureAngle
-                  0x00524e                  _pllConfig
-                  0x005292                  _canPinAssign
+                  0x002f84                  _getCanData
+                  0x002fc6                  _setPos
+                  0x003036                  _main
+                  0x00371e                  _CanDeclarationProduction
+                  0x0037b4                  _CanDeclarationConsommation
+                  0x003812                  _CanEnvoiProductions
+                  0x00383e                  _CanEnvoiProduction
+                  0x00389a                  _EnvoiCanMsg
+                  0x00390e                  _CanInitialisation
+                  0x003988                  _CanSetOperationMode
+                  0x0039b6                  _CanSetBaudRate
+                  0x003a38                  _ChargerFiltre
+                  0x003b4c                  _CanEnvoi
+                  0x003c60                  _dma0init
+                  0x003c96                  _dma1init
+                  0x003ccc                  __DMA0Interrupt
+                  0x003cd4                  __DMA1Interrupt
+                  0x003cdc                  _timerSetup
+                  0x003de4                  _timerSetup32
+                  0x003f3e                  _timerStart
+                  0x003f9e                  _timerStop
+                  0x003ffe                  _timerInterrupt
+                  0x004074                  __T1Interrupt
+                  0x0040a2                  __T2Interrupt
+                  0x0040d0                  __T3Interrupt
+                  0x0040fe                  __T4Interrupt
+                  0x00412c                  __T5Interrupt
+                  0x00415a                  _ppsOutConfig
+                  0x004416                  _ppsInConfig
+                  0x0045c4                  _pwmSetup
+                  0x004654                  _pwmSetDutyCycle
+                  0x00472a                  _pwmSetDuration
+                  0x004818                  _pwmSetCycle
+                  0x004892                  _pwmEnable
+                  0x0048d4                  _pwmDisable
+                  0x004918                  _odoInit
+                  0x004984                  _calculeOdometrie
+                  0x004aee                  _odoGetRelVel
+                  0x004b0a                  _odoGetRelPos
+                  0x004b26                  _odoGetAbsPos
+                  0x004b4c                  _odoSetAbsPos
+                  0x004b7a                  _addTranslation
+                  0x004bc2                  _addRotation
+                  0x004c10                  _stopNow
+                  0x004d3a                  _calcSegment
+                  0x004dd2                  _regInit
+                  0x004de4                  _regCompute
+                  0x004fe6                  _motorsInit
+                  0x005042                  _motorsEnable
+                  0x005068                  _motorsDisable
+                  0x00508e                  _motorsSetSpeed
+                  0x005108                  _positionFloatToInteger
+                  0x005172                  _relativeCoordFloatToInteger
+                  0x0051bc                  _satureAngle
+                  0x005214                  _pllConfig
+                  0x005258                  _canPinAssign
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x00380e                  _CanDeclarationConsommation
-                  0x003778                  _CanDeclarationProduction
-                  0x003ba6                  _CanEnvoi
-                  0x003898                  _CanEnvoiProduction
-                  0x00386c                  _CanEnvoiProductions
-                  0x003968                  _CanInitialisation
-                  0x003a10                  _CanSetBaudRate
-                  0x0039e2                  _CanSetOperationMode
-                  0x003a92                  _ChargerFiltre
-                  0x0038f4                  _EnvoiCanMsg
+                  0x0037b4                  _CanDeclarationConsommation
+                  0x00371e                  _CanDeclarationProduction
+                  0x003b4c                  _CanEnvoi
+                  0x00383e                  _CanEnvoiProduction
+                  0x003812                  _CanEnvoiProductions
+                  0x00390e                  _CanInitialisation
+                  0x0039b6                  _CanSetBaudRate
+                  0x003988                  _CanSetOperationMode
+                  0x003a38                  _ChargerFiltre
+                  0x00389a                  _EnvoiCanMsg
                   0x00191c                  _ISRENx
                   0x001926                  _ISRMaskx
                   0x001b06                  _MPtoRP
@@ -468,15 +465,15 @@ External Symbols in Program Memory (by name):
                   0x001912                  _TMRx
                   0x0018fe                  _TxCON
                   0x000298                  __C1Interrupt
-                  0x003d26                  __DMA0Interrupt
-                  0x003d2e                  __DMA1Interrupt
+                  0x003ccc                  __DMA0Interrupt
+                  0x003cd4                  __DMA1Interrupt
                   0x000358                  __DefaultInterrupt
                   0xf80004                  __FGS.sec
-                  0x0040ce                  __T1Interrupt
-                  0x0040fc                  __T2Interrupt
-                  0x00412a                  __T3Interrupt
-                  0x004158                  __T4Interrupt
-                  0x004186                  __T5Interrupt
+                  0x004074                  __T1Interrupt
+                  0x0040a2                  __T2Interrupt
+                  0x0040d0                  __T3Interrupt
+                  0x0040fe                  __T4Interrupt
+                  0x00412c                  __T5Interrupt
                   0x00061c                  ___addsf3
                   0x00061c                  ___addsf3x
                   0x000c94                  ___divsf3
@@ -536,15 +533,15 @@ External Symbols in Program Memory (by name):
                   0x000c36                  __unpackdnrmf
                   0x000f36                  __unpackf
                   0x001c48                  _addObstacle
-                  0x0049ba                  _addRotation
-                  0x004972                  _addTranslation
+                  0x004bc2                  _addRotation
+                  0x004b7a                  _addTranslation
                   0x00035c                  _atan2f
                   0x001ec4                  _atanMP
                   0x0009cc                  _atanf
                   0x0009cc                  _atanfx
-                  0x004b32                  _calcSegment
-                  0x004c36                  _calculeOdometrie
-                  0x005292                  _canPinAssign
+                  0x004d3a                  _calcSegment
+                  0x004984                  _calculeOdometrie
+                  0x005258                  _canPinAssign
                   0x001b9a                  _computeSegAngle
                   0x002312                  _convertPath
                   0x00053c                  _cosf
@@ -561,52 +558,52 @@ External Symbols in Program Memory (by name):
                   0x0027c0                  _csgSetNomAcc
                   0x00284c                  _csgSetNomVel
                   0x001c32                  _deleteNode
-                  0x003cba                  _dma0init
-                  0x003cf0                  _dma1init
+                  0x003c60                  _dma0init
+                  0x003c96                  _dma1init
                   0x001d7e                  _findNeigbours
                   0x001e46                  _findNextNode
                   0x00205a                  _findPath
                   0x002548                  _findTrajectoire
-                  0x003736                  _getCanData
+                  0x002f84                  _getCanData
                   0x001be0                  _initDijkstraVect
                   0x0016a6                  _initialMap
                   0x0024f6                  _isObsInMap
-                  0x003056                  _main
-                  0x0050a2                  _motorsDisable
-                  0x00507c                  _motorsEnable
-                  0x005020                  _motorsInit
-                  0x0050c8                  _motorsSetSpeed
-                  0x004db8                  _odoGetAbsPos
-                  0x004d9c                  _odoGetRelPos
-                  0x004d80                  _odoGetRelVel
-                  0x004bca                  _odoInit
-                  0x004dde                  _odoSetAbsPos
-                  0x00524e                  _pllConfig
-                  0x005142                  _positionFloatToInteger
-                  0x004470                  _ppsInConfig
-                  0x0041b4                  _ppsOutConfig
+                  0x003036                  _main
+                  0x005068                  _motorsDisable
+                  0x005042                  _motorsEnable
+                  0x004fe6                  _motorsInit
+                  0x00508e                  _motorsSetSpeed
+                  0x004b26                  _odoGetAbsPos
+                  0x004b0a                  _odoGetRelPos
+                  0x004aee                  _odoGetRelVel
+                  0x004918                  _odoInit
+                  0x004b4c                  _odoSetAbsPos
+                  0x005214                  _pllConfig
+                  0x005108                  _positionFloatToInteger
+                  0x004416                  _ppsInConfig
+                  0x00415a                  _ppsOutConfig
                   0x002f68                  _propInterrupt
-                  0x00492e                  _pwmDisable
-                  0x0048ec                  _pwmEnable
-                  0x004872                  _pwmSetCycle
-                  0x004784                  _pwmSetDuration
-                  0x0046ae                  _pwmSetDutyCycle
-                  0x00461e                  _pwmSetup
-                  0x004e1e                  _regCompute
-                  0x004e0c                  _regInit
-                  0x0051ac                  _relativeCoordFloatToInteger
-                  0x0051f6                  _satureAngle
-                  0x002fe6                  _setPos
+                  0x0048d4                  _pwmDisable
+                  0x004892                  _pwmEnable
+                  0x004818                  _pwmSetCycle
+                  0x00472a                  _pwmSetDuration
+                  0x004654                  _pwmSetDutyCycle
+                  0x0045c4                  _pwmSetup
+                  0x004de4                  _regCompute
+                  0x004dd2                  _regInit
+                  0x005172                  _relativeCoordFloatToInteger
+                  0x0051bc                  _satureAngle
+                  0x002fc6                  _setPos
                   0x00047a                  _sinf
                   0x00047a                  _sinfx
                   0x000eba                  _sqrtf
                   0x000eba                  _sqrtfx
-                  0x004a08                  _stopNow
-                  0x004058                  _timerInterrupt
-                  0x003d36                  _timerSetup
-                  0x003e3e                  _timerSetup32
-                  0x003f98                  _timerStart
-                  0x003ff8                  _timerStop
+                  0x004c10                  _stopNow
+                  0x003ffe                  _timerInterrupt
+                  0x003cdc                  _timerSetup
+                  0x003de4                  _timerSetup32
+                  0x003f3e                  _timerStart
+                  0x003f9e                  _timerStop
                   0x001f38                  _updateDistance
 
 Memory Configuration
@@ -649,10 +646,8 @@ LOAD build/default/debug/Motors.o
 LOAD build/default/debug/GenerTraj.o
 LOAD build/default/debug/mouvements.o
                     0x0001                  __MPLAB_BUILD = 0x1
-                    0x0001                  __ICD2RAM = 0x1
                     0x0001                  __MPLAB_DEBUG = 0x1
                     0x0001                  __DEBUG = 0x1
-                    0x0001                  __MPLAB_DEBUGGER_PK3 = 0x1
 LOAD c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib/dsPIC33F\libp33FJ128MC804-elf.a
                     0xf80000                  __FBS = 0xf80000
                     0xf80002                  __FSS = 0xf80002
@@ -866,64 +861,60 @@ __FUID2
 __FUID3
  *(__FUID3.sec*)
 
-.icd                0x0800         0x50
-                    0x0850                  . = (. + DEFINED (__ICD2RAM)?0x50:0x0)
- *fill*             0x0800         0x5000
-
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x9bbc
+.debug_info       0x000000       0x9a3c
  *(.debug_info)
  .debug_info      0x000000       0x23ee build/default/debug/_ext/2095425508/CanDspic.o
  .debug_info      0x0023ee        0x798 build/default/debug/_ext/2095425508/CanInterruptsDspic.o
  .debug_info      0x002b86       0x21fd build/default/debug/_ext/1094685832/pps.o
  .debug_info      0x004d83        0x74c build/default/debug/_ext/1094685832/pwm.o
  .debug_info      0x0054cf        0x9b8 build/default/debug/_ext/1094685832/timers.o
- .debug_info      0x005e87        0xe73 build/default/debug/main.o
- .debug_info      0x006cfa        0x6e6 build/default/debug/Configware.o
- .debug_info      0x0073e0        0x265 build/default/debug/Regulator.o
- .debug_info      0x007645        0x27a build/default/debug/globals.o
- .debug_info      0x0078bf        0x3f5 build/default/debug/consigne.o
- .debug_info      0x007cb4        0x866 build/default/debug/odoLibre.o
- .debug_info      0x00851a        0xaba build/default/debug/Motors.o
- .debug_info      0x008fd4        0x909 build/default/debug/GenerTraj.o
- .debug_info      0x0098dd        0x2df build/default/debug/mouvements.o
+ .debug_info      0x005e87        0xd83 build/default/debug/main.o
+ .debug_info      0x006c0a        0x6e6 build/default/debug/Configware.o
+ .debug_info      0x0072f0        0x265 build/default/debug/Regulator.o
+ .debug_info      0x007555        0x27a build/default/debug/globals.o
+ .debug_info      0x0077cf        0x3f5 build/default/debug/consigne.o
+ .debug_info      0x007bc4        0x7d6 build/default/debug/odoLibre.o
+ .debug_info      0x00839a        0xaba build/default/debug/Motors.o
+ .debug_info      0x008e54        0x909 build/default/debug/GenerTraj.o
+ .debug_info      0x00975d        0x2df build/default/debug/mouvements.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000       0x102f
+.debug_abbrev     0x000000        0xfeb
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x24b build/default/debug/_ext/2095425508/CanDspic.o
  .debug_abbrev    0x00024b        0x122 build/default/debug/_ext/2095425508/CanInterruptsDspic.o
  .debug_abbrev    0x00036d         0xdd build/default/debug/_ext/1094685832/pps.o
  .debug_abbrev    0x00044a        0x141 build/default/debug/_ext/1094685832/pwm.o
  .debug_abbrev    0x00058b        0x19d build/default/debug/_ext/1094685832/timers.o
- .debug_abbrev    0x000728        0x1b3 build/default/debug/main.o
- .debug_abbrev    0x0008db         0xdf build/default/debug/Configware.o
- .debug_abbrev    0x0009ba         0xbd build/default/debug/Regulator.o
- .debug_abbrev    0x000a77         0x96 build/default/debug/globals.o
- .debug_abbrev    0x000b0d         0xe5 build/default/debug/consigne.o
- .debug_abbrev    0x000bf2        0x187 build/default/debug/odoLibre.o
- .debug_abbrev    0x000d79         0xb9 build/default/debug/Motors.o
- .debug_abbrev    0x000e32        0x169 build/default/debug/GenerTraj.o
- .debug_abbrev    0x000f9b         0x94 build/default/debug/mouvements.o
+ .debug_abbrev    0x000728        0x17c build/default/debug/main.o
+ .debug_abbrev    0x0008a4         0xdf build/default/debug/Configware.o
+ .debug_abbrev    0x000983         0xbd build/default/debug/Regulator.o
+ .debug_abbrev    0x000a40         0x96 build/default/debug/globals.o
+ .debug_abbrev    0x000ad6         0xe5 build/default/debug/consigne.o
+ .debug_abbrev    0x000bbb        0x17a build/default/debug/odoLibre.o
+ .debug_abbrev    0x000d35         0xb9 build/default/debug/Motors.o
+ .debug_abbrev    0x000dee        0x169 build/default/debug/GenerTraj.o
+ .debug_abbrev    0x000f57         0x94 build/default/debug/mouvements.o
 
-.debug_line       0x000000       0x322f
+.debug_line       0x000000       0x31d3
  *(.debug_line)
  .debug_line      0x000000        0x79e build/default/debug/_ext/2095425508/CanDspic.o
  .debug_line      0x00079e        0x17e build/default/debug/_ext/2095425508/CanInterruptsDspic.o
  .debug_line      0x00091c        0x271 build/default/debug/_ext/1094685832/pps.o
  .debug_line      0x000b8d        0x31d build/default/debug/_ext/1094685832/pwm.o
  .debug_line      0x000eaa        0x44f build/default/debug/_ext/1094685832/timers.o
- .debug_line      0x0012f9        0x92c build/default/debug/main.o
- .debug_line      0x001c25        0x120 build/default/debug/Configware.o
- .debug_line      0x001d45        0x163 build/default/debug/Regulator.o
- .debug_line      0x001ea8         0xf4 build/default/debug/globals.o
- .debug_line      0x001f9c        0x423 build/default/debug/consigne.o
- .debug_line      0x0023bf        0x2bb build/default/debug/odoLibre.o
- .debug_line      0x00267a        0x278 build/default/debug/Motors.o
- .debug_line      0x0028f2        0x79c build/default/debug/GenerTraj.o
- .debug_line      0x00308e        0x1a1 build/default/debug/mouvements.o
+ .debug_line      0x0012f9        0x8c0 build/default/debug/main.o
+ .debug_line      0x001bb9        0x120 build/default/debug/Configware.o
+ .debug_line      0x001cd9        0x163 build/default/debug/Regulator.o
+ .debug_line      0x001e3c         0xf4 build/default/debug/globals.o
+ .debug_line      0x001f30        0x423 build/default/debug/consigne.o
+ .debug_line      0x002353        0x2cb build/default/debug/odoLibre.o
+ .debug_line      0x00261e        0x278 build/default/debug/Motors.o
+ .debug_line      0x002896        0x79c build/default/debug/GenerTraj.o
+ .debug_line      0x003032        0x1a1 build/default/debug/mouvements.o
 
 .debug_frame      0x000000        0x778
  *(.debug_frame)
@@ -942,20 +933,20 @@ __FUID3
  .debug_frame     0x0005c4        0x160 build/default/debug/GenerTraj.o
  .debug_frame     0x000724         0x54 build/default/debug/mouvements.o
 
-.debug_str        0x000000        0x5ef
+.debug_str        0x000000        0x5c7
  *(.debug_str)
  .debug_str       0x000000        0x235 build/default/debug/_ext/2095425508/CanDspic.o
  .debug_str       0x000235         0x8f build/default/debug/_ext/2095425508/CanInterruptsDspic.o
  .debug_str       0x0002c4         0xf1 build/default/debug/_ext/1094685832/pps.o
  .debug_str       0x0003b5         0x14 build/default/debug/_ext/1094685832/pwm.o
  .debug_str       0x0003c9         0x2d build/default/debug/_ext/1094685832/timers.o
- .debug_str       0x0003f6         0xb6 build/default/debug/main.o
- .debug_str       0x0004ac         0x16 build/default/debug/Configware.o
- .debug_str       0x0004c2         0x1f build/default/debug/Regulator.o
- .debug_str       0x0004e1         0x4e build/default/debug/consigne.o
- .debug_str       0x00052f         0x45 build/default/debug/odoLibre.o
- .debug_str       0x000574         0x46 build/default/debug/Motors.o
- .debug_str       0x0005ba         0x35 build/default/debug/GenerTraj.o
+ .debug_str       0x0003f6         0x8e build/default/debug/main.o
+ .debug_str       0x000484         0x16 build/default/debug/Configware.o
+ .debug_str       0x00049a         0x1f build/default/debug/Regulator.o
+ .debug_str       0x0004b9         0x4e build/default/debug/consigne.o
+ .debug_str       0x000507         0x45 build/default/debug/odoLibre.o
+ .debug_str       0x00054c         0x46 build/default/debug/Motors.o
+ .debug_str       0x000592         0x35 build/default/debug/GenerTraj.o
 
 .debug_loc
  *(.debug_loc)
@@ -1041,18 +1032,18 @@ __FUID3
                   0x000014          0x4 LONG 0x358 DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000016          0x4 LONG 0x358 DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000018          0x4 LONG 0x358 DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00001a          0x4 LONG 0x40ce DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00001c          0x4 LONG 0x3d26 DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00001a          0x4 LONG 0x4074 DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00001c          0x4 LONG 0x3ccc DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001e          0x4 LONG 0x358 DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000020          0x4 LONG 0x358 DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000022          0x4 LONG 0x40fc DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000024          0x4 LONG 0x412a DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000022          0x4 LONG 0x40a2 DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000024          0x4 LONG 0x40d0 DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000026          0x4 LONG 0x358 DEFINED (__SPI1ErrInterrupt)?ABSOLUTE (__SPI1ErrInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000028          0x4 LONG 0x358 DEFINED (__SPI1Interrupt)?ABSOLUTE (__SPI1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00002a          0x4 LONG 0x358 DEFINED (__U1RXInterrupt)?ABSOLUTE (__U1RXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00002c          0x4 LONG 0x358 DEFINED (__U1TXInterrupt)?ABSOLUTE (__U1TXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00002e          0x4 LONG 0x358 DEFINED (__ADC1Interrupt)?ABSOLUTE (__ADC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000030          0x4 LONG 0x3d2e DEFINED (__DMA1Interrupt)?ABSOLUTE (__DMA1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000030          0x4 LONG 0x3cd4 DEFINED (__DMA1Interrupt)?ABSOLUTE (__DMA1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000032          0x4 LONG 0x358 DEFINED (__Interrupt15)?ABSOLUTE (__Interrupt15):ABSOLUTE (__DefaultInterrupt)
                   0x000034          0x4 LONG 0x358 DEFINED (__SI2C1Interrupt)?ABSOLUTE (__SI2C1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000036          0x4 LONG 0x358 DEFINED (__MI2C1Interrupt)?ABSOLUTE (__MI2C1Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1065,8 +1056,8 @@ __FUID3
                   0x000044          0x4 LONG 0x358 DEFINED (__DMA2Interrupt)?ABSOLUTE (__DMA2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000046          0x4 LONG 0x358 DEFINED (__OC3Interrupt)?ABSOLUTE (__OC3Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000048          0x4 LONG 0x358 DEFINED (__OC4Interrupt)?ABSOLUTE (__OC4Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00004a          0x4 LONG 0x4158 DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00004c          0x4 LONG 0x4186 DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00004a          0x4 LONG 0x40fe DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00004c          0x4 LONG 0x412c DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00004e          0x4 LONG 0x358 DEFINED (__INT2Interrupt)?ABSOLUTE (__INT2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000050          0x4 LONG 0x358 DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000052          0x4 LONG 0x358 DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1169,18 +1160,18 @@ __FUID3
                   0x000114          0x4 LONG 0x358 DEFINED (__AltINT0Interrupt)?ABSOLUTE (__AltINT0Interrupt):DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000116          0x4 LONG 0x358 DEFINED (__AltIC1Interrupt)?ABSOLUTE (__AltIC1Interrupt):DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000118          0x4 LONG 0x358 DEFINED (__AltOC1Interrupt)?ABSOLUTE (__AltOC1Interrupt):DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00011a          0x4 LONG 0x40ce DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00011c          0x4 LONG 0x3d26 DEFINED (__AltDMA0Interrupt)?ABSOLUTE (__AltDMA0Interrupt):DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00011a          0x4 LONG 0x4074 DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00011c          0x4 LONG 0x3ccc DEFINED (__AltDMA0Interrupt)?ABSOLUTE (__AltDMA0Interrupt):DEFINED (__DMA0Interrupt)?ABSOLUTE (__DMA0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00011e          0x4 LONG 0x358 DEFINED (__AltIC2Interrupt)?ABSOLUTE (__AltIC2Interrupt):DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000120          0x4 LONG 0x358 DEFINED (__AltOC2Interrupt)?ABSOLUTE (__AltOC2Interrupt):DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000122          0x4 LONG 0x40fc DEFINED (__AltT2Interrupt)?ABSOLUTE (__AltT2Interrupt):DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000124          0x4 LONG 0x412a DEFINED (__AltT3Interrupt)?ABSOLUTE (__AltT3Interrupt):DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000122          0x4 LONG 0x40a2 DEFINED (__AltT2Interrupt)?ABSOLUTE (__AltT2Interrupt):DEFINED (__T2Interrupt)?ABSOLUTE (__T2Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000124          0x4 LONG 0x40d0 DEFINED (__AltT3Interrupt)?ABSOLUTE (__AltT3Interrupt):DEFINED (__T3Interrupt)?ABSOLUTE (__T3Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000126          0x4 LONG 0x358 DEFINED (__AltSPI1ErrInterrupt)?ABSOLUTE (__AltSPI1ErrInterrupt):DEFINED (__SPI1ErrInterrupt)?ABSOLUTE (__SPI1ErrInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000128          0x4 LONG 0x358 DEFINED (__AltSPI1Interrupt)?ABSOLUTE (__AltSPI1Interrupt):DEFINED (__SPI1Interrupt)?ABSOLUTE (__SPI1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00012a          0x4 LONG 0x358 DEFINED (__AltU1RXInterrupt)?ABSOLUTE (__AltU1RXInterrupt):DEFINED (__U1RXInterrupt)?ABSOLUTE (__U1RXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00012c          0x4 LONG 0x358 DEFINED (__AltU1TXInterrupt)?ABSOLUTE (__AltU1TXInterrupt):DEFINED (__U1TXInterrupt)?ABSOLUTE (__U1TXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00012e          0x4 LONG 0x358 DEFINED (__AltADC1Interrupt)?ABSOLUTE (__AltADC1Interrupt):DEFINED (__ADC1Interrupt)?ABSOLUTE (__ADC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x000130          0x4 LONG 0x3d2e DEFINED (__AltDMA1Interrupt)?ABSOLUTE (__AltDMA1Interrupt):DEFINED (__DMA1Interrupt)?ABSOLUTE (__DMA1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x000130          0x4 LONG 0x3cd4 DEFINED (__AltDMA1Interrupt)?ABSOLUTE (__AltDMA1Interrupt):DEFINED (__DMA1Interrupt)?ABSOLUTE (__DMA1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000132          0x4 LONG 0x358 DEFINED (__AltInterrupt15)?ABSOLUTE (__AltInterrupt15):DEFINED (__Interrupt15)?ABSOLUTE (__Interrupt15):ABSOLUTE (__DefaultInterrupt)
                   0x000134          0x4 LONG 0x358 DEFINED (__AltSI2C1Interrupt)?ABSOLUTE (__AltSI2C1Interrupt):DEFINED (__SI2C1Interrupt)?ABSOLUTE (__SI2C1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000136          0x4 LONG 0x358 DEFINED (__AltMI2C1Interrupt)?ABSOLUTE (__AltMI2C1Interrupt):DEFINED (__MI2C1Interrupt)?ABSOLUTE (__MI2C1Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1193,8 +1184,8 @@ __FUID3
                   0x000144          0x4 LONG 0x358 DEFINED (__AltDMA2Interrupt)?ABSOLUTE (__AltDMA2Interrupt):DEFINED (__DMA2Interrupt)?ABSOLUTE (__DMA2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000146          0x4 LONG 0x358 DEFINED (__AltOC3Interrupt)?ABSOLUTE (__AltOC3Interrupt):DEFINED (__OC3Interrupt)?ABSOLUTE (__OC3Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000148          0x4 LONG 0x358 DEFINED (__AltOC4Interrupt)?ABSOLUTE (__AltOC4Interrupt):DEFINED (__OC4Interrupt)?ABSOLUTE (__OC4Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00014a          0x4 LONG 0x4158 DEFINED (__AltT4Interrupt)?ABSOLUTE (__AltT4Interrupt):DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00014c          0x4 LONG 0x4186 DEFINED (__AltT5Interrupt)?ABSOLUTE (__AltT5Interrupt):DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00014a          0x4 LONG 0x40fe DEFINED (__AltT4Interrupt)?ABSOLUTE (__AltT4Interrupt):DEFINED (__T4Interrupt)?ABSOLUTE (__T4Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00014c          0x4 LONG 0x412c DEFINED (__AltT5Interrupt)?ABSOLUTE (__AltT5Interrupt):DEFINED (__T5Interrupt)?ABSOLUTE (__T5Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00014e          0x4 LONG 0x358 DEFINED (__AltINT2Interrupt)?ABSOLUTE (__AltINT2Interrupt):DEFINED (__INT2Interrupt)?ABSOLUTE (__INT2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000150          0x4 LONG 0x358 DEFINED (__AltU2RXInterrupt)?ABSOLUTE (__AltU2RXInterrupt):DEFINED (__U2RXInterrupt)?ABSOLUTE (__U2RXInterrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000152          0x4 LONG 0x358 DEFINED (__AltU2TXInterrupt)?ABSOLUTE (__AltU2TXInterrupt):DEFINED (__U2TXInterrupt)?ABSOLUTE (__U2TXInterrupt):ABSOLUTE (__DefaultInterrupt)
@@ -2404,7 +2395,7 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000150        0xb3e
+                  0x000150        0xb21
  .debug_pubtypes
                   0x000150        0x267 build/default/debug/_ext/2095425508/CanDspic.o
  .debug_pubtypes
@@ -2416,153 +2407,153 @@ LOAD data_init
  .debug_pubtypes
                   0x0007d4         0x5c build/default/debug/_ext/1094685832/timers.o
  .debug_pubtypes
-                  0x000830        0x15d build/default/debug/main.o
+                  0x000830        0x140 build/default/debug/main.o
  .debug_pubtypes
-                  0x00098d         0x54 build/default/debug/Configware.o
+                  0x000970         0x54 build/default/debug/Configware.o
  .debug_pubtypes
-                  0x0009e1         0x30 build/default/debug/Regulator.o
+                  0x0009c4         0x30 build/default/debug/Regulator.o
  .debug_pubtypes
-                  0x000a11         0x61 build/default/debug/globals.o
+                  0x0009f4         0x61 build/default/debug/globals.o
  .debug_pubtypes
-                  0x000a72         0x36 build/default/debug/consigne.o
+                  0x000a55         0x36 build/default/debug/consigne.o
  .debug_pubtypes
-                  0x000aa8         0x7a build/default/debug/odoLibre.o
+                  0x000a8b         0x7a build/default/debug/odoLibre.o
  .debug_pubtypes
-                  0x000b22         0xeb build/default/debug/Motors.o
+                  0x000b05         0xeb build/default/debug/Motors.o
  .debug_pubtypes
-                  0x000c0d         0x4d build/default/debug/GenerTraj.o
+                  0x000bf0         0x4d build/default/debug/GenerTraj.o
  .debug_pubtypes
-                  0x000c5a         0x34 build/default/debug/mouvements.o
+                  0x000c3d         0x34 build/default/debug/mouvements.o
 
 __c30_signature
-                  0x000c8e         0xba
+                  0x000c72         0xba
  __c30_signature
-                  0x000c8e          0x6 build/default/debug/_ext/2095425508/CanDspic.o
+                  0x000c72          0x6 build/default/debug/_ext/2095425508/CanDspic.o
  __c30_signature
-                  0x000c94          0x6 build/default/debug/_ext/2095425508/CanInterruptsDspic.o
+                  0x000c78          0x6 build/default/debug/_ext/2095425508/CanInterruptsDspic.o
  __c30_signature
-                  0x000c9a          0x6 build/default/debug/_ext/1094685832/pps.o
+                  0x000c7e          0x6 build/default/debug/_ext/1094685832/pps.o
  __c30_signature
-                  0x000ca0          0x6 build/default/debug/_ext/1094685832/pwm.o
+                  0x000c84          0x6 build/default/debug/_ext/1094685832/pwm.o
  __c30_signature
-                  0x000ca6          0x6 build/default/debug/_ext/1094685832/timers.o
+                  0x000c8a          0x6 build/default/debug/_ext/1094685832/timers.o
  __c30_signature
-                  0x000cac          0x6 build/default/debug/main.o
+                  0x000c90          0x6 build/default/debug/main.o
  __c30_signature
-                  0x000cb2          0x6 build/default/debug/Configware.o
+                  0x000c96          0x6 build/default/debug/Configware.o
  __c30_signature
-                  0x000cb8          0x6 build/default/debug/Regulator.o
+                  0x000c9c          0x6 build/default/debug/Regulator.o
  __c30_signature
-                  0x000cbe          0x6 build/default/debug/globals.o
+                  0x000ca2          0x6 build/default/debug/globals.o
  __c30_signature
-                  0x000cc4          0x6 build/default/debug/consigne.o
+                  0x000ca8          0x6 build/default/debug/consigne.o
  __c30_signature
-                  0x000cca          0x6 build/default/debug/odoLibre.o
+                  0x000cae          0x6 build/default/debug/odoLibre.o
  __c30_signature
-                  0x000cd0          0x6 build/default/debug/Motors.o
+                  0x000cb4          0x6 build/default/debug/Motors.o
  __c30_signature
-                  0x000cd6          0x6 build/default/debug/GenerTraj.o
+                  0x000cba          0x6 build/default/debug/GenerTraj.o
  __c30_signature
-                  0x000cdc          0x6 build/default/debug/mouvements.o
+                  0x000cc0          0x6 build/default/debug/mouvements.o
  __c30_signature
-                  0x000ce2          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
+                  0x000cc6          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x000ce8          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
+                  0x000ccc          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
  __c30_signature
-                  0x000cee          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(atan2f.eo)
+                  0x000cd2          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(atan2f.eo)
  __c30_signature
-                  0x000cf4          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(errno.eo)
+                  0x000cd8          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(errno.eo)
  __c30_signature
-                  0x000cfa          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(feqltle.eo)
+                  0x000cde          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(feqltle.eo)
  __c30_signature
-                  0x000d00          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(fgtge.eo)
+                  0x000ce4          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(fgtge.eo)
  __c30_signature
-                  0x000d06          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(fixsfsi.eo)
+                  0x000cea          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(fixsfsi.eo)
  __c30_signature
-                  0x000d0c          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(fixunssfsi.eo)
+                  0x000cf0          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(fixunssfsi.eo)
  __c30_signature
-                  0x000d12          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(floatsisf.eo)
+                  0x000cf6          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(floatsisf.eo)
  __c30_signature
-                  0x000d18          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(floatunsisf.eo)
+                  0x000cfc          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(floatunsisf.eo)
  __c30_signature
-                  0x000d1e          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(funpack.eo)
+                  0x000d02          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(funpack.eo)
  __c30_signature
-                  0x000d24          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(funpack2.eo)
+                  0x000d08          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(funpack2.eo)
  __c30_signature
-                  0x000d2a          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(futil.eo)
+                  0x000d0e          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(futil.eo)
  __c30_signature
-                  0x000d30          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(fcompare.eo)
+                  0x000d14          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(fcompare.eo)
  __c30_signature
-                  0x000d36          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(floatdisf.eo)
+                  0x000d1a          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(floatdisf.eo)
  __c30_signature
-                  0x000d3c          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(floatundisf.eo)
+                  0x000d20          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(floatundisf.eo)
  __c30_signature
-                  0x000d42          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(fpack.eo)
+                  0x000d26          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(fpack.eo)
 
-_039E1DE0_at_address_00004000
+_039ADDE0_at_address_00004000
                     0x4000         0x80
- _039E1DE0_at_address_00004000
+ _039ADDE0_at_address_00004000
                     0x4000         0x80 build/default/debug/_ext/2095425508/CanDspic.o
                     0x4000                  _transmitBuffers
 
-_039E1E40_at_address_00004090
+_039ADE40_at_address_00004090
                     0x4090         0x10
- _039E1E40_at_address_00004090
+ _039ADE40_at_address_00004090
                     0x4090         0x10 build/default/debug/_ext/2095425508/CanDspic.o
                     0x4090                  _receiveBufferOrders
 
-_039E1EA0_at_address_00004080
+_039ADEA0_at_address_00004080
                     0x4080         0x10
- _039E1EA0_at_address_00004080
+ _039ADEA0_at_address_00004080
                     0x4080         0x10 build/default/debug/_ext/2095425508/CanDspic.o
                     0x4080                  _receiveBufferObjects
 
-.nbss               0x0850        0xf18
- .nbss              0x0850        0xe10 build/default/debug/GenerTraj.o
-                    0x0850                  _dkNodes
- .nbss              0x1660         0x9c build/default/debug/_ext/2095425508/CanDspic.o
-                    0x1660                  _production
-                    0x1690                  _consommation
-                    0x16ea                  _nombreObjetsProduits
-                    0x16eb                  _nombreObjetsConsommes
-                    0x16ec                  _jij
-                    0x16ed                  _kik
-                    0x16ee                  _ptrSource
-                    0x16f0                  _ptrDest
-                    0x16f2                  _canReceivedCommand
-                    0x16f3                  _canReceivedData
-                    0x16fa                  _canReceivedOrderFlag
- .nbss              0x16fc         0x32 build/default/debug/consigne.o
-                    0x16fc                  _prCsgPos
-                    0x1704                  _prCsgFinalPos
-                    0x170c                  _prCsgVel
-                    0x1714                  _prCsgNomVel
-                    0x171c                  _prCsgNomAcc
-                    0x1724                  _prMinDist
-                    0x172c                  _prCsgStatus
- .nbss              0x172e         0x20 build/default/debug/odoLibre.o
-                    0x172e                  _prOdoAbsPos
-                    0x173a                  _prOdoRelVel
-                    0x1742                  _prOdoRelPos
- .nbss              0x174e         0x1a build/default/debug/main.o
-                    0x174e                  _odoPhysPos
-                    0x1754                  _state
-                    0x1756                  _obstacle
-                    0x175c                  _odoRelPos
-                    0x1760                  _csgRelPos
-                    0x1764                  _isrRegFlag
-                    0x1766                  _isrCsgFlag
+.nbss               0x0800        0xf18
+ .nbss              0x0800        0xe10 build/default/debug/GenerTraj.o
+                    0x0800                  _dkNodes
+ .nbss              0x1610         0x9c build/default/debug/_ext/2095425508/CanDspic.o
+                    0x1610                  _production
+                    0x1640                  _consommation
+                    0x169a                  _nombreObjetsProduits
+                    0x169b                  _nombreObjetsConsommes
+                    0x169c                  _jij
+                    0x169d                  _kik
+                    0x169e                  _ptrSource
+                    0x16a0                  _ptrDest
+                    0x16a2                  _canReceivedCommand
+                    0x16a3                  _canReceivedData
+                    0x16aa                  _canReceivedOrderFlag
+ .nbss              0x16ac         0x32 build/default/debug/consigne.o
+                    0x16ac                  _prCsgPos
+                    0x16b4                  _prCsgFinalPos
+                    0x16bc                  _prCsgVel
+                    0x16c4                  _prCsgNomVel
+                    0x16cc                  _prCsgNomAcc
+                    0x16d4                  _prMinDist
+                    0x16dc                  _prCsgStatus
+ .nbss              0x16de         0x20 build/default/debug/odoLibre.o
+                    0x16de                  _prOdoAbsPos
+                    0x16ea                  _prOdoRelVel
+                    0x16f2                  _prOdoRelPos
+ .nbss              0x16fe         0x1a build/default/debug/main.o
+                    0x16fe                  _odoPhysPos
+                    0x1704                  _state
+                    0x1706                  _obstacle
+                    0x170c                  _odoRelPos
+                    0x1710                  _csgRelPos
+                    0x1714                  _isrRegFlag
+                    0x1716                  _isrCsgFlag
 
-.ndata              0x1768          0xa
- .ndata             0x1768          0xa build/default/debug/_ext/1094685832/timers.o
-                    0x1768                  _TxISR
+.ndata              0x1718          0xa
+ .ndata             0x1718          0xa build/default/debug/_ext/1094685832/timers.o
+                    0x1718                  _TxISR
 
-.nbss               0x1772          0xa
- .nbss              0x1772          0x8 build/default/debug/Regulator.o
-                    0x1772                  _prRegOldDcLeft
-                    0x1776                  _prRegOldDcRight
- .nbss              0x177a          0x2 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(errno.eo)
-                    0x177a                  _errno
+.nbss               0x1722          0xa
+ .nbss              0x1722          0x8 build/default/debug/Regulator.o
+                    0x1722                  _prRegOldDcLeft
+                    0x1726                  _prRegOldDcRight
+ .nbss              0x172a          0x2 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(errno.eo)
+                    0x172a                  _errno
 
 .const              0x96a6        0x29e load address 0x0016a6  
  .const             0x96a6        0x258 build/default/debug/GenerTraj.o
@@ -2583,7 +2574,7 @@ libmxconst          0x9944        0x104 load address 0x001944
  libmxconst         0x99f0         0x30 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(ssqrtfx.eo)
  libmxconst         0x9a20         0x28 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libfastm-elf.a(sinfx.eo)
 
-.text             0x001a48       0x385c
+.text             0x001a48       0x3822
  .text            0x001a48        0xccc build/default/debug/GenerTraj.o
                   0x001a48                  _RPtoMP
                   0x001b06                  _MPtoRP
@@ -2611,74 +2602,74 @@ libmxconst          0x9944        0x104 load address 0x001944
                   0x002920                  _csgGetFinalPos
                   0x00293c                  _csgGetState
                   0x002946                  _csgCompute
- .text            0x002f68        0x810 build/default/debug/main.o
+ .text            0x002f68        0x7b6 build/default/debug/main.o
                   0x002f68                  _propInterrupt
-                  0x002fe6                  _setPos
-                  0x003056                  _main
-                  0x003736                  _getCanData
- .text            0x003778        0x5be build/default/debug/_ext/2095425508/CanDspic.o
-                  0x003778                  _CanDeclarationProduction
-                  0x00380e                  _CanDeclarationConsommation
-                  0x00386c                  _CanEnvoiProductions
-                  0x003898                  _CanEnvoiProduction
-                  0x0038f4                  _EnvoiCanMsg
-                  0x003968                  _CanInitialisation
-                  0x0039e2                  _CanSetOperationMode
-                  0x003a10                  _CanSetBaudRate
-                  0x003a92                  _ChargerFiltre
-                  0x003ba6                  _CanEnvoi
-                  0x003cba                  _dma0init
-                  0x003cf0                  _dma1init
-                  0x003d26                  __DMA0Interrupt
-                  0x003d2e                  __DMA1Interrupt
- .text            0x003d36        0x47e build/default/debug/_ext/1094685832/timers.o
-                  0x003d36                  _timerSetup
-                  0x003e3e                  _timerSetup32
-                  0x003f98                  _timerStart
-                  0x003ff8                  _timerStop
-                  0x004058                  _timerInterrupt
-                  0x0040ce                  __T1Interrupt
-                  0x0040fc                  __T2Interrupt
-                  0x00412a                  __T3Interrupt
-                  0x004158                  __T4Interrupt
-                  0x004186                  __T5Interrupt
- .text            0x0041b4        0x46a build/default/debug/_ext/1094685832/pps.o
-                  0x0041b4                  _ppsOutConfig
-                  0x004470                  _ppsInConfig
- .text            0x00461e        0x354 build/default/debug/_ext/1094685832/pwm.o
-                  0x00461e                  _pwmSetup
-                  0x0046ae                  _pwmSetDutyCycle
-                  0x004784                  _pwmSetDuration
-                  0x004872                  _pwmSetCycle
-                  0x0048ec                  _pwmEnable
-                  0x00492e                  _pwmDisable
- .text            0x004972        0x258 build/default/debug/mouvements.o
-                  0x004972                  _addTranslation
-                  0x0049ba                  _addRotation
-                  0x004a08                  _stopNow
-                  0x004b32                  _calcSegment
- .text            0x004bca        0x242 build/default/debug/odoLibre.o
-                  0x004bca                  _odoInit
-                  0x004c36                  _calculeOdometrie
-                  0x004d80                  _odoGetRelVel
-                  0x004d9c                  _odoGetRelPos
-                  0x004db8                  _odoGetAbsPos
-                  0x004dde                  _odoSetAbsPos
- .text            0x004e0c        0x214 build/default/debug/Regulator.o
-                  0x004e0c                  _regInit
-                  0x004e1e                  _regCompute
- .text            0x005020        0x122 build/default/debug/Motors.o
-                  0x005020                  _motorsInit
-                  0x00507c                  _motorsEnable
-                  0x0050a2                  _motorsDisable
-                  0x0050c8                  _motorsSetSpeed
- .text            0x005142        0x10c build/default/debug/globals.o
-                  0x005142                  _positionFloatToInteger
-                  0x0051ac                  _relativeCoordFloatToInteger
-                  0x0051f6                  _satureAngle
- .text            0x00524e         0x56 build/default/debug/Configware.o
-                  0x00524e                  _pllConfig
-                  0x005292                  _canPinAssign
+                  0x002f84                  _getCanData
+                  0x002fc6                  _setPos
+                  0x003036                  _main
+ .text            0x00371e        0x5be build/default/debug/_ext/2095425508/CanDspic.o
+                  0x00371e                  _CanDeclarationProduction
+                  0x0037b4                  _CanDeclarationConsommation
+                  0x003812                  _CanEnvoiProductions
+                  0x00383e                  _CanEnvoiProduction
+                  0x00389a                  _EnvoiCanMsg
+                  0x00390e                  _CanInitialisation
+                  0x003988                  _CanSetOperationMode
+                  0x0039b6                  _CanSetBaudRate
+                  0x003a38                  _ChargerFiltre
+                  0x003b4c                  _CanEnvoi
+                  0x003c60                  _dma0init
+                  0x003c96                  _dma1init
+                  0x003ccc                  __DMA0Interrupt
+                  0x003cd4                  __DMA1Interrupt
+ .text            0x003cdc        0x47e build/default/debug/_ext/1094685832/timers.o
+                  0x003cdc                  _timerSetup
+                  0x003de4                  _timerSetup32
+                  0x003f3e                  _timerStart
+                  0x003f9e                  _timerStop
+                  0x003ffe                  _timerInterrupt
+                  0x004074                  __T1Interrupt
+                  0x0040a2                  __T2Interrupt
+                  0x0040d0                  __T3Interrupt
+                  0x0040fe                  __T4Interrupt
+                  0x00412c                  __T5Interrupt
+ .text            0x00415a        0x46a build/default/debug/_ext/1094685832/pps.o
+                  0x00415a                  _ppsOutConfig
+                  0x004416                  _ppsInConfig
+ .text            0x0045c4        0x354 build/default/debug/_ext/1094685832/pwm.o
+                  0x0045c4                  _pwmSetup
+                  0x004654                  _pwmSetDutyCycle
+                  0x00472a                  _pwmSetDuration
+                  0x004818                  _pwmSetCycle
+                  0x004892                  _pwmEnable
+                  0x0048d4                  _pwmDisable
+ .text            0x004918        0x262 build/default/debug/odoLibre.o
+                  0x004918                  _odoInit
+                  0x004984                  _calculeOdometrie
+                  0x004aee                  _odoGetRelVel
+                  0x004b0a                  _odoGetRelPos
+                  0x004b26                  _odoGetAbsPos
+                  0x004b4c                  _odoSetAbsPos
+ .text            0x004b7a        0x258 build/default/debug/mouvements.o
+                  0x004b7a                  _addTranslation
+                  0x004bc2                  _addRotation
+                  0x004c10                  _stopNow
+                  0x004d3a                  _calcSegment
+ .text            0x004dd2        0x214 build/default/debug/Regulator.o
+                  0x004dd2                  _regInit
+                  0x004de4                  _regCompute
+ .text            0x004fe6        0x122 build/default/debug/Motors.o
+                  0x004fe6                  _motorsInit
+                  0x005042                  _motorsEnable
+                  0x005068                  _motorsDisable
+                  0x00508e                  _motorsSetSpeed
+ .text            0x005108        0x10c build/default/debug/globals.o
+                  0x005108                  _positionFloatToInteger
+                  0x005172                  _relativeCoordFloatToInteger
+                  0x0051bc                  _satureAngle
+ .text            0x005214         0x56 build/default/debug/Configware.o
+                  0x005214                  _pllConfig
+                  0x005258                  _canPinAssign
 
-.dinit            0x0052a4         0x4c
- .dinit           0x0052a4         0x4c data_init
+.dinit            0x00526a         0x4c
+ .dinit           0x00526a         0x4c data_init

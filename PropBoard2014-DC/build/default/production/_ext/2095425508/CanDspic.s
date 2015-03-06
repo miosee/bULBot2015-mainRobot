@@ -17,19 +17,19 @@ _production:	.space	48
 	.align	2
 _consommation:	.space	90
 	.global	_transmitBuffers	; export
-	.section	*_03B1DDE0_at_address_00004000,address(16384),bss,dma
+	.section	*_03AFDDE0_at_address_00004000,address(16384),bss,dma
 	.align	2
 	.type	_transmitBuffers,@object
 _transmitBuffers:
 	.skip	128
 	.global	_receiveBufferOrders	; export
-	.section	*_03B1DE40_at_address_00004090,address(16528),bss,dma
+	.section	*_03AFDE40_at_address_00004090,address(16528),bss,dma
 	.align	2
 	.type	_receiveBufferOrders,@object
 _receiveBufferOrders:
 	.skip	16
 	.global	_receiveBufferObjects	; export
-	.section	*_03B1DEA0_at_address_00004080,address(16512),bss,dma
+	.section	*_03AFDEA0_at_address_00004080,address(16512),bss,dma
 	.align	2
 	.type	_receiveBufferObjects,@object
 _receiveBufferObjects:

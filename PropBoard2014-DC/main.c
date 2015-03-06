@@ -14,7 +14,7 @@
 
 
 //#define DEBUG_MODE		// Flag permettant de simuler le code en enlevant les parties liées au CAN
-#define DBG_PIN0	(LATCbits.LATC5)
+#define DBG_PIN0	(LATCbits.LATC5)    // pattes de debug pour mesurer des temps d'exécution
 #define DBG_PIN1	(LATBbits.LATB5)
 
 // type défini pour pouvoir manipuler efficacement les octets d'un int
@@ -26,12 +26,14 @@ union INTEG {
 };
 
 // variables CAN
-positionInteger odoPhysPos;		//! position actuelle du robot, en mm et deg/10
-propStateType state;
-obsType obstacle;
-relativeCoordInteger odoRelPos, csgRelPos;
+positionInteger odoPhysPos;                 //!< position actuelle du robot, en mm et deg/10
+propStateType state;                        //!< Etat de la propulsion
+obsType obstacle;                           //!< obstacle détecté
+relativeCoordInteger odoRelPos, csgRelPos;  //!< position et consigne dans les coordonnées relatives (mm et deg/10)
 // variables ISR
-volatile int isrRegFlag, isrCsgFlag;
+volatile int isrRegFlag, isrCsgFlag;        //!< falgs indiuant si le régulateur/générateur de consigne est actif
+
+
 
 void propInterrupt(void) {
 	DBG_PIN1 = 1;
@@ -54,11 +56,30 @@ void propInterrupt(void) {
 }
 
 
+/**
+ * Structure et fonction pour récupérer les paramètres du dernier ordre CAN reçu, sous forme de 3 int, plutôt que de 7 char
+ * Le 7ème char est ignoré.
+ */
 typedef struct {
 	int int0, int1, int2;
 } canDataType;
-canDataType getCanData(void);
+inline canDataType getCanData(void) {
+    canDataType canData;
+	union INTEG tempINTEG;
 
+	tempINTEG.ub[0] = canReceivedData[0];		tempINTEG.ub[1] = canReceivedData[1];
+	canData.int0 = tempINTEG.i;
+	tempINTEG.ub[0] = canReceivedData[2];		tempINTEG.ub[1] = canReceivedData[3];
+	canData.int1 = tempINTEG.i;
+	tempINTEG.ub[0] = canReceivedData[4];		tempINTEG.ub[1] = canReceivedData[5];
+	canData.int2 = tempINTEG.i;
+	return(canData);
+}
+
+
+/**
+ * modifie la position absolue suite à un ordre PROP_SET_POS
+ */
 inline void setPos(void) {
 	canDataType canData;
 	realPosType curPos;
@@ -95,14 +116,14 @@ int main(void) {
 	} move;
 
 	
-	pllConfig();		// configure l'horloge de PIC
-	canPinAssign();		// assigne les pattes du CAN
-	TRISCbits.TRISC5 = 0;
+	pllConfig();            // configure l'horloge de PIC
+	canPinAssign();         // assigne les pattes du CAN
+	TRISCbits.TRISC5 = 0;   // configure les pins de debug en sortie
 	TRISBbits.TRISB5 = 0;
 	nomVel.l = 1;		// m/s
-	nomVel.r = 80;		// rad/s
+	nomVel.r = PI/2;    // rad/s
 	nomAcc.l = 1;		// m/s^2
-	nomAcc.r = 80;		// rad/s^2
+	nomAcc.r = PI/2;	// rad/s^2
 	obstacle.status = OBSTACLE_AUCUN;
 	obstacle.x = 0;
 	obstacle.y = 0;
@@ -123,18 +144,23 @@ int main(void) {
 	state = DISABLED;	// initialisation de la machine d'état
 	isrCsgFlag = 0;
 #else
+    curPos.x = 0.2;
+    curPos.y = 0.2;
+    curPos.alpha = 0;
+	odoSetAbsPos(curPos);
+	csgSetFinalPos(odoGetRelPos());
 	canReceivedOrderFlag = 1;
-	canReceivedCommand = PROP_TRANSLATION;
+	canReceivedCommand = PROP_GOTO_XY;
 //	canReceivedData[0] = 0xE8; canReceivedData[1] = 0x03;
-	canReceivedData[0] = 0x18; canReceivedData[1] = 0xFC;
-	canReceivedData[2] = 0xE8; canReceivedData[3] = 0x03;
-	canReceivedData[4] = 0xE8; canReceivedData[5] = 0x03;
+	canReceivedData[0] = 0xF4; canReceivedData[1] = 0x01;   // x=500
+	canReceivedData[2] = 0xE8; canReceivedData[3] = 0x03;   // y=1000
+	canReceivedData[4] = 0x00; canReceivedData[5] = 0x00;   // alpha = 0
 	state = STANDING;
 	isrCsgFlag = 1;
 #endif
 	oldState = state;
 	timerSetup(TIMER_1, 10);		// Configuration du timer1 pour avoir une base de temps de 10ms
-	timerInterrupt(TIMER_1, &propInterrupt);
+	timerInterrupt(TIMER_1, &propInterrupt);    // configuration de l'ISR
 	timerStart(TIMER_1);
 	DBG_PIN0 = 0;
 	while (1) {
@@ -386,19 +412,4 @@ int main(void) {
 	#endif
 	}
 	return (1);
-}
-
-
-canDataType getCanData(void) {
-	canDataType canData;
-	union INTEG tempINTEG;
-
-	tempINTEG.ub[0] = canReceivedData[0];		tempINTEG.ub[1] = canReceivedData[1];
-	canData.int0 = tempINTEG.i;
-	tempINTEG.ub[0] = canReceivedData[2];		tempINTEG.ub[1] = canReceivedData[3];
-	canData.int1 = tempINTEG.i;
-	tempINTEG.ub[0] = canReceivedData[4];		tempINTEG.ub[1] = canReceivedData[5];
-	canData.int2 = tempINTEG.i;
-
-	return(canData);
 }
