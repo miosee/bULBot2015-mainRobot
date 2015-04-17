@@ -7172,10 +7172,11 @@ void propInterrupt(void) {
 
  odoPhysPos = positionFloatToInteger(odoGetAbsPos());
  CanEnvoiProduction(&odoPhysPos);
- odoRelPos = relativeCoordFloatToInteger(odoGetRelPos());
- CanEnvoiProduction(&odoRelPos);
- csgRelPos = relativeCoordFloatToInteger(csgGetPos());
- CanEnvoiProduction(&csgRelPos);
+    CanEnvoiProduction(&state);
+
+
+
+
 
  if (isrCsgFlag) {
   csgCompute();
@@ -7269,12 +7270,12 @@ int main(void) {
 
  CanDeclarationProduction(0x02*0x10+0, &state, sizeof(state));
  CanDeclarationProduction(0x02*0x10+2, &odoPhysPos, sizeof(odoPhysPos));
- CanDeclarationProduction(0x02*0x10+3, &csgRelPos, sizeof(csgRelPos));
- CanDeclarationProduction(0x02*0x10+4, &odoRelPos, sizeof(odoRelPos));
+
+
  CanEnvoiProduction(&state);
  state = DISABLED;
  isrCsgFlag = 0;
-# 161 "main.c"
+# 162 "main.c"
  oldState = state;
  timerSetup(1, 10);
  timerInterrupt(1, &propInterrupt);
@@ -7522,10 +7523,10 @@ int main(void) {
     break;
   }
 
-  if (state != oldState) {
-   oldState = state;
-   CanEnvoiProduction(&state);
-  }
+
+
+
+
 
  }
  return (1);

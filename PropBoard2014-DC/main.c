@@ -41,10 +41,11 @@ void propInterrupt(void) {
 #ifndef DEBUG_MODE
 	odoPhysPos = positionFloatToInteger(odoGetAbsPos());
 	CanEnvoiProduction(&odoPhysPos);
-	odoRelPos = relativeCoordFloatToInteger(odoGetRelPos());
-	CanEnvoiProduction(&odoRelPos);
-	csgRelPos = relativeCoordFloatToInteger(csgGetPos());
-	CanEnvoiProduction(&csgRelPos);
+    CanEnvoiProduction(&state);
+//	odoRelPos = relativeCoordFloatToInteger(odoGetRelPos());
+//	CanEnvoiProduction(&odoRelPos);
+//	csgRelPos = relativeCoordFloatToInteger(csgGetPos());
+//	CanEnvoiProduction(&csgRelPos);
 #endif
 	if (isrCsgFlag) {
 		csgCompute();			// on calcule la nouvelle consigne
@@ -138,8 +139,8 @@ int main(void) {
 	// Déclare les objets CAN produits par ce PIC
 	CanDeclarationProduction(CO_PROP_STATUS, &state, sizeof(state));
 	CanDeclarationProduction(CO_PROP_POS, &odoPhysPos, sizeof(odoPhysPos));
-	CanDeclarationProduction(CO_PROP_REL_CSG, &csgRelPos, sizeof(csgRelPos));
-	CanDeclarationProduction(CO_PROP_REL_ODO, &odoRelPos, sizeof(odoRelPos));
+//	CanDeclarationProduction(CO_PROP_REL_CSG, &csgRelPos, sizeof(csgRelPos));
+//	CanDeclarationProduction(CO_PROP_REL_ODO, &odoRelPos, sizeof(odoRelPos));
 	CanEnvoiProduction(&state);
 	state = DISABLED;	// initialisation de la machine d'état
 	isrCsgFlag = 0;
@@ -405,10 +406,10 @@ int main(void) {
 				break;
 		}
 	#ifndef DEBUG_MODE
-		if (state != oldState) {
-			oldState = state;
-			CanEnvoiProduction(&state);
-		}
+//		if (state != oldState) {
+//			oldState = state;
+//			CanEnvoiProduction(&state);
+//		}
 	#endif
 	}
 	return (1);
